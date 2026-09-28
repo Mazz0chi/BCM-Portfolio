@@ -1,17 +1,15 @@
 "use client";
 
-import { useId, useState, type MouseEvent } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
-import { localeHref, locales, type Locale } from "@/lib/i18n";
-
-const short: Record<Locale, string> = { en: "EN", es: "ES" };
-const full: Record<Locale, string> = { en: "English", es: "Español" };
+import { localeHref, type Locale } from "@/lib/i18n";
 
 /**
- * Segmented control. The thumb slides to the new language first (state
- * transition), then the page switches in place without jumping to the top.
+ * iOS-style switch: EN on the left, ES on the right. The knob carries the
+ * active language and slides across first (state transition), then the page
+ * switches in place without jumping to the top.
  */
 export function LangToggle({
   lang,
@@ -24,12 +22,11 @@ export function LangToggle({
 }) {
   const router = useRouter();
   const reduce = useReducedMotion();
-  const thumbId = useId();
   const [active, setActive] = useState<Locale>(lang);
+  const es = active === "es";
 
-  function select(e: MouseEvent<HTMLAnchorElement>, next: Locale) {
-    e.preventDefault();
-    if (next === active) return;
+  function toggle() {
+    const next: Locale = es ? "en" : "es";
     try {
       localStorage.setItem("lang", next);
     } catch {}
@@ -40,40 +37,36 @@ export function LangToggle({
   }
 
   return (
-    <div
-      role="group"
-      aria-label={label}
-      className={cn("flex h-9 items-center rounded-full bg-surface-3 p-1", className)}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={es}
+      aria-label={`${label}: Español`}
+      onClick={toggle}
+      className={cn(
+        // The ::after extends the hit area to 44px tall without changing the visual size.
+        "relative flex h-8 w-[4.25rem] shrink-0 items-center rounded-full bg-surface-3 p-0.5",
+        "shadow-[inset_0_1px_2px_rgb(0_0_0/0.4)] after:absolute after:-inset-x-1 after:-inset-y-1.5 after:content-['']",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+        es ? "justify-end" : "justify-start",
+        className,
+      )}
     >
-      {locales.map((l) => {
-        const on = l === active;
-        return (
-          <a
-            key={l}
-            href={localeHref(l)}
-            hrefLang={l}
-            lang={l}
-            aria-label={full[l]}
-            aria-current={on ? "true" : undefined}
-            onClick={(e) => select(e, l)}
-            className={cn(
-              "relative isolate grid h-7 w-10 place-items-center rounded-full text-xs font-semibold tracking-wide",
-              "transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-              on ? "text-canvas" : "text-mute hover:text-ink",
-            )}
-          >
-            {on ? (
-              <motion.span
-                layoutId={thumbId}
-                aria-hidden
-                transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 38 }}
-                className="absolute inset-0 -z-10 rounded-full bg-ink shadow-[0_1px_3px_rgb(0_0_0/0.35)]"
-              />
-            ) : null}
-            {short[l]}
-          </a>
-        );
-      })}
-    </div>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 flex items-center justify-between px-2.5 text-[11px] font-semibold tracking-wide text-mute"
+      >
+        <span>EN</span>
+        <span>ES</span>
+      </span>
+      <motion.span
+        layout
+        aria-hidden
+        transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 34 }}
+        className="relative grid size-7 place-items-center rounded-full bg-ink text-[11px] font-semibold tracking-wide text-canvas shadow-[0_2px_6px_rgb(0_0_0/0.4)]"
+      >
+        {es ? "ES" : "EN"}
+      </motion.span>
+    </button>
   );
 }

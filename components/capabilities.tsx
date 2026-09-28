@@ -1,11 +1,27 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import type { Dict } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
 const tones = ["bg-surface-1", "bg-surface-2", "bg-surface-3", "bg-accent-tint"];
+
+// Matches the `tall` variant in globals.css. Short screens (phones in landscape)
+// can't fit a sticky stack under the nav, so panels flow normally there.
+const TALL = "(min-height: 36rem)";
+
+function useTall() {
+  return useSyncExternalStore(
+    (onChange) => {
+      const mq = window.matchMedia(TALL);
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    },
+    () => window.matchMedia(TALL).matches,
+    () => true,
+  );
+}
 
 type Item = Dict["services"]["items"][number];
 
@@ -14,12 +30,14 @@ function Panel({
   index,
   total,
   progress,
+  tall,
   reduce,
 }: {
   item: Item;
   index: number;
   total: number;
   progress: MotionValue<number>;
+  tall: boolean;
   reduce: boolean;
 }) {
   // Earlier panels settle back as the next one arrives, so depth shows order (hierarchy).
@@ -27,16 +45,16 @@ function Panel({
   const scale = useTransform(progress, [index / total, 1], [1, target]);
 
   return (
-    <div className="sticky top-0 flex min-h-[100dvh] items-center">
+    <div className="flex items-center py-3 tall:sticky tall:top-0 tall:min-h-[100dvh] tall:py-0">
       <motion.article
-        style={{ top: `${index * 22}px`, ...(reduce ? {} : { scale }) }}
+        style={tall ? { top: `${index * 22}px`, ...(reduce ? {} : { scale }) } : undefined}
         className={cn(
-          "relative flex min-h-[56dvh] w-full origin-top flex-col justify-between gap-16 rounded-3xl border border-line p-6 md:p-12",
+          "relative flex w-full origin-top flex-col justify-between gap-10 rounded-3xl border border-line p-6 md:p-12 tall:min-h-[56dvh] tall:gap-16",
           tones[index],
         )}
       >
         <div className="flex flex-col gap-5">
-          <h3 className="text-4xl font-semibold tracking-tighter md:text-6xl">{item.title}</h3>
+          <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
           <p className="max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{item.body}</p>
         </div>
         <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-mute md:text-base">
@@ -52,6 +70,7 @@ function Panel({
 export function Capabilities({ heading, items }: { heading: string; items: Item[] }) {
   const container = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion() ?? false;
+  const tall = useTall();
   const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end end"] });
 
   return (
@@ -60,7 +79,7 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
         <h2 className="text-3xl font-semibold tracking-tighter md:text-5xl">
           {heading}
         </h2>
-        <div ref={container} className="relative -mt-[10dvh]">
+        <div ref={container} className="relative mt-8 tall:-mt-[10dvh]">
           {items.map((item, i) => (
             <Panel
               key={item.title}
@@ -68,6 +87,7 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
               index={i}
               total={items.length}
               progress={scrollYProgress}
+              tall={tall}
               reduce={reduce}
             />
           ))}

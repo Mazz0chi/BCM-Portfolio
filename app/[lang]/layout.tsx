@@ -29,12 +29,12 @@ export async function generateMetadata({
     description: d.meta.description,
     alternates: {
       canonical: localeHref(lang),
-      languages: { en: "/", es: "/es", "x-default": "/" },
+      languages: { en: "/", "es-AR": "/es", "x-default": "/" },
     },
     openGraph: {
       title: d.meta.title,
       description: d.meta.description,
-      locale: lang === "es" ? "es_ES" : "en_US",
+      locale: lang === "es" ? "es_AR" : "en_US",
       type: "website",
     },
   };
@@ -57,7 +57,7 @@ export default async function RootLayout({
   const d = getDict(lang);
 
   return (
-    <html lang={lang} className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang={lang === "es" ? "es-AR" : lang} className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="min-h-dvh bg-canvas font-sans text-ink antialiased">
         <a
           href="#top"

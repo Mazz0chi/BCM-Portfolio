@@ -2,7 +2,7 @@
 
 /*
  * Theme: dark only, locked for the whole page (explicit brief instruction).
- * Palette: neutral off-black surfaces + ONE accent (burnt orange). No other hues.
+ * Palette: neutral off-black surfaces + ONE accent (aqua green). No other hues.
  * Shape rule: interactive controls are rounded-full, surfaces are rounded-3xl (24px). Nothing else.
  * Z-index scale: nav 50 only. Nothing else uses z-index.
  */
@@ -15,10 +15,13 @@
   --line: rgb(255 255 255 / 0.09);
   --ink: #ecece9;
   --mute: #a3a3a8;
-  --accent: #ea6b3c;
+  --accent: #0bae9b;
   --accent-tint: color-mix(in oklab, var(--accent) 18%, var(--surface-1));
   --z-nav: 50;
 }
+
+/* Screens tall enough for sticky, stacked sections (not phones in landscape). */
+@custom-variant tall (@media (min-height: 36rem));
 
 @theme inline {
   --color-canvas: var(--canvas);

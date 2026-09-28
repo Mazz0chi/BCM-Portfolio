@@ -1,7 +1,7 @@
 /**
  * All visible copy, in both languages. `es` is typed against `en`,
  * so a missing or extra key fails the build.
- * Spanish uses neutral "tú" so it reads naturally in Latin America and Spain.
+ * Spanish is Rioplatense (Argentina): "vos" forms throughout.
  */
 
 export const locales = ["en", "es"] as const;
@@ -173,8 +173,8 @@ const es: Dict = {
     ],
   },
   studio: {
-    heading: "Un estudio pequeño, a propósito.",
-    body: "Hablas directamente con quienes hacen el trabajo y, al terminar, te quedas con todos los archivos fuente.",
+    heading: "Un estudio chico, a propósito.",
+    body: "Hablás directamente con quienes hacen el trabajo y, al terminar, te quedás con todos los archivos fuente.",
     alt: "El estudio trabajando",
   },
   process: {
@@ -194,13 +194,13 @@ const es: Dict = {
       },
       {
         title: "Entregar",
-        body: "Recibes el código, los archivos de diseño y una guía breve para que tu equipo pueda seguir.",
+        body: "Recibís el código, los archivos de diseño y una guía breve para que tu equipo pueda seguir.",
       },
     ],
   },
   contact: {
-    heading: "¿Tienes un proyecto en mente?",
-    body: "Cuéntanos qué estás construyendo y en qué necesitas ayuda.",
+    heading: "¿Tenés un proyecto en mente?",
+    body: "Contanos qué estás construyendo y en qué necesitás ayuda.",
   },
   footer: {
     rights: "Todos los derechos reservados.",
