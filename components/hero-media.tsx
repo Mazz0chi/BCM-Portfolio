@@ -8,7 +8,7 @@ import { Media } from "@/components/media";
  * Hero visual. As the page scrolls it settles back slightly, which separates
  * the hero from the content that follows (hierarchy). Static under reduced motion.
  */
-export function HeroMedia({ src }: { src?: string | null }) {
+export function HeroMedia({ src, alt }: { src?: string | null; alt: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -19,7 +19,7 @@ export function HeroMedia({ src }: { src?: string | null }) {
       <motion.div style={reduce ? undefined : { scale }} className="flex flex-1 origin-top flex-col">
         <Media
           src={src}
-          alt="Selected project from Benitez Cruz and Mazzochi"
+          alt={alt}
           slot="public/projects/hero.jpg"
           tone="accent"
           priority

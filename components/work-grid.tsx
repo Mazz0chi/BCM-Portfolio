@@ -3,6 +3,7 @@ import { Media } from "@/components/media";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 import { projects, type Project } from "@/lib/content";
+import type { Dict, Locale } from "@/lib/i18n";
 import { imageFor } from "@/lib/images";
 
 /**
@@ -25,7 +26,17 @@ const cells = [
   { span: "lg:col-span-4", tone: "three", aspect: "aspect-[4/3]" },
 ] as const;
 
-function Cell({ project, index }: { project: Project; index: number }) {
+function Cell({
+  project,
+  index,
+  lang,
+  d,
+}: {
+  project: Project;
+  index: number;
+  lang: Locale;
+  d: Dict;
+}) {
   const cell = cells[index];
   return (
     <Reveal delay={(index % 3) * 0.06} className={cn("min-h-0", cell.span)}>
@@ -37,7 +48,7 @@ function Cell({ project, index }: { project: Project; index: number }) {
       >
         <Media
           src={imageFor(project.slug)}
-          alt={`${project.title} website`}
+          alt={d.work.alt(project.title)}
           slot={`public/projects/${project.slug}.jpg`}
           tone={cell.tone}
           sizes="(min-width: 1024px) 58vw, 100vw"
@@ -53,27 +64,27 @@ function Cell({ project, index }: { project: Project; index: number }) {
               aria-hidden
               className="size-4 text-mute transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
             />
-            <span className="sr-only">(opens in a new tab)</span>
+            <span className="sr-only">{d.a11y.newTab}</span>
           </h3>
-          <p className="shrink-0 text-sm text-mute">{project.sector}</p>
+          <p className="shrink-0 text-sm text-mute">{project.sector[lang]}</p>
         </div>
       </a>
     </Reveal>
   );
 }
 
-export function WorkGrid() {
+export function WorkGrid({ lang, d }: { lang: Locale; d: Dict }) {
   return (
     <section id="work" className="scroll-mt-24 px-4 py-24 md:px-8 md:py-40">
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <h2 className="mb-10 text-3xl font-semibold tracking-tighter md:mb-16 md:text-5xl">
-            Selected work
+            {d.work.heading}
           </h2>
         </Reveal>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:auto-rows-[clamp(220px,26vw,400px)] lg:grid-cols-12">
           {projects.slice(0, cells.length).map((project, i) => (
-            <Cell key={project.slug} project={project} index={i} />
+            <Cell key={project.slug} project={project} index={i} lang={lang} d={d} />
           ))}
         </div>
       </div>

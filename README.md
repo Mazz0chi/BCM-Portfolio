@@ -18,6 +18,14 @@ Suggested size: 1600x1000 for projects, 2400x1200 for the hero.
 
 Names, sectors, links, and grid order live in `lib/content.ts`. The grid is a fixed 9-cell bento: keep 9 projects or change `cells` in `components/work-grid.tsx`.
 
+## Languages
+
+English is served at `/`, Spanish at `/es`. All visible copy lives in `lib/i18n.ts`
+(`es` is type-checked against `en`, so a missing string fails the build).
+Project sectors are translated in `lib/content.ts`.
+First-time visitors whose browser prefers Spanish are sent to `/es`; once someone
+uses the EN/ES toggle, their choice is remembered.
+
 ## Before publishing
 
 - Replace `studio.contactHref` in `lib/content.ts` with the real email.

@@ -11,14 +11,23 @@ import {
 } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 import { CtaLink } from "@/components/cta-link";
-import { cta, navLinks, studio } from "@/lib/content";
+import { LangToggle } from "@/components/lang-toggle";
+import { studio } from "@/lib/content";
+import type { Dict, Locale } from "@/lib/i18n";
 
 /**
  * Floating pill header (Butter-style): detached from the top edge, centered,
  * frosted, one line. Its surface gets denser as the page scrolls, so it stays
  * readable over content (state transition, no re-renders: motion values only).
+ * The language toggle sits in the pill from md up, and in the menu on phones.
  */
-export function FloatingNav() {
+export function FloatingNav({
+  lang,
+  d,
+}: {
+  lang: Locale;
+  d: Pick<Dict, "nav" | "cta" | "a11y">;
+}) {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
@@ -38,20 +47,20 @@ export function FloatingNav() {
     <header className="pointer-events-none fixed inset-x-0 top-4 z-(--z-nav) flex justify-center px-4">
       <div className="relative w-full max-w-3xl">
         <motion.nav
-          aria-label="Primary"
+          aria-label={d.a11y.primaryNav}
           style={{ backgroundColor: background }}
-          className="glass pointer-events-auto flex h-14 items-center justify-between rounded-full pl-5 pr-2"
+          className="glass pointer-events-auto flex h-14 items-center justify-between gap-2 rounded-full pl-5 pr-2"
         >
           <a
             href="#top"
-            aria-label={`${studio.name}, back to top`}
+            aria-label={`${studio.name}, ${d.a11y.backToTop}`}
             className="rounded-full font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             {studio.short}
           </a>
 
           <ul className="hidden items-center gap-1 md:flex">
-            {navLinks.map((link) => (
+            {d.nav.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -63,13 +72,14 @@ export function FloatingNav() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
+            <LangToggle lang={lang} label={d.a11y.language} className="hidden md:flex" />
             <CtaLink href="#contact" size="sm">
-              {cta}
+              {d.cta}
             </CtaLink>
             <button
               type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? d.a11y.closeMenu : d.a11y.openMenu}
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((v) => !v)}
@@ -88,10 +98,10 @@ export function FloatingNav() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
               transition={{ type: "spring", stiffness: 260, damping: 26 }}
-              className="glass pointer-events-auto absolute inset-x-0 top-[4.25rem] rounded-3xl bg-surface-2/90 p-3 md:hidden"
+              className="glass pointer-events-auto absolute inset-x-0 top-[4.25rem] rounded-3xl bg-surface-2 p-3 md:hidden"
             >
               <ul>
-                {navLinks.map((link) => (
+                {d.nav.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
@@ -103,6 +113,10 @@ export function FloatingNav() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-2 flex items-center justify-between border-t border-line px-4 pb-1 pt-4">
+                <span className="text-sm text-mute">{d.a11y.language}</span>
+                <LangToggle lang={lang} label={d.a11y.language} />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

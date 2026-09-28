@@ -3,9 +3,6 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 
-const TEXT =
-  "Good design is half the job. It also has to load fast, work on every screen, and stay easy to change.";
-
 function Word({
   children,
   progress,
@@ -26,11 +23,11 @@ function Word({
 }
 
 /** Words light up in reading order as the sentence crosses the screen (storytelling). */
-export function Statement() {
+export function Statement({ text }: { text: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.45"] });
-  const words = TEXT.split(" ");
+  const words = text.split(" ");
 
   return (
     <section className="px-4 py-32 md:px-8 md:py-48">

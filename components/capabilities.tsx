@@ -2,12 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
-import { capabilities } from "@/lib/content";
+import type { Dict } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
 const tones = ["bg-surface-1", "bg-surface-2", "bg-surface-3", "bg-accent-tint"];
 
-type Item = (typeof capabilities)[number];
+type Item = Dict["services"]["items"][number];
 
 function Panel({
   item,
@@ -49,7 +49,7 @@ function Panel({
   );
 }
 
-export function Capabilities() {
+export function Capabilities({ heading, items }: { heading: string; items: Item[] }) {
   const container = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end end"] });
@@ -58,15 +58,15 @@ export function Capabilities() {
     <section id="services" className="scroll-mt-24 px-4 pt-24 md:px-8 md:pt-40">
       <div className="mx-auto max-w-[1400px]">
         <h2 className="text-3xl font-semibold tracking-tighter md:text-5xl">
-          What we design and build
+          {heading}
         </h2>
         <div ref={container} className="relative -mt-[10dvh]">
-          {capabilities.map((item, i) => (
+          {items.map((item, i) => (
             <Panel
               key={item.title}
               item={item}
               index={i}
-              total={capabilities.length}
+              total={items.length}
               progress={scrollYProgress}
               reduce={reduce}
             />

@@ -22,9 +22,9 @@ const tools = [
  * The single marquee on the page. Motivated: a breadth-of-tools row that does
  * not need individual attention. Logos only, no labels.
  */
-export function ToolsMarquee() {
+export function ToolsMarquee({ label }: { label: string }) {
   return (
-    <section aria-label="Tools we work with" className="py-16 md:py-24">
+    <section aria-label={label} className="py-16 md:py-24">
       <div className="marquee-mask overflow-hidden">
         <div className="marquee-track flex w-max">
           {[0, 1].map((copy) => (
