@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * Theme: dark only, locked for the whole page (explicit brief instruction).
+ * Palette: neutral off-black surfaces + ONE accent (burnt orange). No other hues.
+ * Shape rule: interactive controls are rounded-full, surfaces are rounded-3xl (24px). Nothing else.
+ * Z-index scale: nav 50 only. Nothing else uses z-index.
+ */
+:root {
+  color-scheme: dark;
+  --canvas: #0c0c0e;
+  --surface-1: #141416;
+  --surface-2: #1b1b1e;
+  --surface-3: #232326;
+  --line: rgb(255 255 255 / 0.09);
+  --ink: #ecece9;
+  --mute: #a3a3a8;
+  --accent: #ea6b3c;
+  --accent-tint: color-mix(in oklab, var(--accent) 18%, var(--surface-1));
+  --z-nav: 50;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-mute: var(--mute);
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--canvas);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--canvas);
+}
+
+/*
+ * Frosted-glass approximation for the floating header.
+ * This is web glassmorphism (backdrop-filter + inner highlight), not an Apple material.
+ */
+.glass {
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 12px 40px rgb(0 0 0 / 0.35);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--surface-2) !important;
+  }
+}
+
+/* Tools marquee (the only marquee on the page). */
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
