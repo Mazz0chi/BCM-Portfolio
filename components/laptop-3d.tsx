@@ -2,168 +2,121 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { ContactShadows, Environment, Lightformer, RoundedBox, useTexture } from "@react-three/drei";
+import { ContactShadows, Environment, Lightformer, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import type { MotionValue } from "motion/react";
 
 /*
- * A modern MacBook Pro built from primitives (no external model): aluminium
- * unibody, black keyboard well with keys, glass trackpad, hinge, and a lid with
- * thin bezels and a notch. Units are roughly decimetres (14" class).
+ * Model: "2021 Macbook Pro 14" (M1 Pro / M1 Max)" by akshatmittal, CC BY 4.0
+ * https://sketchfab.com/3d-models/2021-macbook-pro-14-m1-pro-m1-max-f6b0b940fb6a4286b18a674ef32af2d3
+ * Optimised with gltf-transform (meshopt geometry, WebP textures). Credited in the footer.
  */
-const W = 3.12; // width
-const D = 2.18; // depth
-const HB = 0.1; // base thickness
-const T = 0.06; // lid thickness
-const HL = D - 0.06; // lid height
-const BEZEL_TOP = 0.05;
-const DISPLAY_W = W - 0.14;
+const MODEL = "/models/macbook-pro-14.glb";
 
-// Lid angle: closed lies flat over the keyboard (+90°), open leans back ~15° past vertical.
-const LID_CLOSED = Math.PI / 2;
-const LID_OPEN = -0.26;
+// Node names from the source file.
+const LID_NODE = "BLWpxSqmmLNyfOl";
+const SCREEN_NODE = "abgVijaHVNRUvcc";
+// Cover glass in front of the panel: opaque black in the file, which hides the screen.
+const GLASS_NODE = "fiqlelggeOoTUAw";
 
-const ALU = "#c4c7cc";
+// Hinge axis in the model's local units (centimetres). The file ships open,
+// with the lid leaning ~21° back; closing it swings the top forward onto the keyboard.
+const HINGE = new THREE.Vector3(0, -0.45, -11.4);
+const LID_CLOSED = 1.94;
+const LID_OPEN = 0;
 
-function Keyboard() {
-  const ref = useRef<THREE.InstancedMesh>(null);
-  const wellW = W * 0.8;
-  const wellD = D * 0.4;
-  const wellZ = -D / 2 + 0.14 + wellD / 2;
+// Model is in metres after its root transform (~0.31 wide); scale to scene units.
+const MODEL_SCALE = 10;
 
-  // Rows of relative key widths; the bottom row carries the space bar.
-  const keys = useMemo(() => {
-    const rows = [
-      Array(14).fill(1),
-      Array(14).fill(1),
-      [1.5, ...Array(12).fill(1), 1.5],
-      [1.75, ...Array(11).fill(1), 2.25],
-      [2.25, ...Array(10).fill(1), 2.75],
-      [1, 1, 1, 1.25, 5.5, 1.25, 1, 1, 1],
-    ];
-    const gap = 0.022;
-    const rowH = (wellD - gap) / rows.length;
-    const out: { x: number; z: number; w: number; d: number }[] = [];
-    rows.forEach((row, r) => {
-      const total = row.reduce((a, b) => a + b, 0);
-      const unit = (wellW - gap) / total;
-      // The function row is half height, like the real thing.
-      const d = (r === 0 ? rowH * 0.55 : rowH) - gap;
-      const z = wellZ - wellD / 2 + gap / 2 + rowH * r + rowH / 2;
-      let x = -wellW / 2 + gap / 2;
-      row.forEach((k) => {
-        const w = k * unit - gap;
-        out.push({ x: x + w / 2 + gap / 2, z, w, d });
-        x += k * unit;
-      });
-    });
-    return out;
-  }, [wellD, wellW, wellZ]);
-
-  useEffect(() => {
-    const mesh = ref.current;
-    if (!mesh) return;
-    const m = new THREE.Matrix4();
-    keys.forEach((k, i) => {
-      m.compose(
-        new THREE.Vector3(k.x, HB + 0.006, k.z),
-        new THREE.Quaternion(),
-        new THREE.Vector3(k.w, 0.012, k.d),
-      );
-      mesh.setMatrixAt(i, m);
-    });
-    mesh.instanceMatrix.needsUpdate = true;
-  }, [keys]);
-
-  return (
-    <group>
-      <mesh position={[0, HB + 0.0015, wellZ]} rotation-x={-Math.PI / 2}>
-        <planeGeometry args={[wellW + 0.03, wellD + 0.03]} />
-        <meshStandardMaterial color="#141517" roughness={0.9} />
-      </mesh>
-      <instancedMesh ref={ref} args={[undefined, undefined, keys.length]}>
-        <boxGeometry />
-        <meshStandardMaterial color="#1c1d20" roughness={0.55} />
-      </instancedMesh>
-    </group>
-  );
-}
-
-function Base() {
-  return (
-    <group>
-      <RoundedBox args={[W, HB, D]} radius={0.045} smoothness={5} position={[0, HB / 2, 0]}>
-        <meshPhysicalMaterial color={ALU} metalness={0.85} roughness={0.34} clearcoat={0.3} clearcoatRoughness={0.4} />
-      </RoundedBox>
-      <Keyboard />
-      {/* Glass trackpad */}
-      <mesh position={[0, HB + 0.0012, D / 2 - 0.1 - D * 0.165]} rotation-x={-Math.PI / 2}>
-        <planeGeometry args={[W * 0.42, D * 0.33]} />
-        <meshPhysicalMaterial color="#cdd0d4" metalness={0.6} roughness={0.18} />
-      </mesh>
-      {/* Hinge */}
-      <mesh position={[0, HB, -D / 2 + 0.035]} rotation-z={Math.PI / 2}>
-        <cylinderGeometry args={[0.03, 0.03, W * 0.84, 24]} />
-        <meshStandardMaterial color="#2b2c30" metalness={0.8} roughness={0.4} />
-      </mesh>
-    </group>
-  );
-}
-
-function Lid({ src, lid, glow }: { src: string; lid: React.RefObject<THREE.Group | null>; glow: React.RefObject<THREE.MeshBasicMaterial | null> }) {
+function Macbook({
+  src,
+  pivotRef,
+  screenRef,
+}: {
+  src: string;
+  pivotRef: React.RefObject<THREE.Group | null>;
+  screenRef: React.RefObject<THREE.MeshBasicMaterial | null>;
+}) {
+  const { scene } = useGLTF(MODEL);
   const gl = useThree((s) => s.gl);
   const map = useTexture(src);
+
   useMemo(() => {
     map.colorSpace = THREE.SRGBColorSpace;
     map.anisotropy = gl.capabilities.getMaxAnisotropy();
-    map.minFilter = THREE.LinearMipmapLinearFilter;
-    map.generateMipmaps = true;
+    // Crop to the panel's ~1.56 aspect, anchored at the top of the page.
+    const img = map.image as { width: number; height: number };
+    const panel = 1.557;
+    const aspect = img.width / img.height;
+    if (aspect < panel) {
+      map.repeat.set(1, aspect / panel);
+      map.offset.set(0, 1 - map.repeat.y);
+    } else {
+      map.repeat.set(panel / aspect, 1);
+      map.offset.set((1 - map.repeat.x) / 2, 0);
+    }
     map.needsUpdate = true;
   }, [map, gl]);
 
-  // Fit the screenshot to the display (cover, anchored top).
-  const displayH = HL - BEZEL_TOP - 0.12;
-  const img = map.image as { width: number; height: number };
-  const imgAspect = img.width / img.height;
-  const displayAspect = DISPLAY_W / displayH;
-  if (imgAspect > displayAspect) {
-    map.repeat.set(displayAspect / imgAspect, 1);
-    map.offset.set((1 - map.repeat.x) / 2, 0);
-  } else {
-    map.repeat.set(1, imgAspect / displayAspect);
-    map.offset.set(0, 1 - map.repeat.y);
-  }
+  // Re-parent the lid under a pivot on the hinge axis, and swap the screen for the project.
+  useMemo(() => {
+    const lid = scene.getObjectByName(LID_NODE);
+    const screen = scene.getObjectByName(SCREEN_NODE) as THREE.Mesh | undefined;
+    if (!lid || !lid.parent || lid.parent.userData.isPivot) return;
 
-  const displayY = HL - BEZEL_TOP - displayH / 2;
+    const pivot = new THREE.Group();
+    pivot.userData.isPivot = true;
+    pivot.position.copy(HINGE);
+    lid.parent.add(pivot);
+    pivot.add(lid);
+    lid.position.copy(HINGE).negate();
+    pivot.rotation.x = LID_CLOSED;
+    pivotRef.current = pivot;
 
-  return (
-    <group ref={lid} position={[0, HB, -D / 2 + 0.035]} rotation-x={LID_CLOSED}>
-      <RoundedBox args={[W, HL, T]} radius={0.035} smoothness={5} position={[0, HL / 2, -T / 2]}>
-        <meshPhysicalMaterial color={ALU} metalness={0.85} roughness={0.34} clearcoat={0.3} clearcoatRoughness={0.4} />
-      </RoundedBox>
-      {/* Glass panel and bezel */}
-      <mesh position={[0, HL / 2, 0.001]}>
-        <planeGeometry args={[W - 0.05, HL - 0.05]} />
-        <meshPhysicalMaterial color="#060607" roughness={0.12} metalness={0} clearcoat={1} />
-      </mesh>
-      {/* Display */}
-      <mesh position={[0, displayY, 0.002]}>
-        <planeGeometry args={[DISPLAY_W, displayH]} />
-        <meshBasicMaterial ref={glow} map={map} toneMapped={false} color="#000" />
-      </mesh>
-      {/* Notch */}
-      <mesh position={[0, HL - BEZEL_TOP - 0.03, 0.003]}>
-        <planeGeometry args={[0.24, 0.07]} />
-        <meshBasicMaterial color="#060607" />
-      </mesh>
-    </group>
-  );
+    if (screen) {
+      // The panel ships without a texture, so it has no UVs. Project them from
+      // its own bounds: u across the width, v up the (tilted) height.
+      const geo = screen.geometry;
+      geo.computeBoundingBox();
+      const { min, max } = geo.boundingBox!;
+      const pos = geo.attributes.position;
+      const uv = new Float32Array(pos.count * 2);
+      for (let i = 0; i < pos.count; i++) {
+        uv[i * 2] = (pos.getX(i) - min.x) / (max.x - min.x);
+        uv[i * 2 + 1] = (pos.getY(i) - min.y) / (max.y - min.y);
+      }
+      geo.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
+
+      const material = new THREE.MeshBasicMaterial({ map, toneMapped: false, color: 0x000000 });
+      screen.material = material;
+      screenRef.current = material;
+    }
+
+    const glass = scene.getObjectByName(GLASS_NODE) as THREE.Mesh | undefined;
+    if (glass) {
+      // Keep a faint reflective sheen over the screen, like real glass.
+      glass.material = new THREE.MeshPhysicalMaterial({
+        color: 0x000000,
+        metalness: 0,
+        roughness: 0.05,
+        transparent: true,
+        opacity: 0.12,
+        depthWrite: false,
+      });
+    }
+
+    scene.traverse((o) => {
+      if ((o as THREE.Mesh).isMesh) (o as THREE.Mesh).castShadow = false;
+    });
+  }, [scene, map, pivotRef, screenRef]);
+
+  return <primitive object={scene} scale={MODEL_SCALE} />;
 }
 
 function Scene({ progress, src }: { progress: MotionValue<number>; src: string }) {
   const rig = useRef<THREE.Group>(null);
-  const lid = useRef<THREE.Group>(null);
-  const glow = useRef<THREE.MeshBasicMaterial>(null);
+  const pivot = useRef<THREE.Group | null>(null);
+  const screen = useRef<THREE.MeshBasicMaterial | null>(null);
   const invalidate = useThree((s) => s.invalidate);
   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
   const size = useThree((s) => s.size);
@@ -180,25 +133,24 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
     // Opening happens over the first 70% of the scroll, then it holds.
     const t = THREE.MathUtils.smoothstep(Math.min(1, s.p / 0.7), 0, 1);
 
-    if (lid.current) lid.current.rotation.x = THREE.MathUtils.lerp(LID_CLOSED, LID_OPEN, t);
-    if (glow.current) {
-      const on = THREE.MathUtils.smoothstep(t, 0.3, 0.75);
-      glow.current.color.setScalar(on);
-    }
+    if (pivot.current) pivot.current.rotation.x = THREE.MathUtils.lerp(LID_CLOSED, LID_OPEN, t);
+    if (screen.current) screen.current.color.setScalar(THREE.MathUtils.smoothstep(t, 0.3, 0.75));
 
     if (rig.current) {
       // Fit the open laptop into the canvas at any aspect ratio.
       const dist = camera.position.length();
       const visH = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
       const visW = visH * (size.width / size.height);
-      const fit = Math.min(visW / 3.9, visH / 3.45);
+      // Portrait has room to spare vertically, so let the laptop use more of the width.
+      const portrait = size.width < size.height;
+      const fit = Math.min(visW / (portrait ? 3.5 : 4.3), visH / 3.6);
 
       // Start: closed, angled, smaller and below the headline. End: open, facing
       // you, centred and filling the stage (the headline has faded by then).
       rig.current.rotation.y = THREE.MathUtils.lerp(-0.62, 0.05, t);
       rig.current.rotation.x = THREE.MathUtils.lerp(0.3, 0.02, t);
-      // Portrait screens have a taller headline, so the closed laptop starts lower.
-      const startY = size.width < size.height ? -0.1 : 0;
+      // The headline is taller on portrait screens, so the closed laptop starts lower.
+      const startY = portrait ? -0.1 : 0;
       rig.current.position.y = THREE.MathUtils.lerp(startY, -0.035, t) * visH - (1 - s.intro) * 0.5;
       rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.68, 1, t));
     }
@@ -209,26 +161,27 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
   return (
     <>
       <group ref={rig}>
-        {/* Model origin sits at the base; shift it so the open laptop is centred. */}
-        <group position={[0, -1.05, 0.15]}>
-          <Base />
-          <Lid src={src} lid={lid} glow={glow} />
-          <ContactShadows position={[0, -0.01, 0]} opacity={0.25} scale={[4.4, 3.4]} blur={2.2} far={0.8} color="#16201a" />
+        {/* Model origin sits at the base's top surface; shift it so the open laptop is centred. */}
+        <group position={[0, -0.95, 0.1]}>
+          <Macbook src={src} pivotRef={pivot} screenRef={screen} />
+          <ContactShadows position={[0, -0.13, 0]} opacity={0.3} scale={[4.2, 3.2]} blur={2.4} far={0.8} color="#16201a" />
         </group>
       </group>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[3, 6, 4]} intensity={1.4} />
-      <Environment resolution={256} frames={1}>
-        {/* Soft studio: a pale room so the aluminium reads silver, not black. */}
-        <color attach="background" args={["#dfe3dc"]} />
-        <Lightformer form="rect" intensity={3} position={[0, 5, 2]} rotation-x={Math.PI / 2} scale={[10, 4, 1]} />
-        <Lightformer form="rect" intensity={1.5} position={[-5, 2, 1]} rotation-y={Math.PI / 2} scale={[6, 3, 1]} />
-        <Lightformer form="rect" intensity={1.5} position={[5, 2, 1]} rotation-y={-Math.PI / 2} scale={[6, 3, 1]} />
-        <Lightformer form="rect" intensity={0.8} position={[0, 1, -6]} scale={[10, 3, 1]} />
+      <ambientLight intensity={0.35} />
+      <Environment resolution={512} frames={1}>
+        {/* Soft photo studio: large soft boxes so the aluminium reads as brushed silver. */}
+        <color attach="background" args={["#d9ddd6"]} />
+        <Lightformer form="rect" intensity={4} position={[0, 6, 1]} rotation-x={Math.PI / 2} scale={[12, 5, 1]} />
+        <Lightformer form="rect" intensity={2} position={[-6, 2, 2]} rotation-y={Math.PI / 2} scale={[8, 3, 1]} />
+        <Lightformer form="rect" intensity={2} position={[6, 2, 2]} rotation-y={-Math.PI / 2} scale={[8, 3, 1]} />
+        <Lightformer form="rect" intensity={1.2} position={[0, 2, 8]} scale={[12, 4, 1]} />
+        <Lightformer form="rect" intensity={0.6} position={[0, 1, -8]} scale={[12, 3, 1]} />
       </Environment>
     </>
   );
 }
+
+useGLTF.preload(MODEL);
 
 export default function Laptop3D({ progress, src, alt }: { progress: MotionValue<number>; src: string; alt: string }) {
   return (

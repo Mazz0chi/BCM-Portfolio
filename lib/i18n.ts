@@ -108,6 +108,7 @@ const en = {
   },
   footer: {
     rights: "All rights reserved.",
+    modelCredit: "3D laptop model by",
   },
 };
 
@@ -204,6 +205,7 @@ const es: Dict = {
   },
   footer: {
     rights: "Todos los derechos reservados.",
+    modelCredit: "Modelo 3D de la laptop por",
   },
 };
 
