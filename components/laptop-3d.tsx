@@ -31,6 +31,18 @@ const LID_OPEN = 0;
 // page. A deeper silver keeps the body readable and the reflections visible.
 const ALUMINIUM = new Set(["zqeFZcIteZtOShc", "hPcehRUjcLAosED", "pZbDFXVUkfRwjmQ"]);
 const ALUMINIUM_COLOR = "#9ba0a7";
+// Port openings and connectors on both sides. In the file they're mid-grey metal,
+// which mirrors the bright studio and reads as white; real ports are dark recesses.
+const PORTS = new Set([
+  "zaEqorbaeeADKgU",
+  "WLATjirhQCUYAAG",
+  "JjuwNKnMBUdtRLb",
+  "kOcboIDeohDRqCf",
+  "jAWKNAaRBMlZYro",
+  "XNDkEZQapqqDHpk",
+  "UPMcPXFSRXevSGt",
+  "HPAOpCInJKBtaOC",
+]);
 
 // Model is in metres after its root transform (~0.31 wide); scale to scene units.
 const MODEL_SCALE = 10;
@@ -120,6 +132,11 @@ function Macbook({
         m.color.set(ALUMINIUM_COLOR);
         m.metalness = 1;
         m.roughness = 0.38;
+      } else if (PORTS.has(m.name)) {
+        m.color.set("#18191b");
+        m.metalness = 0.4;
+        m.roughness = 0.55;
+        m.emissive?.set(0x000000);
       }
     });
   }, [scene, map, pivotRef, screenRef]);
@@ -141,16 +158,15 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
   useFrame((_, delta) => {
     const s = smooth.current;
     const dt = Math.min(delta, 1 / 30);
-    // Low damping gives the motion weight: it keeps gliding briefly after the
-    // scroll stops instead of snapping to it.
-    s.p = THREE.MathUtils.damp(s.p, progress.get(), 2.4, dt);
+    // `progress` is already spring-smoothed (hero-laptop.tsx), shared with the headline.
+    s.p = progress.get();
     s.intro = THREE.MathUtils.damp(s.intro, 1, 1.6, dt);
 
     // Intro on load: the laptop rises in and the lid cracks open a little on its
     // own, inviting the scroll. Scrolling then opens it fully over the first 75%
     // of the pinned section; the rest is a hold, then a gentle settle as it leaves.
     const scrolled = THREE.MathUtils.smoothstep(Math.min(1, s.p / 0.75), 0, 1);
-    const t = Math.max(scrolled, 0.1 * THREE.MathUtils.smoothstep(s.intro, 0.35, 1));
+    const t = Math.max(scrolled, 0.045 * THREE.MathUtils.smoothstep(s.intro, 0.35, 1));
     const settle = THREE.MathUtils.smoothstep(s.p, 0.86, 1);
 
     if (pivot.current) pivot.current.rotation.x = THREE.MathUtils.lerp(LID_CLOSED, LID_OPEN, t);
@@ -167,15 +183,16 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
 
       // Start: closed, angled, smaller and below the headline. End: open, facing
       // you, centred and filling the stage (the headline has faded by then).
-      rig.current.rotation.y = THREE.MathUtils.lerp(-0.62, 0.05, t);
-      rig.current.rotation.x = THREE.MathUtils.lerp(0.3, 0.02, t) + settle * 0.08;
+      // Start turned ~55° so the right side (with its ports) faces you, then swing round.
+      rig.current.rotation.y = THREE.MathUtils.lerp(-0.95, 0.05, t);
+      rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t) + settle * 0.08;
       // The headline is taller on portrait screens, so the closed laptop starts lower.
       const startY = portrait ? -0.1 : 0;
       rig.current.position.y = THREE.MathUtils.lerp(startY, -0.035, t) * visH - (1 - s.intro) * 0.5;
       rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.68, 1, t) * (1 - settle * 0.08));
     }
 
-    if (Math.abs(s.p - progress.get()) > 0.0002 || s.intro < 0.999) invalidate();
+    if (s.intro < 0.999) invalidate();
   });
 
   return (

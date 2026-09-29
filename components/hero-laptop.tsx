@@ -3,7 +3,7 @@
 import { useRef, useSyncExternalStore, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { motion, motionValue, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, motionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { cn } from "@/lib/cn";
 
 const Laptop3D = dynamic(() => import("@/components/laptop-3d"), { ssr: false });
@@ -47,10 +47,15 @@ export function HeroLaptop({
   const reduce = useReducedMotion();
   const webgl = useWebGL();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  // One smoothed progress drives both the laptop and the headline. The spring
+  // gives the motion weight (it glides on briefly after the scroll stops), and
+  // sharing it keeps the two in lockstep: a fast scroll back up can't bring the
+  // headline back while the laptop is still open over it.
+  const smooth = useSpring(scrollYProgress, { stiffness: 14, damping: 7.5, restDelta: 0.0005 });
   // Function transforms on purpose: they stay in sync with the 3D scene, which
   // reads the same progress per frame (the accelerated path drifted here).
-  const textOpacity = useTransform(scrollYProgress, (p) => 1 - clamp01((p - 0.08) / 0.27));
-  const textY = useTransform(scrollYProgress, (p) => -80 * clamp01(p / 0.35));
+  const textOpacity = useTransform(smooth, (p) => 1 - clamp01((p - 0.08) / 0.27));
+  const textY = useTransform(smooth, (p) => -80 * clamp01(p / 0.35));
 
   return (
     <div ref={ref} className={cn("relative", reduce ? "" : "h-[400dvh]")}>
@@ -64,7 +69,7 @@ export function HeroLaptop({
             Under reduced motion it's a plain block below the headline instead. */}
         <div className={cn("pointer-events-none", reduce ? "relative order-last h-[60dvh]" : "absolute inset-0")}>
           {src && webgl ? (
-            <Laptop3D progress={reduce ? opened : scrollYProgress} src={src} alt={alt} />
+            <Laptop3D progress={reduce ? opened : smooth} src={src} alt={alt} />
           ) : src ? (
             <Image src={src} alt={alt} fill sizes="100vw" className="object-contain px-4 pb-8 pt-[45%] md:px-8" />
           ) : null}
