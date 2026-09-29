@@ -20,10 +20,17 @@ const SCREEN_NODE = "abgVijaHVNRUvcc";
 const GLASS_NODE = "fiqlelggeOoTUAw";
 
 // Hinge axis in the model's local units (centimetres). The file ships open,
-// with the lid leaning ~21° back; closing it swings the top forward onto the keyboard.
-const HINGE = new THREE.Vector3(0, -0.45, -11.4);
-const LID_CLOSED = 1.94;
+// with the lid leaning ~20° back; closing it swings the top forward onto the keyboard.
+// Solved from the mesh vertices so the closed lid rests exactly on the base's top
+// surface and lines up with its front edge (no overlap, no gap).
+const HINGE = new THREE.Vector3(0, -0.028, -11.124);
+const LID_CLOSED = 1.9216;
 const LID_OPEN = 0;
+
+// Aluminium: the source file's silver is near-white, which washes out on a light
+// page. A deeper silver keeps the body readable and the reflections visible.
+const ALUMINIUM = new Set(["zqeFZcIteZtOShc", "hPcehRUjcLAosED", "pZbDFXVUkfRwjmQ"]);
+const ALUMINIUM_COLOR = "#9ba0a7";
 
 // Model is in metres after its root transform (~0.31 wide); scale to scene units.
 const MODEL_SCALE = 10;
@@ -106,7 +113,14 @@ function Macbook({
     }
 
     scene.traverse((o) => {
-      if ((o as THREE.Mesh).isMesh) (o as THREE.Mesh).castShadow = false;
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const m = mesh.material as THREE.MeshStandardMaterial;
+      if (ALUMINIUM.has(m.name)) {
+        m.color.set(ALUMINIUM_COLOR);
+        m.metalness = 1;
+        m.roughness = 0.38;
+      }
     });
   }, [scene, map, pivotRef, screenRef]);
 
@@ -127,11 +141,17 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
   useFrame((_, delta) => {
     const s = smooth.current;
     const dt = Math.min(delta, 1 / 30);
-    s.p = THREE.MathUtils.damp(s.p, progress.get(), 6, dt);
-    s.intro = THREE.MathUtils.damp(s.intro, 1, 3.2, dt);
+    // Low damping gives the motion weight: it keeps gliding briefly after the
+    // scroll stops instead of snapping to it.
+    s.p = THREE.MathUtils.damp(s.p, progress.get(), 2.4, dt);
+    s.intro = THREE.MathUtils.damp(s.intro, 1, 1.6, dt);
 
-    // Opening happens over the first 70% of the scroll, then it holds.
-    const t = THREE.MathUtils.smoothstep(Math.min(1, s.p / 0.7), 0, 1);
+    // Intro on load: the laptop rises in and the lid cracks open a little on its
+    // own, inviting the scroll. Scrolling then opens it fully over the first 75%
+    // of the pinned section; the rest is a hold, then a gentle settle as it leaves.
+    const scrolled = THREE.MathUtils.smoothstep(Math.min(1, s.p / 0.75), 0, 1);
+    const t = Math.max(scrolled, 0.1 * THREE.MathUtils.smoothstep(s.intro, 0.35, 1));
+    const settle = THREE.MathUtils.smoothstep(s.p, 0.86, 1);
 
     if (pivot.current) pivot.current.rotation.x = THREE.MathUtils.lerp(LID_CLOSED, LID_OPEN, t);
     if (screen.current) screen.current.color.setScalar(THREE.MathUtils.smoothstep(t, 0.3, 0.75));
@@ -148,14 +168,14 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
       // Start: closed, angled, smaller and below the headline. End: open, facing
       // you, centred and filling the stage (the headline has faded by then).
       rig.current.rotation.y = THREE.MathUtils.lerp(-0.62, 0.05, t);
-      rig.current.rotation.x = THREE.MathUtils.lerp(0.3, 0.02, t);
+      rig.current.rotation.x = THREE.MathUtils.lerp(0.3, 0.02, t) + settle * 0.08;
       // The headline is taller on portrait screens, so the closed laptop starts lower.
       const startY = portrait ? -0.1 : 0;
       rig.current.position.y = THREE.MathUtils.lerp(startY, -0.035, t) * visH - (1 - s.intro) * 0.5;
-      rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.68, 1, t));
+      rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.68, 1, t) * (1 - settle * 0.08));
     }
 
-    if (Math.abs(s.p - progress.get()) > 0.0005 || s.intro < 0.999) invalidate();
+    if (Math.abs(s.p - progress.get()) > 0.0002 || s.intro < 0.999) invalidate();
   });
 
   return (

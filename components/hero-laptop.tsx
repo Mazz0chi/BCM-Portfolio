@@ -49,11 +49,11 @@ export function HeroLaptop({
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   // Function transforms on purpose: they stay in sync with the 3D scene, which
   // reads the same progress per frame (the accelerated path drifted here).
-  const textOpacity = useTransform(scrollYProgress, (p) => 1 - clamp01((p - 0.12) / 0.3));
-  const textY = useTransform(scrollYProgress, (p) => -80 * clamp01(p / 0.42));
+  const textOpacity = useTransform(scrollYProgress, (p) => 1 - clamp01((p - 0.08) / 0.27));
+  const textY = useTransform(scrollYProgress, (p) => -80 * clamp01(p / 0.35));
 
   return (
-    <div ref={ref} className={cn("relative", reduce ? "" : "h-[230dvh]")}>
+    <div ref={ref} className={cn("relative", reduce ? "" : "h-[400dvh]")}>
       <div
         className={cn(
           "relative flex w-full flex-col",
