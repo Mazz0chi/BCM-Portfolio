@@ -46,7 +46,7 @@ export function LangToggle({
       className={cn(
         // The ::after extends the hit area to 44px tall without changing the visual size.
         "relative flex h-8 w-[4.25rem] shrink-0 items-center rounded-full bg-surface-3 p-0.5",
-        "shadow-[inset_0_1px_2px_rgb(0_0_0/0.4)] after:absolute after:-inset-x-1 after:-inset-y-1.5 after:content-['']",
+        "shadow-[inset_0_1px_2px_rgb(22_32_26/0.15)] after:absolute after:-inset-x-1 after:-inset-y-1.5 after:content-['']",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         es ? "justify-end" : "justify-start",
         className,
@@ -63,7 +63,7 @@ export function LangToggle({
         layout
         aria-hidden
         transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 34 }}
-        className="relative grid size-7 place-items-center rounded-full bg-ink text-[11px] font-semibold tracking-wide text-canvas shadow-[0_2px_6px_rgb(0_0_0/0.4)]"
+        className="relative grid size-7 place-items-center rounded-full bg-white text-[11px] font-semibold tracking-wide text-ink shadow-[0_2px_6px_rgb(22_32_26/0.25)]"
       >
         {es ? "ES" : "EN"}
       </motion.span>

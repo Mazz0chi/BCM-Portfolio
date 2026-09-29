@@ -41,8 +41,8 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0c0c0e",
-  colorScheme: "dark",
+  themeColor: "#f2f4ef",
+  colorScheme: "light",
 };
 
 export default async function RootLayout({

@@ -21,7 +21,7 @@ export function CtaLink({
       onClick={onClick}
       className={cn(
         "group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-accent font-medium text-canvas",
-        "transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-110",
+        "transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-90",
         "active:translate-y-px active:scale-[0.98]",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         size === "sm" ? "h-10 px-4 text-sm" : "h-12 px-6 text-base",

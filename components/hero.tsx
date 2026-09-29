@@ -1,13 +1,12 @@
 import { CtaLink } from "@/components/cta-link";
-import { HeroMedia } from "@/components/hero-media";
+import { HeroLaptop } from "@/components/hero-laptop";
 import { Reveal } from "@/components/reveal";
-import { projects } from "@/lib/content";
 import type { Dict } from "@/lib/i18n";
 import { imageFor } from "@/lib/images";
 
 export function Hero({ d }: { d: Dict }) {
   return (
-    <section className="mx-auto flex min-h-[100dvh] w-full max-w-[1400px] flex-col gap-8 px-4 pb-4 pt-24 md:px-8">
+    <section className="mx-auto flex w-full max-w-[1400px] flex-col gap-8 px-4 pb-4 pt-24 md:px-8 md:pt-28">
       <div className="flex flex-col gap-6">
         <Reveal>
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tighter md:text-5xl lg:text-6xl">
@@ -22,7 +21,7 @@ export function Hero({ d }: { d: Dict }) {
           </CtaLink>
         </Reveal>
       </div>
-      <HeroMedia src={imageFor("hero") ?? imageFor(projects[0].slug)} alt={d.hero.alt} />
+      <HeroLaptop src={imageFor("marketing-mob")} alt={d.hero.alt} />
     </section>
   );
 }

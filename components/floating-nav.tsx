@@ -33,8 +33,8 @@ export function FloatingNav({
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
-  const alpha = useTransform(scrollY, [0, 160], [0.45, 0.82]);
-  const background = useMotionTemplate`rgb(20 20 22 / ${alpha})`;
+  const alpha = useTransform(scrollY, [0, 160], [0.55, 0.88]);
+  const background = useMotionTemplate`rgb(246 248 243 / ${alpha})`;
 
   useEffect(() => {
     if (!open) return;
