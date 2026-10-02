@@ -1,0 +1,866 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>JJ Capinvest — Investisseur, opérateur, connecteur, accélérateur</title>
+<meta name="description" content="Capital, structuration, réseau et exécution pour accélérer les opérations qui comptent." />
+<link rel="alternate" hreflang="fr" href="https://jjcapinvest.com/" />
+<link rel="alternate" hreflang="en" href="https://jjcapinvest.com/en/" />
+<link rel="alternate" hreflang="es" href="https://jjcapinvest.com/es/" />
+<link rel="alternate" hreflang="x-default" href="https://jjcapinvest.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="JJ Capinvest — Investisseur, opérateur, connecteur, accélérateur" />
+<meta property="og:description" content="Capital, structuration, réseau et exécution pour accélérer les opérations qui comptent." />
+<meta property="og:image" content="https://jjcapinvest.com/og-image.png" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="JJ Capinvest" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="theme-color" content="#1B2233" />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* JJ Capinvest home, v6.
+   Grid rule: every section aligns to .wrap (max 1280). The hero is the only full-bleed element (inset panel).
+   Shape rule: panels 20px, cards 14px, plates 10px, every control is a pill.
+   Colour roles (approved D2): navy grounds, blue = interactive + icons, orange = italic emphasis in serif headlines.
+   Single light look (client request); navy used for the hero panel, the "Pourquoi nous" panel and one CTA card. */
+:root{
+  --bg:#F2F5F9; --surface:#FFFFFF; --surface-2:#E7ECF4;
+  --ink:#0F1B33; --ink-2:#1F3153; --ink-3:#465475; --muted:#56627C;
+  --line:rgba(15,27,51,.10); --line-2:rgba(15,27,51,.18);
+  --blue:#1E5BFF; --orange:#E2551A;
+  --navy:#0F1B33; --navy-2:#16233F; --on-navy:#F2F5F9; --on-navy-2:#BFCEE6; --on-navy-3:#93A0B8;
+  --navy-line:rgba(242,245,249,.13); --navy-blue:#7BA0FF; --navy-orange:#FF9061;
+  --shadow:0 1px 2px rgba(15,27,51,.04),0 8px 24px rgba(15,27,51,.06);
+  --shadow-lg:0 2px 4px rgba(15,27,51,.04),0 18px 44px rgba(15,27,51,.12);
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xl:20px; --r-lg:14px; --r-md:10px; --r-pill:999px;
+  --gutter:clamp(16px,3.4vw,40px); --max:1280px; --inset:12px; --head-h:56px; --head-top:28px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+  /* z-index scale: 1 content, 60 header, 70 dropdowns / mobile sheet, 80 skip link */
+}
+@media (max-width:640px){:root{--head-top:20px}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head-h) + var(--head-top) + 24px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,p,ul,ol,dl,dd,dt,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+svg.i{width:1em;height:1em;flex:none;fill:currentColor}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:8px}
+.on-dark :focus-visible,.panel :focus-visible,.hero :focus-visible{outline-color:var(--navy-blue)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:12px;z-index:80;padding:12px 18px;border-radius:var(--r-pill);background:var(--navy);color:var(--on-navy);font-weight:500;transform:translateY(-160%);transition:transform .2s ease}
+.skip:focus{transform:none}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.md{display:inline-block;width:1px;height:11px;background:currentColor;opacity:.4;margin:0 10px;vertical-align:-1px;font-size:0;line-height:0;overflow:hidden}
+.ital{font-style:italic}
+.hx{font-family:var(--f-display);font-weight:400;letter-spacing:-.025em;line-height:1.06;text-wrap:balance;color:var(--ink);padding-bottom:.06em}
+.hx .ital{color:var(--orange)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--r-pill);font:500 14px/1 var(--f-body);white-space:nowrap;border:1px solid transparent;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn .i{font-size:16px;transition:transform .35s var(--ease)}
+.btn:hover .i.r{transform:translateX(3px)}
+.btn:hover .i.d{transform:translateY(3px)}
+.btn:hover .i.ur{transform:translate(2px,-2px)}
+.btn-primary{background:var(--navy);color:var(--on-navy)}
+.btn-primary:hover{background:var(--blue);color:#F2F5F9}
+.btn-ghost{border-color:var(--line-2);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-light{background:#F2F5F9;color:#0F1B33}
+.btn-light:hover{background:#7BA0FF;color:#0F1B33}
+.btn-outline-light{border-color:rgba(242,245,249,.3);color:#F2F5F9}
+.btn-outline-light:hover{border-color:#7BA0FF;color:#7BA0FF}
+.lnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:500;color:var(--ink);transition:color .2s}
+.lnk span{border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:border-color .2s}
+.lnk:hover{color:var(--blue)}
+.lnk:hover span{border-color:var(--blue)}
+.lnk .i{font-size:15px;transition:transform .35s var(--ease)}
+.lnk:hover .i.r{transform:translateX(3px)}
+
+/* ---------- floating header: three pills ---------- */
+.site-head{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:calc(var(--head-top) + env(safe-area-inset-top,0px));pointer-events:none;
+  --p-bg:rgba(255,255,255,.82); --p-line:rgba(15,27,51,.08); --p-fg:var(--ink-2); --p-fg-strong:var(--ink); --p-hl:rgba(15,27,51,.06); --p-shadow:var(--shadow);
+  --cta-bg:var(--navy); --cta-fg:#F2F5F9}
+.site-head .on-dark{--p-bg:rgba(242,245,249,.08); --p-line:rgba(242,245,249,.16); --p-fg:#D5DDEA; --p-fg-strong:#F2F5F9; --p-hl:rgba(242,245,249,.12); --p-shadow:none; --cta-bg:#F2F5F9; --cta-fg:#0F1B33}
+.head-in{max-width:calc(var(--max) + 2 * var(--inset));margin-inline:auto;padding-inline:calc(var(--gutter) + var(--inset));display:flex;align-items:center;gap:12px}
+.head-in > *{pointer-events:auto}
+.glass{background:var(--p-bg);border:1px solid var(--p-line);box-shadow:var(--p-shadow);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);transition:background-color .35s ease,border-color .35s ease,box-shadow .35s ease,color .35s ease}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.site-head{--p-bg:#FFFFFF}.site-head .on-dark{--p-bg:#16233F}}
+@media (prefers-reduced-transparency:reduce){.site-head{--p-bg:#FFFFFF}.site-head .on-dark{--p-bg:#16233F}.glass{-webkit-backdrop-filter:none;backdrop-filter:none}}
+.brand{display:inline-flex;align-items:center;gap:12px;height:var(--head-h);padding:0 20px 0 12px;border-radius:var(--r-pill);font-family:var(--f-display);font-size:19px;font-weight:500;letter-spacing:-.01em;white-space:nowrap;color:var(--p-fg-strong)}
+/* logo: unchanged values from the original mark */
+.brand .mark{width:32px;height:32px;flex:none;border-radius:50%;background:#1B2233;display:flex;align-items:center;justify-content:center}
+.brand.on-dark .mark{box-shadow:0 0 0 1px rgba(242,245,249,.22)}
+.brand .mark::after{content:"jj";color:#C97050;font-family:var(--f-display);font-style:italic;font-size:15px;font-weight:400;letter-spacing:-.04em}
+.pill{position:relative;display:flex;align-items:center;gap:2px;height:var(--head-h);padding:6px;border-radius:var(--r-pill);margin-inline:auto}
+.pill-hl{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:var(--r-pill);background:var(--p-hl);opacity:0;pointer-events:none;transition:transform .4s var(--ease),width .4s var(--ease),opacity .2s ease}
+.pill-link{position:relative;z-index:1;height:100%;display:inline-flex;align-items:center;gap:6px;padding:0 16px;border:0;background:transparent;border-radius:var(--r-pill);font-size:14px;color:var(--p-fg);cursor:pointer;white-space:nowrap;transition:color .2s}
+.pill-link:hover,.pill-link[aria-expanded="true"]{color:var(--p-fg-strong)}
+.nav-caret{font-size:12px;opacity:.7;transition:transform .3s var(--ease)}
+.pill-link[aria-expanded="true"] .nav-caret{transform:rotate(180deg)}
+.nav-item{position:relative;height:100%}
+.dropdown{position:absolute;top:calc(100% + 14px);left:50%;z-index:70;width:560px;padding:10px;border-radius:var(--r-xl);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-lg);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;opacity:0;visibility:hidden;transform:translate(-50%,-6px);transition:opacity .2s ease,transform .3s var(--ease),visibility 0s .3s}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.nav-item.open .dropdown{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.dd-link{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;padding:16px;border-radius:var(--r-lg);transition:background-color .15s}
+.dd-link:hover,.dd-link:focus-visible{background:var(--bg)}
+.dd-ic{grid-row:span 2;width:40px;height:40px;border-radius:var(--r-md);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--blue);transition:background-color .15s}
+.dd-link:hover .dd-ic{background:var(--surface)}
+.dd-t{font-family:var(--f-display);font-size:19px;color:var(--ink);line-height:1.2}
+.dd-d{font-size:13.5px;color:var(--ink-3);margin-top:2px}
+.head-right{display:flex;align-items:center;gap:8px}
+.langpick{position:relative}
+.langpick-btn{height:var(--head-h);min-width:var(--head-h);display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 16px;border-radius:var(--r-pill);font:500 12px/1 var(--f-mono);letter-spacing:.06em;color:var(--p-fg-strong);cursor:pointer}
+.langpick-menu{position:absolute;right:0;top:calc(100% + 10px);z-index:70;min-width:190px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-lg);padding:6px;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.96);transform-origin:top right;transition:opacity .2s ease,transform .35s var(--ease),visibility 0s .35s}
+.langpick[data-open="true"] .langpick-menu{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.langpick-menu a{opacity:0;transform:translateY(-4px);transition:opacity .25s ease,transform .35s var(--ease),background-color .15s,color .15s}
+.langpick[data-open="true"] .langpick-menu a{opacity:1;transform:none}
+.langpick[data-open="true"] .langpick-menu a:nth-child(1){transition-delay:.04s,.04s,0s,0s}
+.langpick[data-open="true"] .langpick-menu a:nth-child(2){transition-delay:.08s,.08s,0s,0s}
+.langpick[data-open="true"] .langpick-menu a:nth-child(3){transition-delay:.12s,.12s,0s,0s}
+.langpick[data-open="true"] .langpick-btn .nav-caret{transform:rotate(180deg)}
+.langpick-menu a .chk{margin-left:auto;font-size:14px;color:var(--blue);opacity:0}
+.langpick-menu a.on .chk{opacity:1}
+.langpick-menu a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;font-size:14px;color:var(--ink-2);border-radius:var(--r-md)}
+.langpick-menu a:hover{background:var(--bg);color:var(--blue)}
+.langpick-menu a.on{color:var(--ink);font-weight:500}
+.lc{font:500 11px/1 var(--f-mono);letter-spacing:.06em;color:var(--muted);width:20px}
+.nav-btn{height:var(--head-h);padding:0 20px;border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;white-space:nowrap;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.nav-btn.ghost{color:var(--p-fg-strong)}
+.nav-btn.ghost:hover{border-color:var(--blue)}
+.on-dark .nav-btn.ghost:hover{border-color:var(--navy-blue)}
+.nav-btn.solid{background:var(--cta-bg);color:var(--cta-fg);border:1px solid transparent}
+.nav-btn.solid:hover{background:var(--blue);color:#F2F5F9}
+.on-dark .nav-btn.solid:hover{background:#7BA0FF;color:#0F1B33}
+.nav-burger{display:none;width:var(--head-h);height:var(--head-h);border-radius:50%;align-items:center;justify-content:center;font-size:22px;color:var(--p-fg-strong);cursor:pointer}
+.nav-burger .i-x{display:none}
+.nav-burger[aria-expanded="true"] .i-x{display:block}
+.nav-burger[aria-expanded="true"] .i-l{display:none}
+@media (max-width:1240px){.head-right .langpick{display:none}}
+@media (max-width:1080px){.pill,.head-right .nav-btn{display:none}.nav-burger{display:inline-flex}.head-right{margin-left:auto}}
+
+/* mobile sheet */
+.mobnav{position:fixed;left:calc(var(--gutter) + var(--inset));right:calc(var(--gutter) + var(--inset));top:calc(var(--head-top) + var(--head-h) + 10px + env(safe-area-inset-top,0px));z-index:70;max-height:calc(100dvh - var(--head-top) - var(--head-h) - 26px);overflow-y:auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:10px;opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .25s ease,transform .35s var(--ease)}
+.mobnav.open{opacity:1;transform:none}
+.mob-k{font:500 12px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:14px 16px 6px}
+.mob-acts{display:grid;gap:2px}
+.mob-acts .dd-link{padding:14px 16px}
+.mob-sep{height:1px;background:var(--line);margin:8px 16px}
+.mob-top{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-radius:var(--r-lg);font-family:var(--f-display);font-size:21px;color:var(--ink)}
+.mob-top:hover{background:var(--bg)}
+.mob-top .i{font-size:16px;color:var(--blue)}
+.mob-langs{display:flex;gap:4px;padding:8px 10px}
+.mob-langs a{min-height:44px;display:inline-flex;align-items:center;padding:0 12px;border-radius:var(--r-pill);font-size:14px;color:var(--ink-3)}
+.mob-langs a.on{background:var(--bg);color:var(--ink);font-weight:500}
+.mob-ctas{display:grid;gap:8px;padding:8px 6px 6px}
+.mob-cta{width:100%}
+body.menu-open{overflow:hidden}
+
+/* ---------- hero ---------- */
+.hero{padding:var(--inset);padding-top:calc(var(--inset) + env(safe-area-inset-top,0px))}
+.hero-panel{position:relative;overflow:hidden;isolation:isolate;background:var(--navy);color:var(--on-navy);border-radius:var(--r-xl);min-height:clamp(640px,calc(100dvh - 2 * var(--inset)),920px);display:flex;flex-direction:column}
+.hero-panel::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(70% 90% at 100% 0%,rgba(30,91,255,.30),transparent 60%),
+  radial-gradient(60% 70% at 0% 100%,rgba(123,160,255,.10),transparent 65%),
+  linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0))}
+.hero-panel::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(rgba(242,245,249,.035) 1px,transparent 1px);background-size:100% 88px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+.hero-in{flex:1;width:100%;max-width:var(--max);margin-inline:auto;padding:calc(var(--head-top) + var(--head-h) + 40px) var(--gutter) 0;display:flex;flex-direction:column}
+.hero-meta{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;font:500 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-3)}
+.hero-meta .md{background:var(--navy-blue);opacity:.9}
+.hero-body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:end;column-gap:40px;padding-block:56px 44px}
+.hero-title{grid-column:1 / -1;grid-row:1}
+.hero-cta{grid-column:2;grid-row:1;align-self:end;justify-content:flex-end}
+.hero-title{color:var(--on-navy)}
+.hero-title .hl{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.hero-title .hl > span{display:block;font-size:clamp(44px,6.6vw,104px);line-height:1.02;letter-spacing:-.035em}
+.hero-title .l2{font-style:italic;color:var(--navy-orange)}
+.hero-foot{display:block;margin-top:44px;padding-top:28px;border-top:1px solid var(--navy-line)}
+.hero-title .l3{display:block;font-family:var(--f-body);font-weight:400;font-size:clamp(17px,1.35vw,20px);line-height:1.5;letter-spacing:0;color:var(--on-navy-2);max-width:40ch;text-wrap:pretty}
+.hero-title .l3 em{font-style:normal;color:var(--on-navy);font-weight:500}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero-rail{border-top:1px solid var(--navy-line)}
+.hero-rail-in{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.hero-rail a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:76px;padding:0 22px;border-left:1px solid var(--navy-line);font-family:var(--f-display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.01em;color:var(--on-navy-2);transition:color .25s ease,background-color .25s ease}
+.hero-rail a:first-child{border-left:0;padding-left:0}
+.hero-rail a:last-child{padding-right:0}
+.hero-rail a .i{font-size:18px;color:var(--navy-blue);transition:transform .35s var(--ease)}
+.hero-rail a:hover{color:var(--on-navy)}
+.hero-rail a:hover .i{transform:translateY(3px)}
+@media (min-width:1000px){.hero-title .hl > span{white-space:nowrap}}
+@media (max-width:999px){
+  .hero-panel{min-height:0}
+  .hero-body{padding-block:48px 36px}
+  .hero-body{grid-template-columns:1fr}
+  .hero-cta{grid-column:1;grid-row:2;justify-content:flex-start;margin-top:28px}
+  .hero-rail-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-rail a{min-height:64px;padding:0 16px;border-left:0;border-top:1px solid var(--navy-line)}
+  .hero-rail a:nth-child(-n+2){border-top:0}
+  .hero-rail a:nth-child(even){border-left:1px solid var(--navy-line)}
+  .hero-rail a:nth-child(odd){padding-left:0}}
+@media (max-width:520px){.hero-meta{font-size:11px;letter-spacing:.1em;flex-direction:column}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-title .hl > span{animation:rise 1.1s var(--ease) both;animation-delay:calc(var(--i,0) * 110ms + 80ms)}
+  .enter{animation:enter .9s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms + 250ms)}
+  @keyframes rise{from{transform:translateY(106%)}}
+  @keyframes enter{from{opacity:0;transform:translateY(12px)}}
+}
+
+/* ---------- statement ---------- */
+.intro{padding-block:104px 72px}
+.intro-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:40px}
+.intro-grid .hero-lede{grid-column:2}
+.intro-k{font:500 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:12px}
+.hero-lede{font-family:var(--f-display);font-size:clamp(26px,2.9vw,42px);line-height:1.24;letter-spacing:-.02em;color:var(--ink-3);text-wrap:pretty}
+.hero-lede strong{font-weight:400;color:var(--ink)}
+.hero-lede em{font-style:italic;color:var(--orange)}
+@media (max-width:899px){.intro{padding-block:64px 48px}.intro-grid{grid-template-columns:1fr}.intro-grid .hero-lede{grid-column:1}}
+
+/* services */
+.ticker{padding-bottom:24px}
+.ticker-set{display:flex;flex-wrap:wrap;row-gap:10px;padding-block:22px;border-block:1px solid var(--line)}
+.ticker-set .t{display:inline-block;max-width:100%;padding-right:18px;margin-right:18px;border-right:1px solid var(--line-2);font:500 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.ticker-set .t:last-child{border-right:0;margin-right:0;padding-right:0}
+
+/* ---------- sections ---------- */
+.sec{padding-block:112px}
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.sec-title{font-size:clamp(38px,4.4vw,62px)}
+.sec-sub{margin-top:12px;font-size:17px;color:var(--ink-3);max-width:60ch}
+@media (max-width:899px){.sec{padding-block:72px}.shead{margin-bottom:32px}}
+
+/* approche: no boxes. Each pillar is a row: head | service list | detail.
+   Desktop (fine pointer, >=1024px): hovering, focusing or clicking a service shows its description in the detail column;
+   one service is always selected, so the column is never empty and nothing shifts.
+   Touch / narrow: the same list becomes an accordion (tap a row to open it under itself).
+   Descriptions always stay in the DOM (SEO, screen readers). */
+.appr-tabs-wrap{margin-bottom:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px}
+.appr-tabs-wrap::-webkit-scrollbar{display:none}
+.appr-tabs{white-space:nowrap}
+.appr-tabs .ptab{font-family:var(--f-display);font-size:17px;letter-spacing:-.01em;padding:0 22px}
+.pillars{display:grid;border-top:1px solid var(--line);margin-top:24px;overflow:hidden}
+.js-tabs .pillar{grid-area:1 / 1;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s ease,transform .5s var(--ease),visibility 0s .35s}
+.js-tabs .pillar.is-active{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.js-tabs .pillar{border-bottom:0;align-content:start;align-items:start;align-self:start}
+.pillar{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;padding-block:48px;border-bottom:1px solid var(--line)}
+.pillar-head{display:flex;flex-direction:column;gap:14px;align-self:start}
+.pillar-title{font-family:var(--f-display);font-weight:400;font-size:clamp(32px,3.2vw,48px);line-height:1.05;letter-spacing:-.025em;padding-bottom:4px}
+.pillar-title a{display:inline-flex;align-items:center;gap:14px;color:var(--ink)}
+.pillar-title .ital{font-style:italic;color:var(--orange);transition:color .2s}
+.pillar-title a .i{font-size:22px;color:var(--blue);transition:transform .35s var(--ease)}
+.pillar-title a:hover .ital{color:var(--blue)}
+.pillar-title a:hover .i{transform:translateX(4px)}
+.pillar-lede{font-size:16px;line-height:1.6;color:var(--ink-3);max-width:40ch}
+.pillar-lede strong{font-weight:600;color:var(--ink)}
+.pillar-tag{font:500 12px/1.5 var(--f-mono);letter-spacing:.04em;color:var(--muted)}
+.pbox-h{font:inherit;margin:0}
+.pbox-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:54px;padding:0 4px;background:transparent;border:0;border-bottom:1px solid var(--line);text-align:left;color:var(--ink-3);cursor:pointer;transition:color .25s ease}
+.pbox:first-child .pbox-btn{border-top:1px solid var(--line)}
+.pbox-i{font-size:22px;color:var(--muted);transition:color .25s ease}
+.pbox-t{flex:1;font-family:var(--f-display);font-size:20px;line-height:1.25;letter-spacing:-.01em;color:inherit}
+.pbox-plus,.pbox-arr{flex:none;display:inline-flex;font-size:16px;color:var(--muted);transition:transform .45s var(--ease),color .25s ease,opacity .25s ease}
+.pbox-d p{font-size:16px;line-height:1.65;color:var(--ink-2)}
+.pbox-d strong{font-weight:600;color:var(--ink)}
+.pbox-d a{color:var(--blue);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.pbox-btn:hover{color:var(--ink)}
+.pbox-btn:hover .pbox-i{color:var(--blue)}
+
+/* desktop: list + detail column */
+@media (hover:hover) and (pointer:fine) and (min-width:1024px){
+  .pillar-boxes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-content:start}
+  .pbox{display:contents}
+  .pbox-h{grid-column:1}
+  .pbox-plus{display:none}
+  .pbox-arr{opacity:0;transform:translateX(-6px)}
+  .pbox-d{grid-column:2;grid-row:1 / span var(--n,6);align-self:start;padding:18px 0 0 24px;border-left:1px solid var(--line);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .3s ease,transform .45s var(--ease),visibility 0s .3s}
+  .pbox.active .pbox-d{opacity:1;visibility:visible;transform:none;transition-delay:.05s,.05s,0s}
+  .pbox.active .pbox-btn{color:var(--ink)}
+  .pbox.active .pbox-i{color:var(--blue)}
+  .pbox.active .pbox-arr{opacity:1;transform:none;color:var(--blue)}
+  .pbox.active .pbox-d{border-left-color:var(--blue)}
+}
+/* touch / narrow: accordion */
+@media not all and (hover:hover) and (pointer:fine) and (min-width:1024px){
+  .pbox-arr{display:none}
+  .pbox-d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+  .pbox-d-in{min-height:0;overflow:hidden}
+  .pbox-d p{padding:0 4px 20px 40px;font-size:15px;opacity:0;transition:opacity .3s ease}
+  .pbox.open .pbox-d{grid-template-rows:1fr}
+  .pbox.open .pbox-d p{opacity:1}
+  .pbox.open .pbox-btn{color:var(--ink);border-bottom-color:transparent}
+  .pbox.open .pbox-i{color:var(--blue)}
+  .pbox.open .pbox-plus{transform:rotate(45deg);color:var(--blue)}
+  .pbox.open{border-bottom:1px solid var(--line)}
+}
+@media (max-width:1023px){.pillar{grid-template-columns:1fr;gap:24px;padding-block:32px}}
+@media (max-width:640px){.appr-tabs .ptab{font-size:16px;padding:0 16px}}
+
+/* pourquoi: navy panel aligned to the grid */
+.panel{border-radius:var(--r-xl);background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden;isolation:isolate;--pp:clamp(22px,4vw,56px);padding:72px var(--pp)}
+.panel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 70% at 100% 0%,rgba(30,91,255,.24),transparent 62%)}
+.panel .hx{color:var(--on-navy)}
+.panel .hx .ital{color:var(--navy-orange)}
+.panel .sec-sub{color:var(--on-navy-2)}
+/* pourquoi: expanding columns. Desktop: six columns share the panel; the active one widens like a bellows and shows its text.
+   Touch / narrow: a swipeable, snapping card rail with every text visible. */
+.why{display:flex;flex-direction:column;gap:40px}
+.why-lede{font-family:var(--f-display);font-size:clamp(24px,2.4vw,34px);line-height:1.32;letter-spacing:-.015em;color:var(--on-navy);max-width:34em;text-wrap:pretty}
+.why-t{font:inherit;margin:0}
+.why-btn{display:flex;flex-direction:column;align-items:flex-start;gap:18px;width:100%;padding:0;background:transparent;border:0;text-align:left;color:inherit;cursor:pointer}
+.why-plus{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--navy-line);font-size:15px;color:var(--on-navy-2);transition:transform .5s var(--ease),border-color .3s,color .3s,background-color .3s}
+.why-tt{font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.22;letter-spacing:-.01em;color:var(--on-navy)}
+.why-d{font-size:15px;line-height:1.6;color:var(--on-navy-2)}
+@media (min-width:1024px){
+  /* open width is known in advance (--g of 5 + --g flex units), so the open text is laid out once at its final width:
+     nothing reflows while a column widens. Closed columns show their own balanced label (a CSS-generated copy of the title). */
+  .why-list{--ease-io:cubic-bezier(.65,0,.35,1);--g:3.4;--ow:calc(100cqw * var(--g) / (5 + var(--g)) - 48px);container-type:inline-size;display:flex;height:360px;border-top:1px solid var(--navy-line)}
+  .why-cell{position:relative;flex:1 1 0;min-width:0;border-left:1px solid var(--navy-line);overflow:hidden;cursor:pointer;transition:flex-grow .8s var(--ease-io),background-color .8s var(--ease-io)}
+  .why-cell:first-child{border-left:0}
+  .why-cell::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--navy-blue);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease-io)}
+  .why-cell::after{content:attr(data-label);position:absolute;left:18px;right:14px;bottom:28px;font-family:var(--f-display);font-size:calc(var(--lbl,16px));line-height:1.28;hyphens:manual;letter-spacing:-.01em;color:var(--on-navy-2);text-wrap:balance;transition:opacity .3s ease .25s,transform .5s var(--ease) .25s}
+  .why-cell:not(.active):hover::after{color:var(--on-navy)}
+  .why-cell.active{flex-grow:var(--g);background:linear-gradient(180deg,rgba(123,160,255,.10),rgba(123,160,255,0) 75%)}
+  .why-cell.active::before{transform:scaleX(1)}
+  .why-cell.active::after{opacity:0;transform:translateY(6px);transition:opacity .2s ease,transform .3s ease}
+  .why-t{position:static}
+  .why-btn{position:absolute;inset:0;display:block;padding:0}
+  .why-plus{position:absolute;top:24px;left:22px}
+  .why-tt{position:absolute;top:82px;left:22px;width:var(--ow);font-size:24px;line-height:1.22;text-wrap:balance;opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .4s var(--ease)}
+  .why-d{position:absolute;left:22px;bottom:28px;width:var(--ow);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s ease,transform .4s var(--ease)}
+  .why-cell.active .why-tt,.why-cell.active .why-d{opacity:1;transform:none;transition:opacity .5s ease .42s,transform .7s var(--ease) .42s}
+  .why-cell.active .why-d{transition-delay:.5s}
+  .why-cell.active .why-plus{transform:rotate(45deg);border-color:var(--navy-blue);color:#F2F5F9;background:rgba(123,160,255,.14)}
+  .why-cell:not(.active):hover .why-plus{border-color:rgba(242,245,249,.4);color:#F2F5F9}
+  .why-btn:focus-visible{outline-offset:-4px}
+}
+@media (min-width:1024px) and (max-width:1279px){
+  /* narrower desktops (e.g. Chrome with vertical tabs): open column a bit narrower, closed labels a bit smaller */
+  .why-list{--g:2.3;--lbl-base:15px;height:400px}
+  .why-cell::after{left:16px;right:12px}
+  .why-plus{left:16px}
+  .why-tt{left:16px;top:78px;font-size:21px}
+  .why-d{left:16px}
+  .why-d p{font-size:14.5px}
+}
+@media (max-width:1023px){
+  /* same disclosure pattern as the service list in L'approche: every title visible, tap / click / Enter to read */
+  .why-list{border-top:1px solid var(--navy-line)}
+  .why-cell{border-bottom:1px solid var(--navy-line)}
+  .why-btn{flex-direction:row;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:14px 0}
+  .why-tt{order:1;flex:1;font-size:20px}
+  .why-plus{order:2;flex:none}
+  .why-cell.open .why-plus{transform:rotate(45deg);border-color:var(--navy-blue);color:#F2F5F9;background:rgba(123,160,255,.14)}
+  .why-d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+  .why-d-in{min-height:0;overflow:hidden}
+  .why-d-in span{display:block;padding:0 56px 22px 0;opacity:0;transition:opacity .3s ease}
+  .why-cell.open .why-d{grid-template-rows:1fr}
+  .why-cell.open .why-d-in span{opacity:1}
+}
+@media (max-width:640px){.panel{--pp:20px;padding:48px var(--pp)}}
+
+/* portefeuille (v1 cards) */
+.ptabs{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:var(--r-pill);background:var(--surface);border:1px solid var(--line)}
+.ptab-thumb{position:absolute;top:4px;bottom:4px;left:0;width:0;border-radius:var(--r-pill);background:var(--navy);transition:transform .45s var(--ease),width .45s var(--ease)}
+.ptab{position:relative;z-index:1;min-height:44px;padding:0 20px;border:0;background:transparent;border-radius:var(--r-pill);color:var(--ink-3);font:500 14px/1 var(--f-body);cursor:pointer;transition:color .25s}
+.ptab:hover{color:var(--ink)}
+.ptab[aria-selected="true"]{color:#F2F5F9}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:12px}
+.pgrid.fade .pcard{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.pcard-link{height:100%;display:flex;flex-direction:column;gap:14px;padding:18px 18px 16px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);transition:border-color .25s ease,box-shadow .3s ease,transform .35s var(--ease)}
+a.pcard-link:hover{border-color:rgba(30,91,255,.4);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.plogo{height:76px;display:flex;align-items:center;justify-content:flex-start;padding:8px 4px 4px;overflow:hidden;border-bottom:1px solid var(--line)}
+.plogo img{max-height:42px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.85;mix-blend-mode:multiply;transition:filter .35s ease,opacity .35s ease}
+a.pcard-link:hover .plogo img{filter:none;opacity:1}
+.pword::after{content:attr(data-w)}
+.pword{font-family:var(--f-display);font-weight:500;font-size:19px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
+.pname{display:flex;align-items:center;justify-content:space-between;gap:8px;font:500 16px/1.3 var(--f-body);color:var(--ink);padding-inline:4px}
+.parr{font-size:14px;color:var(--muted);transition:color .2s,transform .35s var(--ease)}
+a.pcard-link:hover .parr{color:var(--blue);transform:translate(2px,-2px)}
+.pmeta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;line-height:1.4;padding-inline:4px}
+.pmeta > div{display:contents}
+.pmeta dt{color:var(--muted)}
+.pmeta dd{color:var(--ink-2);min-width:0}
+.pstatus{align-self:flex-start;margin-top:auto;margin-left:4px;font:500 12px/1 var(--f-body);padding:7px 11px;border-radius:var(--r-pill);border:1px solid var(--line-2);color:var(--ink-2)}
+.pstatus.exited{background:var(--navy);border-color:var(--navy);color:#F2F5F9}
+.pmore{margin-top:32px}
+
+/* philo */
+.philo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;padding-top:40px;border-top:1px solid var(--line)}
+.philo-headline{font-size:clamp(34px,4vw,58px);line-height:1.05}
+.philo-body{display:flex;flex-direction:column;gap:20px}
+.philo-body p{font-size:18px;line-height:1.7;color:var(--ink-2);max-width:60ch;text-wrap:pretty}
+.philo-body em{font-style:normal;color:var(--ink);font-weight:500}
+.signature{padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-3);max-width:60ch}
+@media (max-width:899px){.philo{grid-template-columns:1fr;gap:24px}}
+
+/* CTA cards, inside the grid */
+.cta2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cta2-box{position:relative;overflow:hidden;isolation:isolate;padding:52px 48px;border-radius:var(--r-xl);display:flex;flex-direction:column;align-items:flex-start;gap:14px;background:var(--surface);border:1px solid var(--line);min-height:320px}
+.cta2-box.navy{background:var(--navy);border-color:var(--navy)}
+.cta2-box.navy::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 90% at 100% 0%,rgba(30,91,255,.26),transparent 60%)}
+.cta2-t{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,2.8vw,40px);line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
+.cta2-d{font-size:16px;line-height:1.6;color:var(--ink-3);max-width:44ch}
+.cta2-box.navy .cta2-t{color:var(--on-navy)}
+.cta2-box.navy .cta2-d{color:var(--on-navy-2)}
+.cta2-a{margin-top:auto}
+@media (max-width:899px){.cta2{grid-template-columns:1fr}.cta2-box{padding:36px 24px;min-height:0}}
+
+/* footer */
+footer{padding-block:96px 32px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:40px;padding-top:48px;border-top:1px solid var(--line)}
+.foot-brand{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:20px;font-weight:500;color:var(--ink)}
+.foot-brand .mark{width:30px;height:30px;border-radius:50%;background:#1B2233;display:flex;align-items:center;justify-content:center}
+.foot-brand .mark::after{content:"jj";color:#C97050;font-family:var(--f-display);font-style:italic;font-size:14px;letter-spacing:-.04em}
+.foot-tag{margin-top:18px;font-size:14px;line-height:1.7;color:var(--ink-3);max-width:40ch}
+.foot-tag a{color:var(--ink-2);display:inline-flex;align-items:center;gap:4px}
+.foot-tag a:hover{color:var(--blue)}
+.foot-tag .ital{font-style:normal}
+.foot-col{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.foot-h{font-weight:500;color:var(--ink);margin-bottom:6px}
+.foot-col a{color:var(--ink-3);display:inline-flex;align-items:center;gap:6px;min-height:32px;width:fit-content;transition:color .2s}
+.foot-col a:hover{color:var(--blue)}
+.foot-col a .i,.foot-tag a .i{font-size:12px}
+.foot-risk{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--ink-3)}
+.foot-risk strong{color:var(--ink-2);font-weight:600}
+.foot-bottom{margin-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
+.foot-legal{display:flex;gap:20px}
+.foot-legal a:hover{color:var(--blue)}
+@media (max-width:899px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid > div:first-child{grid-column:1 / -1}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-plant" viewBox="0 0 256 256"><path d="M245.63,48A6,6,0,0,0,240,42.37c-51-3-91.88,12.42-109.35,41.26-11.63,19.21-11.38,42.68.53,65a69.42,69.42,0,0,0-15.48,30.59L95.9,159.41c8.15-16.1,8.1-32.95-.32-46.85C82.77,91.41,53,80.07,15.9,82.27a6,6,0,0,0-5.63,5.64C8.09,125,19.41,154.77,40.56,167.58A43.75,43.75,0,0,0,63.44,174a53.17,53.17,0,0,0,24-6L114,194.48V224a6,6,0,0,0,12,0V194.51A57.55,57.55,0,0,1,139.76,157c11.21,5.93,22.72,8.91,33.82,8.91a58.9,58.9,0,0,0,30.79-8.57C233.21,139.89,248.63,99,245.63,48ZM46.78,157.31C30.47,147.44,21.39,124,22,94c30-.65,53.41,8.44,63.28,24.75,5.68,9.37,6.16,20.38,1.54,31.59L60.24,123.75a6,6,0,0,0-8.49,8.49l26.62,26.61C67.16,163.47,56.15,163,46.78,157.31Zm151.38-10.22c-14.74,8.92-32.14,9.18-49.67.9l55.76-55.75a6,6,0,0,0-8.49-8.49L140,139.51c-8.28-17.53-8-34.93.9-49.66,14.52-24,49.06-37.18,93-35.75C235.33,98,222.14,132.56,198.16,147.09Z"/></symbol><symbol id="i-trend-up" viewBox="0 0 256 256"><path d="M238,56v64a6,6,0,0,1-12,0V70.48l-85.76,85.76a6,6,0,0,1-8.48,0L96,120.49,28.24,188.24a6,6,0,0,1-8.48-8.48l72-72a6,6,0,0,1,8.48,0L136,143.51,217.52,62H168a6,6,0,0,1,0-12h64A6,6,0,0,1,238,56Z"/></symbol><symbol id="i-chart-pie-slice" viewBox="0 0 256 256"><path d="M102,109.5v-72a6,6,0,0,0-8-5.66A102,102,0,0,0,27.7,146.59a6,6,0,0,0,8.9,4.11l62.4-36A6,6,0,0,0,102,109.5ZM90,106l-51.66,29.8Q38,131.91,38,128A90.1,90.1,0,0,1,90,46.42Zm38-80a6,6,0,0,0-6,6v93L42.2,171.46a6,6,0,0,0-2.15,8.22A102,102,0,1,0,128,26Zm0,192a90.48,90.48,0,0,1-74.38-39.31L131,133.61a6,6,0,0,0,3-5.19V38.2A90,90,0,0,1,128,218Z"/></symbol><symbol id="i-buildings" viewBox="0 0 256 256"><path d="M240,210H222V96a14,14,0,0,0-14-14H142V32a14,14,0,0,0-21.77-11.64l-80,53.33A14,14,0,0,0,34,85.34V210H16a6,6,0,0,0,0,12H240a6,6,0,0,0,0-12ZM208,94a2,2,0,0,1,2,2V210H142V94ZM46,85.34a2,2,0,0,1,.89-1.66l80-53.34A2,2,0,0,1,130,32V210H46ZM110,112v16a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0Zm-32,0v16a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0Zm0,56v16a6,6,0,0,1-12,0V168a6,6,0,0,1,12,0Zm32,0v16a6,6,0,0,1-12,0V168a6,6,0,0,1,12,0Z"/></symbol><symbol id="i-paint-brush-broad" viewBox="0 0 256 256"><path d="M216,26H72A38,38,0,0,0,34,64v72a22,22,0,0,0,22,22h48a2,2,0,0,1,2,2.23L98.08,207a6.74,6.74,0,0,0-.08,1,30,30,0,0,0,60,0,6.74,6.74,0,0,0-.08-1L150,160.23a2,2,0,0,1,2-2.23h48a22,22,0,0,0,22-22V32A6,6,0,0,0,216,26ZM72,38H178V80a6,6,0,0,0,12,0V38h20v68H46V64A26,26,0,0,1,72,38ZM200,146H152a14,14,0,0,0-13.86,16l0,.15L146,208.47a18,18,0,0,1-36,0l7.82-46.34,0-.15A14,14,0,0,0,104,146H56a10,10,0,0,1-10-10V118H210v18A10,10,0,0,1,200,146Z"/></symbol><symbol id="i-asterisk" viewBox="0 0 256 256"><path d="M213.14,179.09a6,6,0,0,1-8.23,2.06L134,138.6V216a6,6,0,0,1-12,0V138.6L51.09,181.15A6.07,6.07,0,0,1,48,182a6,6,0,0,1-3.1-11.15L116.34,128,44.91,85.15a6,6,0,0,1,6.18-10.3L122,117.4V40a6,6,0,0,1,12,0v77.4l70.91-42.55a6,6,0,0,1,6.18,10.3L139.66,128l71.43,42.85A6,6,0,0,1,213.14,179.09Z"/></symbol><symbol id="i-git-merge" viewBox="0 0 256 256"><path d="M208,114a30,30,0,0,0-29.21,23.19l-44-6.28a10,10,0,0,1-6.18-3.39L91.18,83.83A30,30,0,1,0,74,85.4v85.2a30,30,0,1,0,12,0V96.22l33.52,39.11a22,22,0,0,0,13.6,7.46l45.35,6.48A30,30,0,1,0,208,114ZM62,56A18,18,0,1,1,80,74,18,18,0,0,1,62,56ZM98,200a18,18,0,1,1-18-18A18,18,0,0,1,98,200Zm110-38a18,18,0,1,1,18-18A18,18,0,0,1,208,162Z"/></symbol><symbol id="i-users-three" viewBox="0 0 256 256"><path d="M243.6,148.8a6,6,0,0,1-8.4-1.2A53.58,53.58,0,0,0,192,126a6,6,0,0,1,0-12,26,26,0,1,0-25.18-32.5,6,6,0,0,1-11.62-3,38,38,0,1,1,59.91,39.63A65.69,65.69,0,0,1,244.8,140.4,6,6,0,0,1,243.6,148.8ZM189.19,213a6,6,0,0,1-2.19,8.2,5.9,5.9,0,0,1-3,.81,6,6,0,0,1-5.2-3,59,59,0,0,0-101.62,0,6,6,0,1,1-10.38-6A70.1,70.1,0,0,1,103,182.55a46,46,0,1,1,50.1,0A70.1,70.1,0,0,1,189.19,213ZM128,178a34,34,0,1,0-34-34A34,34,0,0,0,128,178ZM70,120a6,6,0,0,0-6-6A26,26,0,1,1,89.18,81.49a6,6,0,1,0,11.62-3,38,38,0,1,0-59.91,39.63A65.69,65.69,0,0,0,11.2,140.4a6,6,0,1,0,9.6,7.2A53.58,53.58,0,0,1,64,126,6,6,0,0,0,70,120Z"/></symbol><symbol id="i-globe-hemisphere-west" viewBox="0 0 256 256"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm90,102a89.55,89.55,0,0,1-7.46,35.86l-46.69-28.71a13.94,13.94,0,0,0-5.46-2l-22.82-3.07A14.06,14.06,0,0,0,121.06,138h-9.92a2,2,0,0,1-1.8-1.13l-3.8-7.86a13.94,13.94,0,0,0-9.66-7.59l-10.71-2.3L94.4,103a2,2,0,0,1,1.74-1h16.71a13.9,13.9,0,0,0,6.76-1.75l12.25-6.75a14.73,14.73,0,0,0,2.62-1.88l26.91-24.33a13.93,13.93,0,0,0,2.83-17.21L161,44.25A90.16,90.16,0,0,1,218,128ZM144.6,39.54l9.15,16.39a2,2,0,0,1-.41,2.46L126.43,82.72a1.84,1.84,0,0,1-.37.27l-12.25,6.76a2,2,0,0,1-1,.25H96.14A14,14,0,0,0,84,97L73.18,115.91a2,2,0,0,1-.19-.35L61.5,84.89a2,2,0,0,1,0-1.48L72.68,57.06A89.9,89.9,0,0,1,144.6,39.54ZM38,128A89.52,89.52,0,0,1,49.38,84.23a13.85,13.85,0,0,0,.89,4.87l11.49,30.67a13.94,13.94,0,0,0,10.16,8.78l21.44,4.6a2,2,0,0,1,1.38,1.09l3.8,7.86a14.07,14.07,0,0,0,12.6,7.9h4.56l-8.49,19a14,14,0,0,0,2.51,15.2l.1.11,19.68,20.26a2,2,0,0,1,.46,1.7L127.7,218A90.1,90.1,0,0,1,38,128Zm102.08,89.19,1.67-8.6a14.07,14.07,0,0,0-3.47-12.16l-.1-.11L118.5,176.06a2,2,0,0,1-.33-2.14l13.7-30.73A2,2,0,0,1,134,142l22.82,3.08a2,2,0,0,1,.78.27L205,174.55A90.18,90.18,0,0,1,140.08,217.19Z"/></symbol><symbol id="i-arrows-left-right" viewBox="0 0 256 256"><path d="M212.24,171.76a6,6,0,0,1,0,8.48l-32,32a6,6,0,0,1-8.48-8.48L193.51,182H48a6,6,0,0,1,0-12H193.51l-21.75-21.76a6,6,0,0,1,8.48-8.48ZM75.76,116.24a6,6,0,0,0,8.48-8.48L62.49,86H208a6,6,0,0,0,0-12H62.49L84.24,52.24a6,6,0,0,0-8.48-8.48l-32,32a6,6,0,0,0,0,8.48Z"/></symbol><symbol id="i-share-network" viewBox="0 0 256 256"><path d="M176,162a37.91,37.91,0,0,0-28.3,12.67L98.8,143.24a37.89,37.89,0,0,0,0-30.48l48.9-31.43a38,38,0,1,0-6.5-10.09L92.3,102.67a38,38,0,1,0,0,50.66l48.9,31.43A38,38,0,1,0,176,162Zm0-132a26,26,0,1,1-26,26A26,26,0,0,1,176,30ZM64,154a26,26,0,1,1,26-26A26,26,0,0,1,64,154Zm112,72a26,26,0,1,1,26-26A26,26,0,0,1,176,226Z"/></symbol><symbol id="i-microphone-stage" viewBox="0 0 256 256"><path d="M168,18A69.94,69.94,0,0,0,98.74,98l-70,95.46a13.92,13.92,0,0,0,1.39,18.17l14.3,14.3a13.93,13.93,0,0,0,18.17,1.39l95.46-70A70,70,0,1,0,168,18Zm58,70a57.65,57.65,0,0,1-13,36.52L131.49,43A57.95,57.95,0,0,1,226,88ZM55.5,217.59a2,2,0,0,1-2.6-.2L38.61,203.1a2,2,0,0,1-.2-2.6l64.22-87.56a70.32,70.32,0,0,0,40.44,40.43ZM110,88a57.73,57.73,0,0,1,13-36.52L204.53,133A58,58,0,0,1,110,88Zm-1.75,59.75a6,6,0,0,1,0,8.49l-8,8a6,6,0,1,1-8.49-8.49l8-8A6,6,0,0,1,108.26,147.74Z"/></symbol><symbol id="i-sparkle" viewBox="0 0 256 256"><path d="M196.89,130.94,144.4,111.6,125.06,59.11a13.92,13.92,0,0,0-26.12,0L79.6,111.6,27.11,130.94a13.92,13.92,0,0,0,0,26.12L79.6,176.4l19.34,52.49a13.92,13.92,0,0,0,26.12,0L144.4,176.4l52.49-19.34a13.92,13.92,0,0,0,0-26.12Zm-4.15,14.86-55.08,20.3a6,6,0,0,0-3.56,3.56l-20.3,55.08a1.92,1.92,0,0,1-3.6,0L89.9,169.66a6,6,0,0,0-3.56-3.56L31.26,145.8a1.92,1.92,0,0,1,0-3.6l55.08-20.3a6,6,0,0,0,3.56-3.56l20.3-55.08a1.92,1.92,0,0,1,3.6,0l20.3,55.08a6,6,0,0,0,3.56,3.56l55.08,20.3a1.92,1.92,0,0,1,0,3.6ZM146,40a6,6,0,0,1,6-6h18V16a6,6,0,0,1,12,0V34h18a6,6,0,0,1,0,12H182V64a6,6,0,0,1-12,0V46H152A6,6,0,0,1,146,40ZM246,88a6,6,0,0,1-6,6H230v10a6,6,0,0,1-12,0V94H208a6,6,0,0,1,0-12h10V72a6,6,0,0,1,12,0V82h10A6,6,0,0,1,246,88Z"/></symbol><symbol id="i-user-circle" viewBox="0 0 256 256"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26ZM71.44,198a66,66,0,0,1,113.12,0,89.8,89.8,0,0,1-113.12,0ZM94,120a34,34,0,1,1,34,34A34,34,0,0,1,94,120Zm99.51,69.64a77.53,77.53,0,0,0-40-31.38,46,46,0,1,0-51,0,77.53,77.53,0,0,0-40,31.38,90,90,0,1,1,131,0Z"/></symbol><symbol id="i-code" viewBox="0 0 256 256"><path d="M67.84,92.61,25.37,128l42.47,35.39a6,6,0,1,1-7.68,9.22l-48-40a6,6,0,0,1,0-9.22l48-40a6,6,0,0,1,7.68,9.22Zm176,30.78-48-40a6,6,0,1,0-7.68,9.22L230.63,128l-42.47,35.39a6,6,0,1,0,7.68,9.22l48-40a6,6,0,0,0,0-9.22Zm-81.79-89A6,6,0,0,0,154.36,38l-64,176A6,6,0,0,0,94,221.64a6.15,6.15,0,0,0,2,.36,6,6,0,0,0,5.64-3.95l64-176A6,6,0,0,0,162.05,34.36Z"/></symbol><symbol id="i-shield-check" viewBox="0 0 256 256"><path d="M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M220.24,132.24l-72,72a6,6,0,0,1-8.48-8.48L201.51,134H40a6,6,0,0,1,0-12H201.51L139.76,60.24a6,6,0,0,1,8.48-8.48l72,72A6,6,0,0,1,220.24,132.24Z"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M198,64V168a6,6,0,0,1-12,0V78.48L68.24,196.24a6,6,0,0,1-8.48-8.48L177.52,70H88a6,6,0,0,1,0-12H192A6,6,0,0,1,198,64Z"/></symbol><symbol id="i-arrow-down" viewBox="0 0 256 256"><path d="M204.24,148.24l-72,72a6,6,0,0,1-8.48,0l-72-72a6,6,0,0,1,8.48-8.48L122,201.51V40a6,6,0,0,1,12,0V201.51l61.76-61.75a6,6,0,0,1,8.48,8.48Z"/></symbol><symbol id="i-caret-down" viewBox="0 0 256 256"><path d="M212.24,100.24l-80,80a6,6,0,0,1-8.48,0l-80-80a6,6,0,0,1,8.48-8.48L128,167.51l75.76-75.75a6,6,0,0,1,8.48,8.48Z"/></symbol><symbol id="i-list" viewBox="0 0 256 256"><path d="M222,128a6,6,0,0,1-6,6H40a6,6,0,0,1,0-12H216A6,6,0,0,1,222,128ZM40,70H216a6,6,0,0,0,0-12H40a6,6,0,0,0,0,12ZM216,186H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12Z"/></symbol><symbol id="i-x" viewBox="0 0 256 256"><path d="M204.24,195.76a6,6,0,1,1-8.48,8.48L128,136.49,60.24,204.24a6,6,0,0,1-8.48-8.48L119.51,128,51.76,60.24a6,6,0,0,1,8.48-8.48L128,119.51l67.76-67.75a6,6,0,0,1,8.48,8.48L136.49,128Z"/></symbol><symbol id="i-dots-three" viewBox="0 0 256 256"><path d="M138,128a10,10,0,1,1-10-10A10,10,0,0,1,138,128ZM60,118a10,10,0,1,0,10,10A10,10,0,0,0,60,118Zm136,0a10,10,0,1,0,10,10A10,10,0,0,0,196,118Z"/></symbol><symbol id="i-check" viewBox="0 0 256 256"><path d="M228.24,76.24l-128,128a6,6,0,0,1-8.48,0l-56-56a6,6,0,0,1,8.48-8.48L96,191.51,219.76,67.76a6,6,0,0,1,8.48,8.48Z"/></symbol><symbol id="i-plus" viewBox="0 0 256 256"><path d="M222,128a6,6,0,0,1-6,6H134v82a6,6,0,0,1-12,0V134H40a6,6,0,0,1,0-12h82V40a6,6,0,0,1,12,0v82h82A6,6,0,0,1,222,128Z"/></symbol></svg>
+
+<div lang="fr">
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site-head" id="nav">
+  <div class="head-in">
+    <a class="brand glass on-dark" href="index.html" aria-label="JJ Capinvest" data-tone><div class="mark"></div>JJ Capinvest</a>
+    <nav class="pill glass on-dark" aria-label="Navigation principale" data-tone>
+      <span class="pill-hl" aria-hidden="true"></span>
+      <div class="nav-item">
+        <button class="pill-link nav-label" type="button" aria-expanded="false" aria-controls="dd-act">Activités<svg class="i nav-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></button>
+        <div class="dropdown" id="dd-act">
+          <a class="dd-link" href="investisseur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-trend-up"/></svg></span><span class="dd-t">Investisseur</span><span class="dd-d">Du pre-seed au LBO, et l’immobilier.</span></a>
+          <a class="dd-link" href="operateur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-git-merge"/></svg></span><span class="dd-t">Opérateur</span><span class="dd-d">M&amp;A, gouvernance, international.</span></a>
+          <a class="dd-link" href="connecteur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-share-network"/></svg></span><span class="dd-t">Connecteur</span><span class="dd-d">Deal flow, réseau opérationnel, visibilité.</span></a>
+          <a class="dd-link" href="accelerateur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span><span class="dd-t">Accélérateur</span><span class="dd-d">IA, direction externalisée, cybersécurité.</span></a>
+        </div>
+      </div>
+      <a class="pill-link" href="portefeuille/index.html">Portefeuille</a>
+      <a class="pill-link" href="a-propos/index.html">À propos</a>
+      <a class="pill-link" href="equipe/index.html">Équipe</a>
+    </nav>
+    <div class="head-right on-dark" data-tone>
+      <div class="langpick">
+        <button class="langpick-btn glass" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Français">FR<svg class="i nav-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></button>
+        <div class="langpick-menu"><a href="index.html" class="on" lang="fr" hreflang="fr" aria-current="page"><span class="lc" aria-hidden="true">FR</span>Français<svg class="i chk" aria-hidden="true"><use href="#i-check"/></svg></a><a href="en/index.html" lang="en" hreflang="en"><span class="lc" aria-hidden="true">EN</span>English<svg class="i chk" aria-hidden="true"><use href="#i-check"/></svg></a><a href="es/index.html" lang="es" hreflang="es"><span class="lc" aria-hidden="true">ES</span>Español<svg class="i chk" aria-hidden="true"><use href="#i-check"/></svg></a></div>
+      </div>
+      <a href="https://www.888capinvest.com/" target="_blank" rel="noopener" class="nav-btn ghost glass">Pour les investisseurs</a>
+      <a href="contact/index.html" class="nav-btn solid">Pour les startups</a>
+      <button class="nav-burger glass" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobnav"><svg class="i i-l" aria-hidden="true"><use href="#i-list"/></svg><svg class="i i-x" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+  <div class="mobnav" id="mobnav" hidden>
+    <div class="mob-k">Activités</div>
+    <div class="mob-acts">
+      <a class="mob-sub dd-link" href="investisseur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-trend-up"/></svg></span><span class="dd-t">Investisseur</span><span class="dd-d">Du pre-seed au LBO, et l’immobilier.</span></a>
+      <a class="mob-sub dd-link" href="operateur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-git-merge"/></svg></span><span class="dd-t">Opérateur</span><span class="dd-d">M&amp;A, gouvernance, international.</span></a>
+      <a class="mob-sub dd-link" href="connecteur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-share-network"/></svg></span><span class="dd-t">Connecteur</span><span class="dd-d">Deal flow, réseau opérationnel, visibilité.</span></a>
+      <a class="mob-sub dd-link" href="accelerateur/index.html"><span class="dd-ic"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span><span class="dd-t">Accélérateur</span><span class="dd-d">IA, direction externalisée, cybersécurité.</span></a>
+    </div>
+    <div class="mob-sep"></div>
+    <a class="mob-top" href="portefeuille/index.html">Portefeuille<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="mob-top" href="a-propos/index.html">À propos<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="mob-top" href="equipe/index.html">Équipe<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <div class="mob-sep"></div>
+    <div class="mob-langs"><a href="index.html" class="on" lang="fr" hreflang="fr" aria-current="page">Français</a><a href="en/index.html" lang="en" hreflang="en">English</a><a href="es/index.html" lang="es" hreflang="es">Español</a></div>
+    <div class="mob-ctas">
+      <a class="btn btn-primary mob-cta" href="contact/index.html">Pour les startups <svg class="i r" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn-ghost mob-cta ghost" href="https://www.888capinvest.com/" target="_blank" rel="noopener">Pour les investisseurs <svg class="i ur" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="hero" aria-labelledby="hero-title" data-dark>
+  <div class="hero-panel">
+    <div class="hero-in">
+      <div class="hero-meta enter" style="--i:0">
+        <span>Paris<span class="md"></span>Lyon<span class="md"></span>Valencia</span>
+        <span>Capital <span class="md">·</span> Investissement <span class="md">·</span> Conseil</span>
+      </div>
+      <div class="hero-body">
+        <h1 class="hero-title hx" id="hero-title">
+          <span class="hl"><span style="--i:0"><span class="l1">Investisseur,</span> <span class="l2">opérateur,</span></span></span>
+          <span class="hl"><span style="--i:1"><span class="l1">connecteur,</span> <span class="l2">accélérateur.</span></span></span>
+          <span class="hero-foot"><span class="l3 enter" style="--i:2">Capital, structuration, réseau et exécution pour accélérer les opérations qui <em>comptent</em>.</span></span>
+        </h1>
+        <div class="hero-cta enter" style="--i:3">
+          <a href="contact/index.html" class="btn btn-light"><span>Déposer un dossier</span><svg class="i r" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="#approche" class="btn btn-outline-light"><span>Découvrir l'approche</span><svg class="i d" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <nav class="hero-rail hero-keywords enter" style="--i:4" aria-label="Piliers">
+      <div class="hero-rail-in">
+        <a href="#investor"><span>Investir</span><svg class="i" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        <a href="#operator"><span>Opérer</span><svg class="i" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        <a href="#connector"><span>Connecter</span><svg class="i" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        <a href="#accelerator"><span>Accélérer</span><svg class="i" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="intro" aria-label="JJ Capinvest">
+  <div class="wrap intro-grid">
+    <p class="hero-lede"><strong>JJ Capinvest</strong> investit, structure et co-pilote. Aux côtés de fondateurs et de dirigeants de PME, sur des opérations où <em>l'exécution opérationnelle</em> crée la valeur, autant que la structure financière.</p>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="wrap">
+<ul class="ticker-set"><li class="t">LBO &amp; OBO</li><li class="t">Tickets minoritaires actifs</li><li class="t">888CI</li><li class="t">Immobilier opérationnel</li><li class="t">Conseil M&amp;A <span class="md">·</span> financement <span class="md">·</span> développement <span class="md">·</span> restructuration</li><li class="t">Mandats de board</li><li class="t">Internationalisation</li><li class="t">Échange de deal flow</li></ul>
+  </div>
+</div>
+
+<section id="approche" class="sec" aria-labelledby="t-approche">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2 class="section-title sec-title hx" id="t-approche">L'approche <span class="ital">JJ Capinvest</span></h2>
+        <p class="section-kicker sec-sub">Quatre piliers. Une logique opérateur.</p>
+      </div>
+    </div>
+    <div class="appr-tabs-wrap">
+      <div class="ptabs appr-tabs" role="tablist" aria-label="Piliers"><span class="ptab-thumb" aria-hidden="true"></span><button class="ptab" role="tab" id="tab-investor" aria-controls="investor" aria-selected="true">Investisseur</button><button class="ptab" role="tab" id="tab-operator" aria-controls="operator" aria-selected="false" tabindex="-1">Opérateur</button><button class="ptab" role="tab" id="tab-connector" aria-controls="connector" aria-selected="false" tabindex="-1">Connecteur</button><button class="ptab" role="tab" id="tab-accelerator" aria-controls="accelerator" aria-selected="false" tabindex="-1">Accélérateur</button></div>
+    </div>
+    <div class="pillars">
+<article class="pillar" id="investor" data-n="i"><div class="pillar-head"><h3 class="pillar-title"><a href="investisseur/index.html"><span class="ital">Investisseur</span><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></h3><p class="pillar-lede">Nous investissons <strong>de 25 k€ à 1 M€</strong> depuis la holding, et mobilisons davantage si nécessaire, selon l’approche retenue.</p><div class="pillar-tag">Du pre-seed au LBO · France et international</div></div><ul class="pillar-boxes n5" style="--n:6"><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-0"><svg class="i pbox-i" aria-hidden="true"><use href="#i-plant"/></svg><span class="pbox-t">Venture capital</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-0"><div class="pbox-d-in"><p><span>Pre-seed, seed et série A. Capital, réseau et moyens d’exécution, avec ouverture commerciale à l’international.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-1"><svg class="i pbox-i" aria-hidden="true"><use href="#i-trend-up"/></svg><span class="pbox-t">Growth &amp; secondaire</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-1"><div class="pbox-d-in"><p><span>Série B, croissance et secondaire. Liquidité, structuration ou accélération pour les entreprises qui ont fait leurs preuves.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-2"><svg class="i pbox-i" aria-hidden="true"><use href="#i-chart-pie-slice"/></svg><span class="pbox-t">Private equity</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-2"><div class="pbox-d-in"><p><span>LBO, OBO et build-up. Majoritaire ou minoritaire actif, comme sponsor, président, administrateur ou partenaire d’exécution.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-3"><svg class="i pbox-i" aria-hidden="true"><use href="#i-buildings"/></svg><span class="pbox-t">Immobilier</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-3"><div class="pbox-d-in"><p><span>Résidentiel, location, tertiaire et promotion. Des actifs où la structuration et l’exploitation créent la valeur.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-4"><svg class="i pbox-i" aria-hidden="true"><use href="#i-paint-brush-broad"/></svg><span class="pbox-t">Art</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-4"><div class="pbox-d-in"><p><span>Investisseur et conseil. Œuvres et actifs de collection, sur des dossiers choisis et avec les bons spécialistes.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-5"><svg class="i pbox-i" aria-hidden="true"><use href="#i-asterisk"/></svg><span class="pbox-t">Opportunités spéciales</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-5"><div class="pbox-d-in"><p><span>Ce qui n’entre dans aucune case : une asymétrie, un avantage opérationnel ou un accès différenciant.</span></p></div></div></li></ul></article>
+<article class="pillar" id="operator" data-n="ii"><div class="pillar-head"><h3 class="pillar-title"><a href="operateur/index.html"><span class="ital">Opérateur</span><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></h3><p class="pillar-lede">Nous structurons, négocions, pilotons et exécutons, là où il faut faire avancer une transaction ou une entreprise.</p><div class="pillar-tag">Investisseur impliqué · engagé dans la durée</div></div><ul class="pillar-boxes n5" style="--n:3"><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-6"><svg class="i pbox-i" aria-hidden="true"><use href="#i-git-merge"/></svg><span class="pbox-t">M&amp;A et financement</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-6"><div class="pbox-d-in"><p><span>Buy-side et sell-side. Cibles, structuration, dette et equity, négociation et suivi de l’intégration.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-7"><svg class="i pbox-i" aria-hidden="true"><use href="#i-users-three"/></svg><span class="pbox-t">Board et gouvernance</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-7"><div class="pbox-d-in"><p><span>Administrateur, censeur ou président. Présence au conseil et suivi opérationnel.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-8"><svg class="i pbox-i" aria-hidden="true"><use href="#i-globe-hemisphere-west"/></svg><span class="pbox-t">Internationalisation</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-8"><div class="pbox-d-in"><p><span>France, Espagne, Maghreb, Afrique francophone, Amérique latine et États-Unis. Filiales, go-to-market et distribution.</span></p></div></div></li></ul></article>
+<article class="pillar" id="connector" data-n="iii"><div class="pillar-head"><h3 class="pillar-title"><a href="connecteur/index.html"><span class="ital">Connecteur</span><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></h3><p class="pillar-lede">Le bon interlocuteur, au bon moment, sur le bon territoire.</p><div class="pillar-tag">Écosystème ouvert · partage d’information</div></div><ul class="pillar-boxes n5" style="--n:3"><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-9"><svg class="i pbox-i" aria-hidden="true"><use href="#i-arrows-left-right"/></svg><span class="pbox-t">Deal flow</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-9"><div class="pbox-d-in"><p><span>Partage de deal flow avec un écosystème d’investisseurs. Un réseau ouvert, où l’information circule.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-10"><svg class="i pbox-i" aria-hidden="true"><use href="#i-share-network"/></svg><span class="pbox-t">Réseau opérationnel</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-10"><div class="pbox-d-in"><p><span>Des introductions ciblées pour les participations : clients, distributeurs, dirigeants et talents, partenaires technologiques.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-11"><svg class="i pbox-i" aria-hidden="true"><use href="#i-microphone-stage"/></svg><span class="pbox-t">Visibilité et événements</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-11"><div class="pbox-d-in"><p><span>Talks, panels, rencontres sectorielles et contenu sur l’investissement, l’IA et l’international.</span></p></div></div></li></ul></article>
+<article class="pillar" id="accelerator" data-n="iv"><div class="pillar-head"><h3 class="pillar-title"><a href="accelerateur/index.html"><span class="ital">Accélérateur</span><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></h3><p class="pillar-lede"><strong>Nous transformons la stratégie en système d’exécution.</strong> Les équipes, les outils et les solutions pour qu’un plan produise des résultats.</p><div class="pillar-tag">IA <span class="md">·</span> direction <span class="md">·</span> cybersécurité</div></div><ul class="pillar-boxes n4" style="--n:4"><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-12"><svg class="i pbox-i" aria-hidden="true"><use href="#i-sparkle"/></svg><span class="pbox-t">AI Growth Execution</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-12"><div class="pbox-d-in"><p><span><strong>GO Smartex.</strong> Une expertise senior en marketing, vente et rétention, accélérée par l’IA. Visibilité dans l’IA, Smart CRMs et Growth propulsé par l’IA. <a href="https://gosmartex.com" target="_blank" rel="noopener"><strong>gosmartex.com</strong></a></span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-13"><svg class="i pbox-i" aria-hidden="true"><use href="#i-user-circle"/></svg><span class="pbox-t">Direction externalisée</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-13"><div class="pbox-d-in"><p><span>DAF/CFO, CMO, CGO, CRO, CEO ou co-CEO et transformation IA, pour le temps qu’il faut.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-14"><svg class="i pbox-i" aria-hidden="true"><use href="#i-code"/></svg><span class="pbox-t">Solutions IA sur mesure</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-14"><div class="pbox-d-in"><p><span><strong>GO Smartex.</strong> Des agents, des outils internes et des workflows conçus pour le fonctionnement de l’entreprise : commercial, finance, opérations, support et plus encore.</span></p></div></div></li><li class="pbox"><h4 class="pbox-h"><button class="pbox-btn" type="button" aria-expanded="false" aria-controls="pd-15"><svg class="i pbox-i" aria-hidden="true"><use href="#i-shield-check"/></svg><span class="pbox-t">Cybersécurité</span><span class="pbox-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="pbox-arr" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button></h4><div class="pbox-d" id="pd-15"><div class="pbox-d-in"><p><span>Conseil, revente de solutions et mise en relation avec les éditeurs et intégrateurs. Deux décennies dans le secteur.</span></p></div></div></li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="pourquoi" aria-labelledby="t-pourquoi">
+  <div class="wrap">
+    <div class="panel" data-dark>
+      <div class="shead">
+        <div>
+          <h2 class="section-title sec-title hx" id="t-pourquoi">Pourquoi <span class="ital">nous</span></h2>
+          <p class="section-kicker sec-sub">Avantage concurrentiel</p>
+        </div>
+      </div>
+      <div class="why">
+        <p class="why-lede">Un investisseur passif signe et attend. Une banque d’affaires boucle l’opération et s’en va. Un cabinet de conseil livre des recommandations. Nous faisons les trois, et nous restons pour la partie où la valeur se crée vraiment.</p>
+        <ul class="why-list"><li class="why-cell" data-label="Un seul interlocuteur"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-0"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">Un seul interlocuteur</span></button></h3><div class="why-d" id="wd-0"><div class="why-d-in"><p><span>Pour une même opération, il faudrait un fonds, une banque d’affaires, un cabinet de conseil et un intégrateur. Ici c’est la même équipe, et une seule personne qui répond.</span></p></div></div></li><li class="why-cell" data-label="La décision est ici"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-1"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">La décision est ici</span></button></h3><div class="why-d" id="wd-1"><div class="why-d-in"><p><span>En direct, nous investissons notre propre capital&nbsp;: la décision ne part dans aucun comité. C’est ce qui nous permet de répondre go ou no-go sous 48h ouvrées.</span></p></div></div></li><li class="why-cell" data-label="Opérateurs avant d’être investisseurs"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-2"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">Opérateurs avant d’être investisseurs</span></button></h3><div class="why-d" id="wd-2"><div class="why-d-in"><p><span>Nous avons dirigé des entreprises, pas seulement lu leurs comptes&nbsp;: direction financière, direction générale, croissance externe et restructuration.</span></p></div></div></li><li class="why-cell" data-label="Une présence, pas un plan d’expansion"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-3"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">Une présence, pas un plan d’expansion</span></button></h3><div class="why-d" id="wd-3"><div class="why-d-in"><p><span>France, Espagne, Maghreb, Afrique francophone, Amérique latine et États-Unis. Avec des filiales montées et des gens sur place, pas un chapitre dans une présentation.</span></p></div></div></li><li class="why-cell" data-label="La technologie est la nôtre"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-4"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">La technologie est la nôtre</span></button></h3><div class="why-d" id="wd-4"><div class="why-d-in"><p><span>GO Smartex fait partie du groupe. Quand il faut de l’IA, de l’automatisation ou de la cybersécurité, nous ne vous renvoyons pas vers un prestataire&nbsp;: nous le faisons et nous en répondons.</span></p></div></div></li><li class="why-cell" data-label="Vingt ans, plus de quarante opérations"><h3 class="why-t"><button class="why-btn" type="button" aria-expanded="false" aria-controls="wd-5"><span class="why-plus" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span><span class="why-tt">Vingt ans, plus de quarante opérations</span></button></h3><div class="why-d" id="wd-5"><div class="why-d-in"><p><span>Du pre-seed au LBO, de l’immobilier aux médias. Des participations en portefeuille, des cessions partielles et des sorties déjà faites.</span></p></div></div></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="track" class="sec" aria-labelledby="t-track">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <p class="section-kicker sr-only">Sociétés en portefeuille</p>
+        <h2 class="section-title sec-title hx" id="t-track"><span class="ital">Portefeuille</span></h2>
+      </div>
+      <div class="ptabs" role="tablist" aria-label="Portefeuille"><span class="ptab-thumb" aria-hidden="true"></span><button class="ptab" role="tab" data-f="all" aria-selected="true" aria-controls="pgrid" id="ptab-all">Tout</button><button class="ptab" role="tab" data-f="direct" aria-selected="false" aria-controls="pgrid" id="ptab-direct" tabindex="-1">Direct</button><button class="ptab" role="tab" data-f="888ci" aria-selected="false" aria-controls="pgrid" id="ptab-888ci" tabindex="-1">888CI</button></div>
+    </div>
+    <ul class="pgrid" id="pgrid" role="tabpanel" aria-labelledby="ptab-all">
+<li class="pcard" data-g="direct"><div class="pcard-link"><div class="plogo"><span class="pword" aria-hidden="true" data-w="Athena Global Services"></span></div><h3 class="pname"><span>Athena Global Services</span></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Cybersécurité</dd></div></dl><span class="pstatus active">Actif</span></div></li>
+<li class="pcard" data-g="direct"><div class="pcard-link"><div class="plogo"><span class="pword" aria-hidden="true" data-w="AGS Immo"></span></div><h3 class="pname"><span>AGS Immo</span></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Immobilier</dd></div></dl><span class="pstatus active">Actif</span></div></li>
+<li class="pcard" data-g="direct"><a class="pcard-link" href="https://trolley.com" target="_blank" rel="noopener"><div class="plogo"><span class="pword" aria-hidden="true" data-w="Trolley"></span></div><h3 class="pname"><span>Trolley</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>Canada</dd></div><div><dt>Secteur</dt><dd>Fintech</dd></div></dl><span class="pstatus exited">Sortie</span></a></li>
+<li class="pcard" data-g="direct"><div class="pcard-link"><div class="plogo"><span class="pword" aria-hidden="true" data-w="Wavy / TDLS"></span></div><h3 class="pname"><span>Wavy / TDLS</span></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>Tunisie</dd></div><div><dt>Secteur</dt><dd>Technologie</dd></div></dl><span class="pstatus exited">Sortie</span></div></li>
+<li class="pcard" data-g="direct"><a class="pcard-link" href="https://www.upfluence.com" target="_blank" rel="noopener"><div class="plogo"><span class="pword" aria-hidden="true" data-w="Upfluence"></span></div><h3 class="pname"><span>Upfluence</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France · États-Unis</dd></div><div><dt>Secteur</dt><dd>SaaS</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://ablue.world/#top" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/a-blue-world.png" alt="A Blue World" loading="lazy" /></div><h3 class="pname"><span>A Blue World</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Biotech · Climate</dd></div><div><dt>Stade</dt><dd>Pre-Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://ai-way.co/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/ai-way.png" alt="AI Way" loading="lazy" /></div><h3 class="pname"><span>AI Way</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>AI · Industry</dd></div><div><dt>Stade</dt><dd>Pre-Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.arrago.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/arrago.png" alt="Arrago" loading="lazy" /></div><h3 class="pname"><span>Arrago</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Fintech · B2C</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.bem-ad.network/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/bem.png" alt="BEM" loading="lazy" /></div><h3 class="pname"><span>BEM</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Consumer · Media</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://calldesk.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/calldesk.svg" alt="Calldesk" loading="lazy" /></div><h3 class="pname"><span>Calldesk</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Consumer · AI</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.choukran.fr/fr" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/choukran.png" alt="Choukran" loading="lazy" /></div><h3 class="pname"><span>Choukran</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Consumer</dd></div><div><dt>Stade</dt><dd>Growth</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.drinkee.io/fr" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/drinkee.png" alt="Drinkee" loading="lazy" /></div><h3 class="pname"><span>Drinkee</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Consumer</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.hrmaps.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/hr-maps.png" alt="HR Maps" loading="lazy" /></div><h3 class="pname"><span>HR Maps</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>SaaS</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.icefamily.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/ice-family.webp" alt="Ice Family" loading="lazy" /></div><h3 class="pname"><span>Ice Family</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Industry</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.limova.ai/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/limova.png" alt="Limova" loading="lazy" /></div><h3 class="pname"><span>Limova</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>AI</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.bonjournuri.com/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/nuri.png" alt="Nüri" loading="lazy" /></div><h3 class="pname"><span>Nüri</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Climate · Consumer</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.overlord-media.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/overlord-media.svg" alt="Overlord Media" loading="lazy" /></div><h3 class="pname"><span>Overlord Media</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Media</dd></div><div><dt>Stade</dt><dd>Turnaround</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://reecall.com/fr" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/reecall.png" alt="Reecall" loading="lazy" /></div><h3 class="pname"><span>Reecall</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Consumer · AI</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.gorevio.co/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/revio.png" alt="Revio" loading="lazy" /></div><h3 class="pname"><span>Revio</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>Consumer</dd></div><div><dt>Stade</dt><dd>Pre-Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.theline.fr/fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/the-line.png" alt="The Line" loading="lazy" /></div><h3 class="pname"><span>The Line</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Consumer · Industry</dd></div><div><dt>Stade</dt><dd>LBO</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://umawell.fr/" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/uma.png" alt="UMA" loading="lazy" /></div><h3 class="pname"><span>UMA</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Géographie</dt><dd>France</dd></div><div><dt>Secteur</dt><dd>Consumer · Biotech</dd></div><div><dt>Stade</dt><dd>Seed</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+<li class="pcard" data-g="888ci"><a class="pcard-link" href="https://www.zeliq.com/fr" target="_blank" rel="noopener"><div class="plogo"><img src="assets/logos/zeliq.png" alt="Zeliq" loading="lazy" /></div><h3 class="pname"><span>Zeliq</span><svg class="i parr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></h3><dl class="pmeta"><div><dt>Secteur</dt><dd>AI · B2B</dd></div><div><dt>Stade</dt><dd>Seed 2</dd></div></dl><span class="pstatus active">Actif</span></a></li>
+    </ul>
+    <div class="pmore"><a class="lnk" href="portefeuille/index.html"><span>Voir le portefeuille</span><svg class="i r" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+  </div>
+</section>
+
+<section id="philo" class="sec" style="padding-top:0" aria-labelledby="t-philo">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <p class="section-kicker sr-only">Approche &amp; périmètre</p>
+        <h2 class="section-title sec-title hx" id="t-philo">L'approche en <span class="ital">pratique</span></h2>
+      </div>
+    </div>
+    <div class="philo">
+      <p class="philo-headline hx">Une seule <span class="ital">rigueur,</span> plusieurs <span class="ital">formats.</span></p>
+      <div class="philo-body">
+        <p>Investir prend ici plusieurs formes. Un ticket d'angel. Une position minoritaire dans une PME en croissance ou en restructuration. Un LBO majoritaire avec présidence opérationnelle. Un mandat M&amp;A, de gouvernance ou de représentation internationale.</p>
+        <p>La sélection se fait au cas par cas&nbsp;: certains dossiers pour leur mécanique financière, d'autres pour ce que JJ Capinvest peut y <em>apporter au-delà du capital</em>.</p>
+        <div class="philo-sign"><p class="signature">Julien Jean, président, JJ Capinvest</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-g" aria-label="Rejoindre">
+  <div class="wrap cta2">
+    <div class="cta2-box">
+      <h2 class="cta2-t">Rejoindre le portefeuille</h2><p class="cta2-d">Vous construisez une société et cherchez un investisseur qui met les mains dedans. Présentez-nous l’opération.</p>
+      <a class="btn btn-primary cta2-a" href="contact/index.html">Déposer un dossier <svg class="i r" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+    <div class="cta2-box navy" data-dark>
+      <h2 class="cta2-t">Rejoindre le club d’investisseurs</h2><p class="cta2-d">Vous investissez et voulez voir passer nos opérations. Cela se passe chez 888CI.</p>
+      <a class="btn btn-light cta2-a" href="https://www.888capinvest.com/" target="_blank" rel="noopener">Découvrir 888CI <svg class="i ur" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <a class="brand foot-brand" href="index.html"><div class="mark"></div>JJ Capinvest</a>
+      <p class="foot-tag">SAS au capital de 160 000 €.<br>Société d’investissement de Julien Jean, basée entre <span class="ital">Paris, Lyon et Valencia</span>.<br>Fondateur de <a href="https://www.888capinvest.com/" target="_blank" rel="noopener">888CI <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>.</p>
+    </div>
+    <nav class="foot-col" aria-label="Activités"><div class="foot-h">Activités</div><a href="investisseur/index.html">Investisseur</a><a href="operateur/index.html">Opérateur</a><a href="connecteur/index.html">Connecteur</a><a href="accelerateur/index.html">Accélérateur</a></nav>
+    <nav class="foot-col" aria-label="Société"><div class="foot-h">Société</div><a href="portefeuille/index.html">Portefeuille</a><a href="a-propos/index.html">À propos</a><a href="equipe/index.html">Équipe</a></nav>
+    <div class="foot-col"><div class="foot-h">Contact</div>
+      <a href="contact/index.html">Contact</a>
+      <a href="https://www.linkedin.com/company/jj-capinvest/" target="_blank" rel="noopener">LinkedIn <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+      <a href="https://www.888capinvest.com/" target="_blank" rel="noopener">888 <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+      <a href="https://gosmartex.com" target="_blank" rel="noopener">GO Smartex <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+    </div>
+  </div>
+  <p class="foot-risk"><strong>Avertissement :</strong> investir dans des sociétés non cotées présente un risque de perte en capital et de liquidité. N’investissez que l’argent dont vous n’avez pas besoin immédiatement et diversifiez votre épargne.</p>
+  <div class="foot-bottom">
+    <span>© 2026 JJ Capinvest. Tous droits réservés.</span>
+    <span class="foot-legal"><a href="mentions-legales/index.html">Mentions légales</a><a href="confidentialite/index.html">Confidentialité</a></span>
+  </div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var head=document.getElementById('nav');
+
+  /* header: each pill reads the ground directly under it (navy panel or light page) and picks its tone.
+     Recomputed on scroll, resize and load, so it never keeps a stale state. */
+  var darks=[].slice.call(document.querySelectorAll('[data-dark]')), tones=[].slice.call(document.querySelectorAll('[data-tone]'));
+  function tone(){
+    var rects=darks.map(function(d){ return d.getBoundingClientRect(); });
+    tones.forEach(function(el){
+      var r=el.getBoundingClientRect(); if(!r.width) return;
+      var x=r.left+r.width/2, y=r.top+r.height/2, on=false;
+      for(var i=0;i<rects.length;i++){ var b=rects[i]; if(y>=b.top&&y<=b.bottom&&x>=b.left&&x<=b.right){ on=true; break; } }
+      el.classList.toggle('on-dark',on);
+    });
+  }
+  function queue(){ tone(); }
+  if(darks.length&&tones.length){
+    /* passive listener; scroll events are already frame-aligned, and each run reads only a handful of rects */
+    window.addEventListener('scroll',queue,{passive:true});
+    window.addEventListener('resize',queue);
+    window.addEventListener('load',queue);
+    window.addEventListener('hashchange',function(){ setTimeout(queue,50); });
+    document.addEventListener('scrollend',queue);
+    tone();
+  }
+
+  /* pill: sliding highlight under the hovered link */
+  var pill=document.querySelector('.pill'), hl=pill&&pill.querySelector('.pill-hl');
+  if(pill&&hl){
+    var move=function(el){ var r=el.getBoundingClientRect(), p=pill.getBoundingClientRect(); hl.style.width=r.width+'px'; hl.style.transform='translateX('+(r.left-p.left)+'px)'; hl.style.opacity='1'; };
+    pill.querySelectorAll('.pill-link').forEach(function(a){ a.addEventListener('pointerenter',function(){ move(a); }); a.addEventListener('focus',function(){ move(a); }); });
+    pill.addEventListener('pointerleave',function(){ if(!pill.querySelector('[aria-expanded="true"]')) hl.style.opacity='0'; });
+    pill.addEventListener('focusout',function(e){ if(!pill.contains(e.relatedTarget)) hl.style.opacity='0'; });
+  }
+
+  /* Activités dropdown: hover with intent, click, keyboard */
+  var item=document.querySelector('.nav-item'), trig=item&&item.querySelector('.nav-label');
+  if(item&&trig){
+    var t=null;
+    var set=function(o){ item.classList.toggle('open',o); trig.setAttribute('aria-expanded',o?'true':'false'); if(!o&&hl&&!pill.matches(':hover')) hl.style.opacity='0'; };
+    var fine=window.matchMedia('(hover:hover)').matches;
+    if(fine){ item.addEventListener('pointerenter',function(){ clearTimeout(t); set(true); }); item.addEventListener('pointerleave',function(){ clearTimeout(t); t=setTimeout(function(){ set(false); },180); }); }
+    trig.addEventListener('click',function(){ set(trig.getAttribute('aria-expanded')!=='true'); });
+    item.addEventListener('keydown',function(e){ if(e.key==='Escape'){ set(false); trig.focus(); } if(e.key==='ArrowDown'&&e.target===trig){ e.preventDefault(); set(true); var f=item.querySelector('.dd-link'); if(f) f.focus(); } });
+    item.addEventListener('focusout',function(e){ if(!item.contains(e.relatedTarget)) set(false); });
+    document.addEventListener('click',function(e){ if(!item.contains(e.target)) set(false); });
+  }
+
+  /* services: list + detail on desktop, accordion on touch / narrow screens */
+  var mq=window.matchMedia('(hover:hover) and (pointer:fine) and (min-width:1024px)');
+  var lists=[].slice.call(document.querySelectorAll('.pillar-boxes'));
+  function activate(li){ var ul=li.parentNode; [].forEach.call(ul.children,function(x){ var on=x===li; x.classList.toggle('active',on); x.querySelector('.pbox-btn').setAttribute('aria-expanded',on?'true':'false'); }); }
+  function setMode(){
+    lists.forEach(function(ul){ [].forEach.call(ul.children,function(li){ li.classList.remove('active','open'); li.querySelector('.pbox-btn').setAttribute('aria-expanded','false'); }); if(mq.matches&&ul.children[0]) activate(ul.children[0]); });
+  }
+  lists.forEach(function(ul){ [].forEach.call(ul.children,function(li){
+    var b=li.querySelector('.pbox-btn');
+    b.addEventListener('pointerenter',function(){ if(mq.matches) activate(li); });
+    b.addEventListener('focus',function(){ if(mq.matches) activate(li); });
+    b.addEventListener('click',function(){
+      if(mq.matches){ activate(li); return; }
+      var o=!li.classList.contains('open'); li.classList.toggle('open',o); b.setAttribute('aria-expanded',o?'true':'false');
+    });
+  }); });
+  setMode(); if(mq.addEventListener) mq.addEventListener('change',setMode);
+
+  /* pillar tabs: one pillar at a time, panels stacked in one grid cell so the section never jumps */
+  (function(){
+    var bar=document.querySelector('.appr-tabs'); if(!bar) return;
+    var tabs=[].slice.call(bar.querySelectorAll('.ptab')), th=bar.querySelector('.ptab-thumb');
+    var panels=tabs.map(function(tb){ return document.getElementById(tb.getAttribute('aria-controls')); });
+    document.documentElement.classList.add('js-tabs');
+    panels.forEach(function(p,i){ p.setAttribute('role','tabpanel'); p.setAttribute('aria-labelledby',tabs[i].id); p.tabIndex=-1; });
+    function thumb(tb){ if(!th||!tb) return; th.style.width=tb.offsetWidth+'px'; th.style.transform='translateX('+tb.offsetLeft+'px)'; }
+    function select(i,focus){
+      tabs.forEach(function(tb,j){ var on=j===i; tb.setAttribute('aria-selected',on?'true':'false'); tb.tabIndex=on?0:-1; panels[j].classList.toggle('is-active',on); if(on) panels[j].removeAttribute('inert'); else panels[j].setAttribute('inert',''); });
+      thumb(tabs[i]); if(focus) tabs[i].focus();
+      var wrap=bar.parentNode; if(wrap.scrollWidth>wrap.clientWidth){ var tb=tabs[i]; wrap.scrollTo({left:Math.max(0,tb.offsetLeft-24),behavior:reduce?'auto':'smooth'}); }
+    }
+    tabs.forEach(function(tb,i){
+      tb.addEventListener('click',function(){ select(i,false); });
+      tb.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; else if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length; else if(e.key==='Home') n=0; else if(e.key==='End') n=tabs.length-1; if(n!==null){ e.preventDefault(); select(n,true); } });
+    });
+    /* links to #investor, #operator... (hero rail) open the matching tab and scroll to the section */
+    function fromHash(h,scroll){ var i=panels.findIndex(function(p){ return '#'+p.id===h; }); if(i<0) return false; select(i,false); if(scroll){ var s=document.getElementById('approche'); if(s) s.scrollIntoView({behavior:reduce?'auto':'smooth'}); } return true; }
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ if(fromHash(a.getAttribute('href'),true)){ e.preventDefault(); history.replaceState(null,'',a.getAttribute('href')); } }); });
+    if(!fromHash(location.hash,true)) select(0,false);
+    window.addEventListener('resize',function(){ thumb(tabs.filter(function(t){ return t.getAttribute('aria-selected')==='true'; })[0]); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ thumb(tabs.filter(function(t){ return t.getAttribute('aria-selected')==='true'; })[0]); });
+  })();
+
+  /* pourquoi: expanding columns (>=1024px) / accordion (tablets, phones) */
+  (function(){
+    var list=document.querySelector('.why-list'); if(!list) return;
+    var cells=[].slice.call(list.children), wide=window.matchMedia('(min-width:1024px)'), fine=window.matchMedia('(hover:hover)');
+    var timer=null;
+    function act(i){ cells.forEach(function(c,j){ var on=j===i; c.classList.toggle('active',on); c.querySelector('.why-btn').setAttribute('aria-expanded',on?'true':'false'); }); }
+    function mode(){
+      cells.forEach(function(c){ c.classList.remove('active','open'); c.querySelector('.why-btn').setAttribute('aria-expanded','false'); c.querySelector('.why-btn').removeAttribute('tabindex'); });
+      if(wide.matches) act(0); else { cells[0].classList.add('open'); cells[0].querySelector('.why-btn').setAttribute('aria-expanded','true'); }
+    }
+    cells.forEach(function(c,i){
+      var b=c.querySelector('.why-btn');
+      c.addEventListener('pointerenter',function(){ if(!(wide.matches&&fine.matches)) return; clearTimeout(timer); timer=setTimeout(function(){ act(i); },90); });
+      c.addEventListener('pointerleave',function(){ clearTimeout(timer); });
+      b.addEventListener('focus',function(){ if(wide.matches) act(i); });
+      b.addEventListener('click',function(){
+        if(wide.matches){ act(i); return; }
+        var o=!c.classList.contains('open'); c.classList.toggle('open',o); b.setAttribute('aria-expanded',o?'true':'false');
+      });
+      b.addEventListener('keydown',function(e){ if(!wide.matches) return; var n=null; if(e.key==='ArrowRight') n=Math.min(cells.length-1,i+1); else if(e.key==='ArrowLeft') n=Math.max(0,i-1); if(n!==null){ e.preventDefault(); cells[n].querySelector('.why-btn').focus(); } });
+    });
+    /* closed labels: largest size (<= base) at which the longest word of any label fits its column */
+    var cv=document.createElement('canvas').getContext('2d');
+    function fitLabels(){
+      if(!wide.matches){ list.style.removeProperty('--lbl'); return; }
+      var cs=getComputedStyle(list), base=parseFloat(cs.getPropertyValue('--lbl-base'))||16, g=parseFloat(cs.getPropertyValue('--g'))||3.4;
+      var ps=getComputedStyle(cells[0],'::after'), pad=(parseFloat(ps.left)||18)+(parseFloat(ps.right)||14);
+      var avail=list.clientWidth/(5+g)-pad-2;
+      cv.font='400 '+base+'px "Source Serif 4", Georgia, serif';
+      var longest=0; cells.forEach(function(c){ (c.dataset.label||'').split(/\s+/).forEach(function(w){ longest=Math.max(longest,cv.measureText(w).width*0.99); }); });
+      var size=longest>avail?Math.max(12,Math.floor(base*avail/longest*10)/10):base;
+      list.style.setProperty('--lbl',size+'px');
+    }
+    fitLabels(); window.addEventListener('resize',fitLabels); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitLabels);
+    if(wide.addEventListener) wide.addEventListener('change',fitLabels);
+    mode(); if(wide.addEventListener) wide.addEventListener('change',mode);
+  })();
+
+  /* approche: the stacked pillar area takes the active pillar's height (no empty space under short pillars) */
+  (function(){
+    var box=document.querySelector('.pillars'); if(!box||!document.documentElement.classList.contains('js-tabs')) return;
+    function fit(){ var a=box.querySelector('.pillar.is-active'); if(a) box.style.height=a.offsetHeight+'px'; }
+    box.style.transition=reduce?'none':'height .5s cubic-bezier(.16,1,.3,1)';
+    if('ResizeObserver' in window){ var ro=new ResizeObserver(fit); box.querySelectorAll('.pillar').forEach(function(p){ ro.observe(p); }); }
+    document.querySelectorAll('.appr-tabs .ptab').forEach(function(tb){ tb.addEventListener('click',function(){ setTimeout(fit,0); }); tb.addEventListener('keydown',function(){ setTimeout(fit,0); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(){ setTimeout(fit,0); }); });
+    window.addEventListener('resize',fit); fit();
+  })();
+
+  /* language picker */
+  var lp=document.querySelector('.langpick'), lb=lp&&lp.querySelector('.langpick-btn');
+  if(lp&&lb){
+    var close=function(){lp.dataset.open='false';lb.setAttribute('aria-expanded','false');};
+    lb.addEventListener('click',function(e){e.stopPropagation();var o=lp.dataset.open==='true';lp.dataset.open=o?'false':'true';lb.setAttribute('aria-expanded',o?'false':'true');});
+    document.addEventListener('click',close);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  }
+
+  /* mobile sheet with focus containment */
+  var bg=document.getElementById('burger'), mb=document.getElementById('mobnav');
+  if(bg&&mb){
+    var setOpen=function(o){
+      bg.setAttribute('aria-expanded',o?'true':'false'); document.body.classList.toggle('menu-open',o);
+      if(o){ mb.hidden=false; requestAnimationFrame(function(){ requestAnimationFrame(function(){ mb.classList.add('open'); }); }); var f=mb.querySelector('a'); if(f) setTimeout(function(){ f.focus({preventScroll:true}); },60); }
+      else { mb.classList.remove('open'); setTimeout(function(){ if(!mb.classList.contains('open')) mb.hidden=true; },reduce?0:300); }
+    };
+    bg.addEventListener('click',function(){ setOpen(bg.getAttribute('aria-expanded')!=='true'); });
+    mb.addEventListener('click',function(e){ if(e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown',function(e){
+      if(bg.getAttribute('aria-expanded')!=='true') return;
+      if(e.key==='Escape'){ setOpen(false); bg.focus(); return; }
+      if(e.key==='Tab'){ var f=[bg].concat([].slice.call(mb.querySelectorAll('a'))), first=f[0], last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); } }
+    });
+    window.matchMedia('(min-width:1081px)').addEventListener('change',function(m){ if(m.matches) setOpen(false); });
+  }
+
+  /* portfolio tabs: ARIA tabs with arrow keys, sliding thumb, instant filter */
+  var tabs=[].slice.call(document.querySelectorAll('#track .ptab')), grid=document.getElementById('pgrid'), thumb=document.querySelector('#track .ptab-thumb');
+  function place(tb){ if(!thumb||!tb) return; thumb.style.width=tb.offsetWidth+'px'; thumb.style.transform='translateX('+tb.offsetLeft+'px)'; }
+  if(tabs.length&&grid){
+    var select=function(tb,focus){
+      tabs.forEach(function(x){ var on=x===tb; x.setAttribute('aria-selected',on?'true':'false'); x.tabIndex=on?0:-1; });
+      grid.setAttribute('aria-labelledby',tb.id); place(tb); if(focus) tb.focus();
+      var f=tb.dataset.f;
+      grid.querySelectorAll('.pcard').forEach(function(c){ c.hidden=!(f==='all'||c.dataset.g===f); });
+      if(!reduce){ grid.classList.remove('fade'); void grid.offsetWidth; grid.classList.add('fade'); }
+    };
+    tabs.forEach(function(tb,i){
+      tb.addEventListener('click',function(){ select(tb,false); });
+      tb.addEventListener('keydown',function(e){
+        var n=null; if(e.key==='ArrowRight') n=tabs[(i+1)%tabs.length]; else if(e.key==='ArrowLeft') n=tabs[(i-1+tabs.length)%tabs.length]; else if(e.key==='Home') n=tabs[0]; else if(e.key==='End') n=tabs[tabs.length-1];
+        if(n){ e.preventDefault(); select(n,true); }
+      });
+    });
+    place(tabs[0]);
+    window.addEventListener('resize',function(){ place(tabs.filter(function(x){ return x.getAttribute('aria-selected')==='true'; })[0]); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ place(tabs.filter(function(x){ return x.getAttribute('aria-selected')==='true'; })[0]); });
+  }
+})();
+</script>
+
+</body></html>

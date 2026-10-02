@@ -21,8 +21,8 @@ export type Project = {
 };
 
 /**
- * Order = order in the grid. The grid is a 9-cell bento (components/work-grid.tsx):
- * keep exactly 9 projects, or change `cells` there to match the new count.
+ * Order = order in the grid. The grid is a 10-cell bento (components/work-grid.tsx):
+ * keep exactly 10 projects, or change `cells` there to match the new count.
  */
 export const projects: Project[] = [
   { slug: "go-smartex", title: "Go Smartex", sector: { en: "Growth agency", es: "Agencia de crecimiento" }, url: "https://gosmartex.com/" },
@@ -34,4 +34,5 @@ export const projects: Project[] = [
   { slug: "tribu-mkt", title: "Tribu MKT", sector: { en: "Marketing community", es: "Comunidad de marketing" }, url: "https://tribu-mkt.com/" },
   { slug: "hrlogics", title: "HRlogics", sector: { en: "HR compliance", es: "Cumplimiento laboral" }, url: "https://hrlogics.com/" },
   { slug: "gem", title: "GEM", sector: { en: "Medical", es: "Medicina" }, url: "https://electroquimioterapia.com.ar/" },
+  { slug: "jj-capinvest", title: "JJ Capinvest", sector: { en: "Investment firm", es: "Firma de inversión" }, url: "/proposals/jj-capinvest.html" },
 ];
