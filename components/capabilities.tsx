@@ -69,7 +69,7 @@ function Panel({
           <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
           <p className="max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{item.body}</p>
         </div>
-        <ServiceIcon index={index} className="size-16 shrink-0 text-ink md:size-28" />
+        <ServiceIcon index={index} className="h-16 w-auto shrink-0 text-ink md:h-28" />
       </motion.div>
       <motion.ul
         style={tall && !reduce ? { opacity: contentOpacity } : undefined}
