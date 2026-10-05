@@ -1,7 +1,7 @@
 "use client";
 
-import { useLayoutEffect, useRef, useSyncExternalStore } from "react";
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
+import { motion, motionValue, useReducedMotion, useTransform, type MotionValue } from "motion/react";
 import type { Dict } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
@@ -32,21 +32,20 @@ type Item = Dict["services"]["items"][number];
 function Panel({
   item,
   index,
-  total,
-  progress,
+  covered,
   tall,
   reduce,
 }: {
   item: Item;
   index: number;
-  total: number;
-  progress: MotionValue<number>;
+  covered: MotionValue<number>;
   tall: boolean;
   reduce: boolean;
 }) {
-  // Earlier cards settle back as the next one lands on top, so depth shows order (hierarchy).
-  const target = 1 - (total - 1 - index) * 0.03;
-  const scale = useTransform(progress, [index / total, 1], [1, target]);
+  // Covered cards settle back slightly (depth shows order) and their content fades,
+  // so a half-hidden title never peeks out from under the card on top.
+  const scale = useTransform(covered, (c) => 1 - c * 0.04);
+  const contentOpacity = useTransform(covered, (c) => 1 - c);
 
   return (
     <motion.article
@@ -61,15 +60,18 @@ function Panel({
         tones[index],
       )}
     >
-      <div className="flex flex-col gap-5">
+      <motion.div style={tall && !reduce ? { opacity: contentOpacity } : undefined} className="flex flex-col gap-5">
         <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
         <p className="max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{item.body}</p>
-      </div>
-      <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-mute md:text-base">
+      </motion.div>
+      <motion.ul
+        style={tall && !reduce ? { opacity: contentOpacity } : undefined}
+        className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-mute md:text-base"
+      >
         {item.deliverables.map((d) => (
           <li key={d}>{d}</li>
         ))}
-      </ul>
+      </motion.ul>
     </motion.article>
   );
 }
@@ -85,7 +87,39 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
   const cards = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion() ?? false;
   const tall = useTall();
-  const { scrollYProgress } = useScroll({ target: cards, offset: ["start start", "end end"] });
+  // Per card: how far the next card has slid over it (0 = uncovered, 1 = fully covered).
+  const covered = useMemo(() => items.map(() => motionValue(0)), [items]);
+
+  // Measured from where the browser actually laid the sticky cards out, so the
+  // fade always matches what you see (a scroll-percentage estimate drifted).
+  useEffect(() => {
+    const root = cards.current;
+    if (!root || !tall) return;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const els = Array.from(root.children) as HTMLElement[];
+      const stackTop = parseFloat(getComputedStyle(root).getPropertyValue("--stack-top")) || 176;
+      els.forEach((el, i) => {
+        const next = els[i + 1];
+        if (!next) return covered[i].set(0);
+        const gap = next.getBoundingClientRect().top - (stackTop + (i + 1) * STEP);
+        const range = el.offsetHeight * 0.85;
+        covered[i].set(Math.min(1, Math.max(0, 1 - gap / range)));
+      });
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [covered, tall]);
 
   // Cards stick right under the heading, whose height depends on how it wraps.
   useLayoutEffect(() => {
@@ -115,8 +149,7 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
               key={item.title}
               item={item}
               index={i}
-              total={items.length}
-              progress={scrollYProgress}
+              covered={covered[i]}
               tall={tall}
               reduce={reduce}
             />
