@@ -1,6 +1,5 @@
 import { CtaLink } from "@/components/cta-link";
 import { Reveal } from "@/components/reveal";
-import { studio } from "@/lib/content";
 import type { Dict } from "@/lib/i18n";
 
 export function Contact({ d }: { d: Dict }) {
@@ -12,7 +11,7 @@ export function Contact({ d }: { d: Dict }) {
             {d.contact.heading}
           </h2>
           <p className="mt-6 max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{d.contact.body}</p>
-          <CtaLink href={studio.contactHref} className="mt-10">
+          <CtaLink className="mt-10">
             {d.cta}
           </CtaLink>
         </div>

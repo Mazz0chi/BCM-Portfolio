@@ -76,7 +76,7 @@ export function FloatingNav({
 
           <div className="flex items-center gap-2">
             <LangToggle lang={lang} label={d.a11y.language} className="hidden sm:flex" />
-            <CtaLink href="#contact" size="sm" className="max-[359px]:hidden">
+            <CtaLink size="sm" className="max-[359px]:hidden">
               {d.cta}
             </CtaLink>
             <button
@@ -120,7 +120,6 @@ export function FloatingNav({
                 <LangToggle lang={lang} label={d.a11y.language} />
               </div>
               <CtaLink
-                href="#contact"
                 onClick={() => setOpen(false)}
                 className="mx-1 mb-1 mt-4 w-[calc(100%-0.5rem)] justify-center min-[360px]:hidden"
               >

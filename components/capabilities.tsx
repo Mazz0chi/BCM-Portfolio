@@ -82,7 +82,7 @@ function Panel({
         style={tall && !reduce ? { opacity: contentOpacity } : undefined}
         className="flex shrink-0 justify-center md:justify-end"
       >
-        <ServiceIcon index={index} className="h-auto w-full max-w-[18rem] text-mute md:w-[22rem] md:max-w-none lg:w-[28rem]" />
+        <ServiceIcon index={index} className="h-auto w-full max-w-[14rem] text-mute md:w-[16rem] md:max-w-none lg:w-[20rem]" />
       </motion.div>
     </motion.article>
   );

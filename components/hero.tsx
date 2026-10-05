@@ -17,7 +17,7 @@ export function Hero({ d }: { d: Dict }) {
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <p className="max-w-[44ch] text-base leading-relaxed text-mute md:text-lg">{d.hero.sub}</p>
-            <CtaLink href="#contact" className="self-start">
+            <CtaLink className="self-start">
               {d.cta}
             </CtaLink>
           </Reveal>

@@ -1,15 +1,14 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/cn";
+import { studio } from "@/lib/content";
 
 export function CtaLink({
-  href,
   children,
   size = "md",
   className,
   onClick,
 }: {
-  href: string;
   children: ReactNode;
   size?: "sm" | "md";
   className?: string;
@@ -17,7 +16,7 @@ export function CtaLink({
 }) {
   return (
     <a
-      href={href}
+      href={studio.contactHref}
       onClick={onClick}
       className={cn(
         "group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-accent font-medium text-canvas",

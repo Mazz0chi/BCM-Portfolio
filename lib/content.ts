@@ -6,8 +6,8 @@ import type { Locale } from "@/lib/i18n";
 export const studio = {
   name: "Benitez Cruz Mazzochi",
   short: "BCM",
-  // TODO: replace with the real contact address.
-  contactHref: "mailto:hello@your-domain.com",
+  // Every "start a project" button opens a mail to this address.
+  contactHref: "mailto:benitezcruzmazzochi@gmail.com",
   year: 2026,
 };
 
