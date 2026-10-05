@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import type { MotionValue } from "motion/react";
 
 /*
  * Model: "2021 Macbook Pro 14" (M1 Pro / M1 Max)" by akshatmittal, CC BY 4.0
@@ -144,55 +143,49 @@ function Macbook({
   return <primitive object={scene} scale={MODEL_SCALE} />;
 }
 
-function Scene({ progress, src }: { progress: MotionValue<number>; src: string }) {
+// Intro timeline, in seconds from the first frame after the model has loaded.
+const RISE = 1.2; // fade-free rise into place
+const OPEN_DELAY = 0.5;
+const OPEN_DURATION = 3.2; // lid opening + turn to face the viewer
+const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
+function Scene({ src, animate }: { src: string; animate: boolean }) {
   const rig = useRef<THREE.Group>(null);
   const pivot = useRef<THREE.Group | null>(null);
   const screen = useRef<THREE.MeshBasicMaterial | null>(null);
   const invalidate = useThree((s) => s.invalidate);
   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
   const size = useThree((s) => s.size);
-  const smooth = useRef({ p: progress.get(), intro: 0 });
+  const clock = useRef<number | null>(null);
 
-  useEffect(() => progress.on("change", () => invalidate()), [progress, invalidate]);
+  // Resizes need a fresh frame to refit the laptop.
+  useEffect(() => invalidate(), [size, invalidate]);
 
-  useFrame((_, delta) => {
-    const s = smooth.current;
-    const dt = Math.min(delta, 1 / 30);
-    // `progress` is already spring-smoothed (hero-laptop.tsx), shared with the headline.
-    s.p = progress.get();
-    s.intro = THREE.MathUtils.damp(s.intro, 1, 1.6, dt);
+  useFrame((state) => {
+    if (clock.current === null) clock.current = state.clock.elapsedTime;
+    const e = animate ? state.clock.elapsedTime - clock.current : Infinity;
 
-    // Intro on load: the laptop rises in and the lid cracks open a little on its
-    // own, inviting the scroll. Scrolling then opens it fully over the first 75%
-    // of the pinned section; the rest is a hold, then a gentle settle as it leaves.
-    const scrolled = THREE.MathUtils.smoothstep(Math.min(1, s.p / 0.75), 0, 1);
-    const t = Math.max(scrolled, 0.045 * THREE.MathUtils.smoothstep(s.intro, 0.35, 1));
-    const settle = THREE.MathUtils.smoothstep(s.p, 0.86, 1);
+    const rise = easeInOut(Math.min(1, e / RISE));
+    const t = easeInOut(THREE.MathUtils.clamp((e - OPEN_DELAY) / OPEN_DURATION, 0, 1));
 
     if (pivot.current) pivot.current.rotation.x = THREE.MathUtils.lerp(LID_CLOSED, LID_OPEN, t);
-    if (screen.current) screen.current.color.setScalar(THREE.MathUtils.smoothstep(t, 0.3, 0.75));
+    if (screen.current) screen.current.color.setScalar(THREE.MathUtils.smoothstep(t, 0.35, 0.8));
 
     if (rig.current) {
-      // Fit the open laptop into the canvas at any aspect ratio.
+      // Fit the open laptop into its stage (the area under the headline) with room to breathe.
       const dist = camera.position.length();
       const visH = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
       const visW = visH * (size.width / size.height);
-      // Portrait has room to spare vertically, so let the laptop use more of the width.
-      const portrait = size.width < size.height;
-      const fit = Math.min(visW / (portrait ? 3.5 : 4.3), visH / 3.6);
+      const fit = Math.min(visW / 4.6, visH / 3.3);
 
-      // Start: closed, angled, smaller and below the headline. End: open, facing
-      // you, centred and filling the stage (the headline has faded by then).
-      // Start turned ~55° so the right side (with its ports) faces you, then swing round.
+      // Closed and turned ~55° (right-side ports toward you) -> open, facing you.
       rig.current.rotation.y = THREE.MathUtils.lerp(-0.95, 0.05, t);
-      rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t) + settle * 0.08;
-      // The headline is taller on portrait screens, so the closed laptop starts lower.
-      const startY = portrait ? -0.1 : 0;
-      rig.current.position.y = THREE.MathUtils.lerp(startY, -0.035, t) * visH - (1 - s.intro) * 0.5;
-      rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.68, 1, t) * (1 - settle * 0.08));
+      rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t);
+      rig.current.position.y = THREE.MathUtils.lerp(-0.08, 0, t) * visH - (1 - rise) * 0.6;
+      rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.82, 1, t));
     }
 
-    if (s.intro < 0.999) invalidate();
+    if (e < OPEN_DELAY + OPEN_DURATION) invalidate();
   });
 
   return (
@@ -220,7 +213,7 @@ function Scene({ progress, src }: { progress: MotionValue<number>; src: string }
 
 useGLTF.preload(MODEL);
 
-export default function Laptop3D({ progress, src, alt }: { progress: MotionValue<number>; src: string; alt: string }) {
+export default function Laptop3D({ src, alt, animate }: { src: string; alt: string; animate: boolean }) {
   return (
     <Canvas
       role="img"
@@ -231,7 +224,7 @@ export default function Laptop3D({ progress, src, alt }: { progress: MotionValue
       onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
-      <Scene progress={progress} src={src} />
+      <Scene src={src} animate={animate} />
     </Canvas>
   );
 }
