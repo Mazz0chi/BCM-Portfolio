@@ -82,7 +82,7 @@ function Panel({
         style={tall && !reduce ? { opacity: contentOpacity } : undefined}
         className="flex shrink-0 justify-center md:justify-end"
       >
-        <ServiceIcon index={index} className="h-auto w-full max-w-[18rem] text-ink md:w-[22rem] md:max-w-none lg:w-[28rem]" />
+        <ServiceIcon index={index} className="h-auto w-full max-w-[18rem] text-mute md:w-[22rem] md:max-w-none lg:w-[28rem]" />
       </motion.div>
     </motion.article>
   );
@@ -155,7 +155,7 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
         <div ref={head} className="tall:sticky" style={tall ? { top: HEADING_TOP } : undefined}>
           <h2 className="text-3xl font-semibold leading-[1.1] tracking-tighter md:text-5xl">{heading}</h2>
         </div>
-        <div ref={cards} className="mt-8 flex flex-col gap-6 md:mt-12 tall:pb-16">
+        <div ref={cards} className="mt-8 flex flex-col gap-6 md:mt-12">
           {items.map((item, i) => (
             <Panel
               key={item.title}
