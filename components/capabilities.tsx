@@ -56,29 +56,34 @@ function Panel({
           : undefined
       }
       className={cn(
-        "flex w-full origin-top flex-col justify-between gap-10 rounded-3xl border border-line p-6 shadow-[0_-8px_30px_rgb(22_32_26/0.06)] md:p-12",
+        "flex w-full origin-top flex-col gap-10 rounded-3xl md:flex-row md:items-center md:justify-between border border-line p-6 shadow-[0_-8px_30px_rgb(22_32_26/0.06)] md:p-12",
         "tall:sticky tall:min-h-[20rem] md:tall:min-h-[24rem]",
         tones[index],
       )}
     >
-      <motion.div
-        style={tall && !reduce ? { opacity: contentOpacity } : undefined}
-        className="flex items-start justify-between gap-6"
-      >
-        <div className="flex flex-col gap-5">
+      <div className="flex flex-col justify-between gap-10 self-stretch">
+        <motion.div
+          style={tall && !reduce ? { opacity: contentOpacity } : undefined}
+          className="flex flex-col gap-5"
+        >
           <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
           <p className="max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{item.body}</p>
-        </div>
-        <ServiceIcon index={index} className="h-16 w-auto shrink-0 text-ink md:h-28" />
-      </motion.div>
-      <motion.ul
+        </motion.div>
+        <motion.ul
+          style={tall && !reduce ? { opacity: contentOpacity } : undefined}
+          className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-mute md:text-base"
+        >
+          {item.deliverables.map((d) => (
+            <li key={d}>{d}</li>
+          ))}
+        </motion.ul>
+      </div>
+      <motion.div
         style={tall && !reduce ? { opacity: contentOpacity } : undefined}
-        className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-mute md:text-base"
+        className="flex shrink-0 justify-center md:justify-end"
       >
-        {item.deliverables.map((d) => (
-          <li key={d}>{d}</li>
-        ))}
-      </motion.ul>
+        <ServiceIcon index={index} className="h-auto w-full max-w-[18rem] text-ink md:w-[22rem] md:max-w-none lg:w-[28rem]" />
+      </motion.div>
     </motion.article>
   );
 }
