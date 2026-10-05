@@ -19,9 +19,9 @@ export function localeHref(lang: Locale) {
 
 const en = {
   meta: {
-    title: "Benitez Cruz and Mazzochi | Design and development studio",
+    title: "Benitez Cruz Mazzochi | Design and development studio",
     description:
-      "Benitez Cruz and Mazzochi designs and builds brands, websites, and digital products.",
+      "Benitez Cruz Mazzochi designs and builds brands, websites, and digital products.",
   },
   a11y: {
     skip: "Skip to content",
@@ -42,8 +42,8 @@ const en = {
   hero: {
     line1: "One team designs it.",
     line2: "The same team builds it.",
-    sub: "Benitez Cruz and Mazzochi is a design and development studio for brands, websites, and digital products.",
-    alt: "Featured project by Benitez Cruz and Mazzochi",
+    sub: "Benitez Cruz Mazzochi is a design and development studio for brands, websites, and digital products.",
+    alt: "Featured project by Benitez Cruz Mazzochi",
   },
   work: {
     heading: "Selected work",
@@ -116,9 +116,9 @@ export type Dict = typeof en;
 
 const es: Dict = {
   meta: {
-    title: "Benitez Cruz and Mazzochi | Estudio de diseño y desarrollo",
+    title: "Benitez Cruz Mazzochi | Estudio de diseño y desarrollo",
     description:
-      "Benitez Cruz and Mazzochi diseña y desarrolla marcas, sitios web y productos digitales.",
+      "Benitez Cruz Mazzochi diseña y desarrolla marcas, sitios web y productos digitales.",
   },
   a11y: {
     skip: "Saltar al contenido",
@@ -139,8 +139,8 @@ const es: Dict = {
   hero: {
     line1: "Un equipo lo diseña.",
     line2: "El mismo equipo lo construye.",
-    sub: "Benitez Cruz and Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales.",
-    alt: "Proyecto destacado de Benitez Cruz and Mazzochi",
+    sub: "Benitez Cruz Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales.",
+    alt: "Proyecto destacado de Benitez Cruz Mazzochi",
   },
   work: {
     heading: "Trabajos seleccionados",

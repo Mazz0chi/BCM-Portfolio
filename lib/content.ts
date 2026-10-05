@@ -4,7 +4,7 @@
 import type { Locale } from "@/lib/i18n";
 
 export const studio = {
-  name: "Benitez Cruz and Mazzochi",
+  name: "Benitez Cruz Mazzochi",
   short: "BCM",
   // TODO: replace with the real contact address.
   contactHref: "mailto:hello@your-domain.com",

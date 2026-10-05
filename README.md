@@ -1,4 +1,4 @@
-# Benitez Cruz and Mazzochi portfolio
+# Benitez Cruz Mazzochi portfolio
 
 Next.js 16, Tailwind v4, Motion, Geist (self-hosted), Phosphor icons, Simple Icons.
 
