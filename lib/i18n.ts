@@ -21,7 +21,7 @@ const en = {
   meta: {
     title: "Benitez Cruz Mazzochi | Design and development studio",
     description:
-      "Benitez Cruz Mazzochi designs and builds brands, websites, and digital products.",
+      "Benitez Cruz Mazzochi designs and builds brands, websites, and digital products, from scratch or as a rebrand and redesign.",
   },
   a11y: {
     skip: "Skip to content",
@@ -36,13 +36,14 @@ const en = {
   cta: "Start a project",
   nav: [
     { label: "Work", href: "#work" },
+    { label: "Redesign", href: "#redesign" },
     { label: "Services", href: "#services" },
     { label: "Process", href: "#process" },
   ],
   hero: {
     line1: "One team designs it.",
     line2: "The same team builds it.",
-    sub: "Benitez Cruz Mazzochi is a design and development studio for brands, websites, and digital products.",
+    sub: "Benitez Cruz Mazzochi is a design and development studio for brands, websites, and digital products. New, or redesigned.",
     alt: "Featured project by Benitez Cruz Mazzochi",
   },
   work: {
@@ -51,19 +52,39 @@ const en = {
   },
   statement:
     "Good design is half the job. It also has to load fast, work on every screen, and stay easy to change.",
+  redesign: {
+    eyebrow: "Rebranding and redesign",
+    heading: "Most of our work starts with something that already exists.",
+    body: "A brand the company has outgrown, a site that no longer reflects the business. We keep what works, fix what doesn't, and relaunch brand and site as one piece.",
+    cta: "Redesign your brand",
+    steps: [
+      {
+        title: "Audit",
+        body: "We review your current brand and site to decide what stays, what changes, and what goes.",
+      },
+      {
+        title: "Rebrand",
+        body: "A new logo, palette, and type that still feel like you, so the clients you have keep recognizing you.",
+      },
+      {
+        title: "Redesign",
+        body: "A new site built on the new brand, with your content carried over and nothing left behind.",
+      },
+    ],
+  },
   services: {
     heading: "What we design and build",
     items: [
       {
         title: "Brand identity",
-        body: "Logos, type, color, and the rules that keep them consistent across every screen.",
-        deliverables: ["Logo and wordmark", "Type and color", "Brand guidelines"],
+        body: "Logos, type, color, and the rules that keep them consistent across every screen. For new brands, or a rebrand of the one you have.",
+        deliverables: ["Logo and wordmark", "Rebranding", "Type and color", "Brand guidelines"],
         example: { label: "See logo proposals for JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Web design",
-        body: "Layouts and interactions designed for the screens they will actually live on.",
-        deliverables: ["Page layouts", "Interaction and motion", "Responsive states"],
+        body: "New sites and redesigns, with layouts and interactions designed for the screens they will actually live on.",
+        deliverables: ["Site redesign", "Page layouts", "Interaction and motion", "Responsive states"],
       },
       {
         title: "Frontend development",
@@ -119,7 +140,7 @@ const es: Dict = {
   meta: {
     title: "Benitez Cruz Mazzochi | Estudio de diseño y desarrollo",
     description:
-      "Benitez Cruz Mazzochi diseña y desarrolla marcas, sitios web y productos digitales.",
+      "Benitez Cruz Mazzochi diseña y desarrolla marcas, sitios web y productos digitales, desde cero o como rebranding y rediseño.",
   },
   a11y: {
     skip: "Saltar al contenido",
@@ -134,13 +155,14 @@ const es: Dict = {
   cta: "Empezar un proyecto",
   nav: [
     { label: "Trabajos", href: "#work" },
+    { label: "Rediseño", href: "#redesign" },
     { label: "Servicios", href: "#services" },
     { label: "Proceso", href: "#process" },
   ],
   hero: {
     line1: "Un equipo lo diseña.",
     line2: "El mismo equipo lo construye.",
-    sub: "Benitez Cruz Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales.",
+    sub: "Benitez Cruz Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales. Nuevos o rediseñados.",
     alt: "Proyecto destacado de Benitez Cruz Mazzochi",
   },
   work: {
@@ -149,19 +171,39 @@ const es: Dict = {
   },
   statement:
     "El buen diseño es la mitad del trabajo. También tiene que cargar rápido, funcionar en cualquier pantalla y ser fácil de cambiar.",
+  redesign: {
+    eyebrow: "Rebranding y rediseño",
+    heading: "La mayoría de nuestros proyectos empiezan con algo que ya existe.",
+    body: "Una marca que le quedó chica a la empresa, un sitio que ya no refleja lo que hacés. Conservamos lo que funciona, corregimos lo que no y relanzamos marca y sitio como una sola pieza.",
+    cta: "Rediseñemos tu marca",
+    steps: [
+      {
+        title: "Auditoría",
+        body: "Revisamos tu marca y tu sitio actuales para decidir qué se queda, qué cambia y qué se va.",
+      },
+      {
+        title: "Rebranding",
+        body: "Un logo, una paleta y una tipografía nuevos que se sigan sintiendo tuyos, para que tus clientes te sigan reconociendo.",
+      },
+      {
+        title: "Rediseño",
+        body: "Un sitio nuevo construido sobre la nueva marca, con tu contenido migrado y sin dejar nada en el camino.",
+      },
+    ],
+  },
   services: {
     heading: "Qué diseñamos y construimos",
     items: [
       {
         title: "Identidad de marca",
-        body: "Logos, tipografía, color y las reglas que los mantienen coherentes en cada pantalla.",
-        deliverables: ["Logo y logotipo", "Tipografía y color", "Manual de marca"],
+        body: "Logos, tipografía, color y las reglas que los mantienen coherentes en cada pantalla. Para marcas nuevas o para el rebranding de la que ya tenés.",
+        deliverables: ["Logo y logotipo", "Rebranding", "Tipografía y color", "Manual de marca"],
         example: { label: "Ver propuestas de logo para JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Diseño web",
-        body: "Layouts e interacciones pensados para las pantallas donde realmente se van a usar.",
-        deliverables: ["Diseño de páginas", "Interacción y animación", "Versiones responsive"],
+        body: "Sitios nuevos y rediseños, con layouts e interacciones pensados para las pantallas donde realmente se van a usar.",
+        deliverables: ["Rediseño de sitios", "Diseño de páginas", "Interacción y animación", "Versiones responsive"],
       },
       {
         title: "Desarrollo frontend",
