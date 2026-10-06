@@ -58,6 +58,7 @@ const en = {
         title: "Brand identity",
         body: "Logos, type, color, and the rules that keep them consistent across every screen.",
         deliverables: ["Logo and wordmark", "Type and color", "Brand guidelines"],
+        example: { label: "See logo proposals for JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Web design",
@@ -155,6 +156,7 @@ const es: Dict = {
         title: "Identidad de marca",
         body: "Logos, tipografía, color y las reglas que los mantienen coherentes en cada pantalla.",
         deliverables: ["Logo y logotipo", "Tipografía y color", "Manual de marca"],
+        example: { label: "Ver propuestas de logo para JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Diseño web",

@@ -1,0 +1,346 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body><style>#bcm-proposal{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;display:flex;justify-content:center;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#141413;color:#faf9f5;font:500 13px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-align:center}#bcm-proposal b{font-weight:600}body{padding-bottom:44px!important}</style><div id="bcm-proposal" role="note"><span><b>Propuestas de logo</b> para JJ Capinvest · Benitez Cruz Mazzochi (BCM) · Material de trabajo, no es la marca oficial</span></div>
+<title>JJ Capinvest Logos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: same grid and tokens as the JJ Capinvest site (v6). Navy hero panel, then one row per proposal:
+   rationale on the left, the two plates (light ground / dark ground) on the right. Single light look, as on the site. */
+:root{
+  --bg:#F2F5F9; --surface:#FFFFFF; --surface-2:#E7ECF4;
+  --ink:#0F1B33; --ink-2:#1F3153; --ink-3:#465475; --muted:#56627C;
+  --line:rgba(15,27,51,.10); --line-2:rgba(15,27,51,.18);
+  --blue:#1E5BFF; --orange:#E2551A;
+  --navy:#0F1B33; --on-navy:#F2F5F9; --on-navy-2:#BFCEE6; --on-navy-3:#93A0B8;
+  --navy-line:rgba(242,245,249,.13); --navy-blue:#7BA0FF; --navy-orange:#FF9061;
+  --shadow:0 1px 2px rgba(15,27,51,.04),0 8px 24px rgba(15,27,51,.06);
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xl:20px; --r-lg:14px; --r-md:10px; --r-pill:999px;
+  --gutter:clamp(16px,3.4vw,40px); --max:1280px; --inset:12px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,p,ul,figure{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:8px}
+.hero :focus-visible{outline-color:var(--navy-blue)}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* language: every string exists in the three languages; the body class shows one */
+.l-fr .t-en,.l-fr .t-es,
+.l-en .t-fr,.l-en .t-es,
+.l-es .t-fr,.l-es .t-en{display:none!important}
+
+/* ---------- hero ---------- */
+.hero{padding:var(--inset)}
+.hero-panel{position:relative;overflow:hidden;isolation:isolate;background:var(--navy);color:var(--on-navy);border-radius:var(--r-xl)}
+.hero-panel::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(70% 90% at 100% 0%,rgba(30,91,255,.30),transparent 60%),
+  radial-gradient(60% 70% at 0% 100%,rgba(123,160,255,.10),transparent 65%)}
+.hero-panel::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(rgba(242,245,249,.035) 1px,transparent 1px);background-size:100% 88px}
+.hero-in{max-width:var(--max);margin-inline:auto;padding:28px var(--gutter) 0}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hero-meta{font:500 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-3);display:flex;flex-wrap:wrap;gap:6px 0;align-items:center}
+.md{display:inline-block;width:1px;height:11px;background:var(--navy-blue);opacity:.9;margin:0 12px}
+
+.langs{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:var(--r-pill);background:rgba(242,245,249,.08);border:1px solid rgba(242,245,249,.16)}
+.lang{min-height:40px;min-width:48px;padding:0 14px;border:0;background:transparent;border-radius:var(--r-pill);font:500 12px/1 var(--f-mono);letter-spacing:.08em;color:#D5DDEA;cursor:pointer;transition:background-color .25s ease,color .25s ease}
+.lang:hover{color:#F2F5F9}
+.lang[aria-pressed="true"]{background:#F2F5F9;color:#0F1B33}
+
+.hero-body{padding-block:88px 44px;display:grid;gap:28px}
+.hero-title{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,6vw,92px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance;max-width:14ch}
+.hero-title .ital{font-style:italic;color:var(--navy-orange)}
+.hero-lede{font-size:clamp(17px,1.35vw,20px);line-height:1.5;color:var(--on-navy-2);max-width:56ch;text-wrap:pretty}
+.hero-lede em{font-style:normal;color:var(--on-navy);font-weight:500}
+.hero-rail{border-top:1px solid var(--navy-line)}
+.hero-rail-in{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.hero-rail a{display:flex;align-items:baseline;gap:14px;min-height:76px;padding:24px 22px;border-left:1px solid var(--navy-line);font-family:var(--f-display);font-size:clamp(19px,1.7vw,24px);letter-spacing:-.01em;color:var(--on-navy-2);transition:color .25s ease}
+.hero-rail a:first-child{border-left:0;padding-left:0}
+.hero-rail a:hover{color:var(--on-navy)}
+.hero-rail .k{font:500 12px/1 var(--f-mono);letter-spacing:.1em;color:var(--navy-blue)}
+@media (max-width:899px){
+  .hero-body{padding-block:56px 36px}
+  .hero-rail-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-rail a{padding:18px 16px;min-height:60px}
+  .hero-rail a:nth-child(odd){border-left:0;padding-left:0}
+  .hero-rail a:nth-child(n+3){border-top:1px solid var(--navy-line)}
+}
+
+/* ---------- proposals ---------- */
+.props{padding-block:56px 24px}
+.prop{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;padding-block:56px;border-top:1px solid var(--line);scroll-margin-top:16px}
+.prop-head{display:flex;flex-direction:column;gap:18px;align-self:start}
+.prop-k{font:500 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.prop-k b{font-weight:500;color:var(--blue)}
+.prop-title{font-family:var(--f-display);font-weight:400;font-size:clamp(32px,3.2vw,48px);line-height:1.05;letter-spacing:-.025em;text-wrap:balance}
+.prop-title .ital{font-style:italic;color:var(--orange)}
+.prop-why{font-size:16px;line-height:1.65;color:var(--ink-2);max-width:44ch;text-wrap:pretty}
+.prop-why strong{font-weight:600;color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:500 12px/1 var(--f-body);padding:8px 12px;border-radius:var(--r-pill);border:1px solid var(--line-2);color:var(--ink-2);background:var(--surface)}
+
+.plates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
+.plate{display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.plate-art{display:flex;align-items:center;justify-content:center;padding:clamp(28px,4vw,52px) clamp(20px,3vw,36px);min-height:220px}
+.plate-art img{width:100%;height:auto;aspect-ratio:1560/420}
+.plate.dark{background:var(--navy);border-color:var(--navy)}
+.plate.dark .plate-art{background:radial-gradient(80% 100% at 100% 0%,rgba(30,91,255,.22),transparent 62%)}
+.plate-cap{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;border-top:1px solid var(--line);font:500 11px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.plate.dark .plate-cap{border-top-color:var(--navy-line);color:var(--on-navy-3)}
+.sw{display:inline-flex;gap:4px;align-items:center}
+.sw i{width:10px;height:10px;border-radius:50%;display:inline-block;box-shadow:inset 0 0 0 1px rgba(15,27,51,.12)}
+@media (max-width:1023px){.prop{grid-template-columns:1fr;gap:28px;padding-block:40px}}
+@media (max-width:640px){.plates{grid-template-columns:1fr}.plate-art{min-height:160px}}
+
+/* ---------- next step ---------- */
+.next{padding-block:24px 64px}
+.next-box{position:relative;overflow:hidden;isolation:isolate;padding:52px 48px;border-radius:var(--r-xl);background:var(--surface);border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:end}
+.next-t{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,2.8vw,40px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance}
+.next-t .ital{font-style:italic;color:var(--orange)}
+.next-d{font-size:16px;line-height:1.65;color:var(--ink-3);max-width:56ch;text-wrap:pretty}
+@media (max-width:899px){.next-box{grid-template-columns:1fr;gap:16px;padding:36px 24px}}
+
+footer{padding-block:0 32px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (prefers-reduced-motion:no-preference){
+  .enter{animation:enter .9s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms + 80ms)}
+  @keyframes enter{from{opacity:.001;transform:translateY(12px)}}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}}
+</style>
+
+<div id="app" class="l-fr">
+<header class="hero">
+  <div class="hero-panel">
+    <div class="hero-in">
+      <div class="hero-top">
+        <p class="hero-meta">
+          <span>JJ Capinvest</span><span class="md" aria-hidden="true"></span>
+          <span class="t-fr">Identité visuelle · Proposition 3</span><span class="t-en">Visual identity · Round 3</span><span class="t-es">Identidad visual · Propuesta 3</span>
+          <span class="md" aria-hidden="true"></span>
+          <span class="t-fr">Octobre 2026</span><span class="t-en">October 2026</span><span class="t-es">Octubre 2026</span>
+        </p>
+        <div class="langs" role="group" aria-label="Langue / Language / Idioma">
+          <button class="lang" type="button" id="lang-fr" data-lang="fr" aria-pressed="true" lang="fr">FR</button>
+          <button class="lang" type="button" id="lang-en" data-lang="en" aria-pressed="false" lang="en">EN</button>
+          <button class="lang" type="button" id="lang-es" data-lang="es" aria-pressed="false" lang="es">ES</button>
+        </div>
+      </div>
+      <div class="hero-body">
+        <h1 class="hero-title enter" style="--i:0">
+          <span class="t-fr">Quatre pistes pour une <span class="ital">signature</span> durable.</span>
+          <span class="t-en">Four directions for a lasting <span class="ital">signature</span>.</span>
+          <span class="t-es">Cuatro propuestas para una <span class="ital">firma</span> duradera.</span>
+        </h1>
+        <p class="hero-lede enter" style="--i:1">
+          <span class="t-fr">Troisième série de pistes pour le logo de JJ Capinvest. Chaque direction est présentée <em>sur fond clair et sur fond foncé</em>, avec en quelques lignes la raison de ses choix. Toutes gardent la palette de la marque (bleu, orange, marine) et un nom en caractères à empattements, cohérent avec le site.</span>
+          <span class="t-en">The third round of logo directions for JJ Capinvest. Each one is shown <em>on a light and on a dark ground</em>, with a few lines on the reasoning behind it. All of them keep the brand palette (blue, orange, navy) and a serif wordmark that matches the website.</span>
+          <span class="t-es">Tercera serie de propuestas para el logo de JJ Capinvest. Cada dirección se presenta <em>sobre fondo claro y sobre fondo oscuro</em>, con unas líneas que explican sus elecciones. Todas conservan la paleta de la marca (azul, naranja, marino) y un nombre en tipografía con serifa, coherente con el sitio web.</span>
+        </p>
+      </div>
+    </div>
+    <nav class="hero-rail" aria-label="Propositions">
+      <div class="hero-rail-in">
+        <a href="#a"><span class="k">A</span><span class="t-fr">Le monogramme</span><span class="t-en">The monogram</span><span class="t-es">El monograma</span></a>
+        <a href="#b"><span class="k">B</span><span class="t-fr">Le sceau</span><span class="t-en">The seal</span><span class="t-es">El sello</span></a>
+        <a href="#c"><span class="k">C</span><span class="t-fr">La boucle</span><span class="t-en">The loop</span><span class="t-es">El lazo</span></a>
+        <a href="#d"><span class="k">D</span><span class="t-fr">L'élan</span><span class="t-en">Momentum</span><span class="t-es">El impulso</span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="props wrap">
+
+  <!-- A -->
+  <section class="prop" id="a">
+    <div class="prop-head">
+      <p class="prop-k"><b>A</b> · <span class="t-fr">Proposition</span><span class="t-en">Direction</span><span class="t-es">Propuesta</span></p>
+      <h2 class="prop-title">
+        <span class="t-fr">Le <span class="ital">monogramme</span></span>
+        <span class="t-en">The <span class="ital">monogram</span></span>
+        <span class="t-es">El <span class="ital">monograma</span></span>
+      </h2>
+      <p class="prop-why">
+        <span class="t-fr">Deux J tracés d'un seul trait, qui partagent la même jambe : <strong>deux initiales, une seule signature</strong>. Le dessin linéaire et régulier évoque la rigueur et la structure. Le point orange ferme le nom comme une décision prise, nette et assumée.</span>
+        <span class="t-en">Two Js drawn in a single line, sharing one stem: <strong>two initials, one signature</strong>. The even, linear drawing speaks of rigour and structure. The orange full stop closes the name like a decision made, clear and confident.</span>
+        <span class="t-es">Dos J trazadas con una sola línea que comparten el mismo trazo: <strong>dos iniciales, una sola firma</strong>. El dibujo lineal y regular transmite rigor y estructura. El punto naranja cierra el nombre como una decisión tomada, clara y firme.</span>
+      </p>
+      <ul class="tags">
+        <li class="tag"><span class="t-fr">Rigueur</span><span class="t-en">Rigour</span><span class="t-es">Rigor</span></li>
+        <li class="tag"><span class="t-fr">Unité</span><span class="t-en">Unity</span><span class="t-es">Unidad</span></li>
+        <li class="tag"><span class="t-fr">Décision</span><span class="t-en">Decisiveness</span><span class="t-es">Decisión</span></li>
+      </ul>
+    </div>
+    <div class="plates">
+      <figure class="plate">
+        <div class="plate-art"><img src="logos/a-dark.png" alt="Proposition A, version fond clair" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond clair</span><span class="t-en">Light ground</span><span class="t-es">Fondo claro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#141413"></i><i style="background:#E2551A"></i></span></figcaption>
+      </figure>
+      <figure class="plate dark">
+        <div class="plate-art"><img src="logos/a-light.png" alt="Proposition A, version fond foncé" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond foncé</span><span class="t-en">Dark ground</span><span class="t-es">Fondo oscuro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#FFFFFF"></i><i style="background:#E2551A"></i></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="prop" id="b">
+    <div class="prop-head">
+      <p class="prop-k"><b>B</b> · <span class="t-fr">Proposition</span><span class="t-en">Direction</span><span class="t-es">Propuesta</span></p>
+      <h2 class="prop-title">
+        <span class="t-fr">Le <span class="ital">sceau</span></span>
+        <span class="t-en">The <span class="ital">seal</span></span>
+        <span class="t-es">El <span class="ital">sello</span></span>
+      </h2>
+      <p class="prop-why">
+        <span class="t-fr">Évolution directe de la marque actuelle. Le C de Capinvest devient le symbole de l'euro : on lit <strong>le capital et l'ancrage européen</strong> au premier coup d'œil. Les jj en italique gardent la chaleur et le côté humain de l'accompagnement. C'est l'option qui préserve le plus la reconnaissance acquise.</span>
+        <span class="t-en">A direct evolution of the current mark. The C of Capinvest becomes the euro sign, so <strong>capital and a European base</strong> read at first glance. The italic jj keep the warm, human side of working alongside founders. This option keeps the most of the recognition the brand already has.</span>
+        <span class="t-es">Evolución directa de la marca actual. La C de Capinvest se convierte en el símbolo del euro: se lee <strong>capital y anclaje europeo</strong> a primera vista. Las jj en cursiva conservan la calidez y el lado humano del acompañamiento. Es la opción que más preserva el reconocimiento ya ganado.</span>
+      </p>
+      <ul class="tags">
+        <li class="tag"><span class="t-fr">Continuité</span><span class="t-en">Continuity</span><span class="t-es">Continuidad</span></li>
+        <li class="tag"><span class="t-fr">Capital</span><span class="t-en">Capital</span><span class="t-es">Capital</span></li>
+        <li class="tag"><span class="t-fr">Europe</span><span class="t-en">Europe</span><span class="t-es">Europa</span></li>
+      </ul>
+    </div>
+    <div class="plates">
+      <figure class="plate">
+        <div class="plate-art"><img src="logos/b-dark.png" alt="Proposition B, version fond clair" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond clair</span><span class="t-en">Light ground</span><span class="t-es">Fondo claro</span></span><span class="sw" aria-hidden="true"><i style="background:#13263F"></i><i style="background:#E2551A"></i></span></figcaption>
+      </figure>
+      <figure class="plate dark">
+        <div class="plate-art"><img src="logos/b-light.png" alt="Proposition B, version fond foncé" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond foncé</span><span class="t-en">Dark ground</span><span class="t-es">Fondo oscuro</span></span><span class="sw" aria-hidden="true"><i style="background:#E2551A"></i><i style="background:#2558E8"></i><i style="background:#FFFFFF"></i></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="prop" id="c">
+    <div class="prop-head">
+      <p class="prop-k"><b>C</b> · <span class="t-fr">Proposition</span><span class="t-en">Direction</span><span class="t-es">Propuesta</span></p>
+      <h2 class="prop-title">
+        <span class="t-fr">La <span class="ital">boucle</span></span>
+        <span class="t-en">The <span class="ital">loop</span></span>
+        <span class="t-es">El <span class="ital">lazo</span></span>
+      </h2>
+      <p class="prop-why">
+        <span class="t-fr">Deux J, dont l'un est retourné, se rejoignent pour former une boucle continue. Bleu pour l'investisseur, orange pour l'entrepreneur : <strong>deux parties, un même parcours</strong>. La forme fermée évoque un cycle complet, investir, structurer, développer. Compacte, elle fonctionne aussi bien en favicon qu'en grand format.</span>
+        <span class="t-en">Two Js, one of them turned upside down, join into a continuous loop. Blue for the investor, orange for the entrepreneur: <strong>two parties, one shared path</strong>. The closed shape suggests a full cycle of investing, structuring and growing. It is compact, so it works as well in a favicon as at large sizes.</span>
+        <span class="t-es">Dos J, una de ellas invertida, se unen para formar un lazo continuo. Azul para el inversor, naranja para el emprendedor: <strong>dos partes, un mismo camino</strong>. La forma cerrada evoca un ciclo completo: invertir, estructurar, desarrollar. Es compacta y funciona igual de bien como favicon que en gran formato.</span>
+      </p>
+      <ul class="tags">
+        <li class="tag"><span class="t-fr">Partenariat</span><span class="t-en">Partnership</span><span class="t-es">Alianza</span></li>
+        <li class="tag"><span class="t-fr">Cycle</span><span class="t-en">Cycle</span><span class="t-es">Ciclo</span></li>
+        <li class="tag"><span class="t-fr">Simplicité</span><span class="t-en">Simplicity</span><span class="t-es">Simplicidad</span></li>
+      </ul>
+    </div>
+    <div class="plates">
+      <figure class="plate">
+        <div class="plate-art"><img src="logos/c-dark.png" alt="Proposition C, version fond clair" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond clair</span><span class="t-en">Light ground</span><span class="t-es">Fondo claro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#E2551A"></i><i style="background:#141413"></i></span></figcaption>
+      </figure>
+      <figure class="plate dark">
+        <div class="plate-art"><img src="logos/c-light.png" alt="Proposition C, version fond foncé" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond foncé</span><span class="t-en">Dark ground</span><span class="t-es">Fondo oscuro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#E2551A"></i><i style="background:#FFFFFF"></i></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section class="prop" id="d">
+    <div class="prop-head">
+      <p class="prop-k"><b>D</b> · <span class="t-fr">Proposition</span><span class="t-en">Direction</span><span class="t-es">Propuesta</span></p>
+      <h2 class="prop-title">
+        <span class="t-fr">L'<span class="ital">élan</span></span>
+        <span class="t-en"><span class="ital">Momentum</span></span>
+        <span class="t-es">El <span class="ital">impulso</span></span>
+      </h2>
+      <p class="prop-why">
+        <span class="t-fr">Deux J opposés et décalés, qui s'emboîtent sans se toucher. Le décalage vers le haut traduit <strong>la progression et l'élan de la croissance</strong>. Chacun garde son espace et ensemble ils forment un tout, l'image d'un partenariat équilibré. Le trait épais reste lisible même en très petit.</span>
+        <span class="t-en">Two opposed, offset Js that interlock without touching. The upward offset expresses <strong>progress and the drive of growth</strong>. Each keeps its own space and together they form a whole, the image of a balanced partnership. The heavy stroke stays legible even at very small sizes.</span>
+        <span class="t-es">Dos J opuestas y desplazadas que encajan sin tocarse. El desplazamiento hacia arriba expresa <strong>el progreso y el impulso del crecimiento</strong>. Cada una conserva su espacio y juntas forman un todo, la imagen de una alianza equilibrada. El trazo grueso se mantiene legible incluso en tamaños muy pequeños.</span>
+      </p>
+      <ul class="tags">
+        <li class="tag"><span class="t-fr">Croissance</span><span class="t-en">Growth</span><span class="t-es">Crecimiento</span></li>
+        <li class="tag"><span class="t-fr">Équilibre</span><span class="t-en">Balance</span><span class="t-es">Equilibrio</span></li>
+        <li class="tag"><span class="t-fr">Présence</span><span class="t-en">Presence</span><span class="t-es">Presencia</span></li>
+      </ul>
+    </div>
+    <div class="plates">
+      <figure class="plate">
+        <div class="plate-art"><img src="logos/d-dark.png" alt="Proposition D, version fond clair" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond clair</span><span class="t-en">Light ground</span><span class="t-es">Fondo claro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#E2551A"></i><i style="background:#13263F"></i></span></figcaption>
+      </figure>
+      <figure class="plate dark">
+        <div class="plate-art"><img src="logos/d-light.png" alt="Proposition D, version fond foncé" width="1560" height="420"></div>
+        <figcaption class="plate-cap"><span><span class="t-fr">Fond foncé</span><span class="t-en">Dark ground</span><span class="t-es">Fondo oscuro</span></span><span class="sw" aria-hidden="true"><i style="background:#2558E8"></i><i style="background:#E2551A"></i><i style="background:#FFFFFF"></i></span></figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<section class="next wrap">
+  <div class="next-box">
+    <h2 class="next-t">
+      <span class="t-fr">Et <span class="ital">ensuite</span> ?</span>
+      <span class="t-en">What <span class="ital">next</span>?</span>
+      <span class="t-es">¿Y <span class="ital">ahora</span>?</span>
+    </h2>
+    <p class="next-d">
+      <span class="t-fr">Choisissez une ou deux pistes. Nous affinerons la direction retenue et livrerons ses déclinaisons : favicon, version monochrome, avatar pour les réseaux sociaux et papeterie.</span>
+      <span class="t-en">Pick one or two directions. We will refine the chosen one and deliver its full set of variants: favicon, single-colour version, social media avatar and stationery.</span>
+      <span class="t-es">Elijan una o dos propuestas. Afinaremos la dirección elegida y entregaremos sus variantes: favicon, versión monocromática, avatar para redes sociales y papelería.</span>
+    </p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>JJ Capinvest</span>
+    <span><span class="t-fr">Proposition 3 · Octobre 2026</span><span class="t-en">Round 3 · October 2026</span><span class="t-es">Propuesta 3 · Octubre 2026</span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lang');
+  var alts={
+    fr:['version fond clair','version fond foncé','Proposition'],
+    en:['light ground version','dark ground version','Direction'],
+    es:['versión fondo claro','versión fondo oscuro','Propuesta']
+  };
+  function set(l){
+    if(!alts[l]) l='fr';
+    document.getElementById('app').className='l-'+l;
+    document.documentElement.lang=l;
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false')});
+    document.querySelectorAll('.plate img').forEach(function(img){
+      var id=img.closest('.prop').id.toUpperCase();
+      var dark=img.closest('.plate').classList.contains('dark');
+      img.alt=alts[l][2]+' '+id+', '+alts[l][dark?1:0];
+    });
+    try{localStorage.setItem('jj-lang',l)}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.lang)})});
+  var start='fr';
+  var h=(location.hash||'').slice(1);
+  if(h==='en'||h==='es'||h==='fr'){start=h}
+  else{try{start=localStorage.getItem('jj-lang')||'fr'}catch(e){}}
+  set(start);
+})();
+</script>
+</div>
+
+</body></html>
