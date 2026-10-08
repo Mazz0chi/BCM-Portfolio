@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Magnetic } from "@/components/magnetic";
 import { cn } from "@/lib/cn";
 import { studio } from "@/lib/content";
 
@@ -8,13 +9,17 @@ export function CtaLink({
   size = "md",
   className,
   onClick,
+  magnetic = true,
 }: {
   children: ReactNode;
   size?: "sm" | "md";
+  /** Layout classes. With `magnetic` they go on the wrapper, else on the link. */
   className?: string;
   onClick?: () => void;
+  /** Drift toward the mouse on hover (off for full-width menu buttons). */
+  magnetic?: boolean;
 }) {
-  return (
+  const link = (
     <a
       href={studio.contactHref}
       onClick={onClick}
@@ -24,7 +29,7 @@ export function CtaLink({
         "active:translate-y-px active:scale-[0.98]",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         size === "sm" ? "h-10 px-4 text-sm" : "h-12 px-6 text-base",
-        className,
+        !magnetic && className,
       )}
     >
       {children}
@@ -35,4 +40,5 @@ export function CtaLink({
       />
     </a>
   );
+  return magnetic ? <Magnetic className={cn("inline-flex", className)}>{link}</Magnetic> : link;
 }

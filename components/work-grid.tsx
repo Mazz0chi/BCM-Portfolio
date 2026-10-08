@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Media } from "@/components/media";
 import { Reveal } from "@/components/reveal";
+import { Tilt } from "@/components/tilt";
 import { cn } from "@/lib/cn";
 import { projects, type Project } from "@/lib/content";
 import type { Dict, Locale } from "@/lib/i18n";
@@ -48,17 +49,23 @@ function Cell({
         rel="noopener noreferrer"
         className="group flex h-full min-h-0 flex-col gap-3 rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
       >
-        <Media
-          src={imageFor(project.slug)}
-          alt={d.work.alt(project.title)}
-          slot={`public/projects/${project.slug}.jpg`}
-          tone={cell.tone}
-          sizes="(min-width: 1024px) 58vw, 100vw"
-          className={cn(
-            "w-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[0.985] lg:aspect-auto lg:flex-1",
-            cell.aspect,
-          )}
-        />
+        <Tilt className={cn("w-full lg:flex lg:min-h-0 lg:flex-1", cell.aspect, "lg:aspect-auto")}>
+          <Media
+            src={imageFor(project.slug)}
+            alt={d.work.alt(project.title)}
+            slot={`public/projects/${project.slug}.jpg`}
+            tone={cell.tone}
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="size-full"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute bottom-4 left-4 inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-canvas/90 px-4 py-2 text-sm font-medium text-ink opacity-0 shadow-sm backdrop-blur transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100"
+          >
+            {d.work.visit}
+            <ArrowUpRight weight="bold" className="size-3.5" />
+          </span>
+        </Tilt>
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-1">
           <h3 className="flex items-center gap-1.5 text-lg font-medium tracking-tight">
             {project.title}

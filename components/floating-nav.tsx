@@ -120,6 +120,7 @@ export function FloatingNav({
                 <LangToggle lang={lang} label={d.a11y.language} />
               </div>
               <CtaLink
+                magnetic={false}
                 onClick={() => setOpen(false)}
                 className="mx-1 mb-1 mt-4 w-[calc(100%-0.5rem)] justify-center min-[360px]:hidden"
               >

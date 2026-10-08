@@ -7,6 +7,10 @@ import { useReducedMotion } from "motion/react";
 
 const Laptop3D = dynamic(() => import("@/components/laptop-3d"), { ssr: false });
 
+// How far (px) the 3D canvas runs below the hero, so the intro's rise starts
+// off-screen rather than being clipped by the canvas edge.
+const BLEED = 240;
+
 function useWebGL() {
   return useSyncExternalStore(
     () => () => {},
@@ -45,7 +49,9 @@ export function HeroLaptop({
       {children}
       <div className="pointer-events-none relative mt-4 min-h-0 flex-1">
         {src && webgl ? (
-          <Laptop3D src={src} alt={alt} animate={!reduce} />
+          <div className="absolute inset-x-0 top-0" style={{ bottom: -BLEED }}>
+            <Laptop3D src={src} alt={alt} animate={!reduce} bleed={BLEED} />
+          </div>
         ) : src ? (
           <Image src={src} alt={alt} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-contain" />
         ) : null}

@@ -154,7 +154,7 @@ const WARMUP_FRAMES = 3;
 const MAX_STEP = 1 / 30;
 const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
-function Scene({ src, animate }: { src: string; animate: boolean }) {
+function Scene({ src, animate, bleed }: { src: string; animate: boolean; bleed: number }) {
   const rig = useRef<THREE.Group>(null);
   const pivot = useRef<THREE.Group | null>(null);
   const screen = useRef<THREE.MeshBasicMaterial | null>(null);
@@ -181,14 +181,21 @@ function Scene({ src, animate }: { src: string; animate: boolean }) {
     if (rig.current) {
       // Fit the open laptop into its stage (the area under the headline) with room to breathe.
       const dist = camera.position.length();
-      const visH = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-      const visW = visH * (size.width / size.height);
+      const fullH = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+      const visW = fullH * (size.width / size.height);
+      // The canvas runs `bleed` px past the stage's bottom edge so the laptop can
+      // rise in from below the fold instead of being sliced by the canvas edge.
+      // Frame it in the stage (the canvas minus the bleed), whose centre sits
+      // bleed/2 px above the canvas centre.
+      const pxToWorld = fullH / size.height;
+      const visH = fullH - bleed * pxToWorld;
+      const stageLift = (bleed / 2) * pxToWorld;
       const fit = Math.min(visW / 4.6, visH / 3.3);
 
       // Closed and turned ~55° (right-side ports toward you) -> open, facing you.
       rig.current.rotation.y = THREE.MathUtils.lerp(-0.95, 0.05, t);
       rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t);
-      rig.current.position.y = THREE.MathUtils.lerp(-0.08, 0, t) * visH - (1 - rise) * 0.6;
+      rig.current.position.y = stageLift + THREE.MathUtils.lerp(-0.08, 0, t) * visH - (1 - rise) * 0.6;
       rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.82, 1, t));
     }
 
@@ -220,7 +227,17 @@ function Scene({ src, animate }: { src: string; animate: boolean }) {
 
 useGLTF.preload(MODEL);
 
-export default function Laptop3D({ src, alt, animate }: { src: string; alt: string; animate: boolean }) {
+export default function Laptop3D({
+  src,
+  alt,
+  animate,
+  bleed = 0,
+}: {
+  src: string;
+  alt: string;
+  animate: boolean;
+  bleed?: number;
+}) {
   return (
     <Canvas
       role="img"
@@ -231,7 +248,7 @@ export default function Laptop3D({ src, alt, animate }: { src: string; alt: stri
       onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
-      <Scene src={src} animate={animate} />
+      <Scene src={src} animate={animate} bleed={bleed} />
     </Canvas>
   );
 }

@@ -2,15 +2,16 @@
 
 import { useRef, useState, type PointerEvent } from "react";
 import Image from "next/image";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 
 type Labels = { before: string; after: string; hint: string; label: string };
 
 /**
- * Before/after comparison. At rest it shows only the old site; moving the
+ * Before/after comparison. At first it shows only the old site; moving the
  * pointer over it (or dragging on touch) reveals the new one up to the
- * pointer, and leaving snaps back to the old. Keyboard: a range input
- * (arrow keys) drives the same position.
+ * pointer, and the split stays where you leave it so both versions can be
+ * studied. Keyboard: a range input (arrow keys) drives the same position.
  */
 export function BeforeAfter({
   before,
@@ -33,17 +34,14 @@ export function BeforeAfter({
     setTracking(true);
     setPos(Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width) * 100)));
   };
-  const reset = () => {
-    setTracking(false);
-    setPos(0);
-  };
+  const release = () => setTracking(false);
 
   return (
     <div
       ref={ref}
       onPointerMove={follow}
       onPointerDown={follow}
-      onPointerLeave={reset}
+      onPointerLeave={release}
       className={cn(
         "relative touch-pan-y select-none overflow-hidden rounded-3xl bg-surface-2 focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-accent",
         className,
@@ -66,7 +64,12 @@ export function BeforeAfter({
           tracking ? "transition-opacity" : "transition-[left,opacity]",
         )}
         style={{ left: `${pos}%` }}
-      />
+      >
+        <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0.5 rounded-full bg-canvas text-ink shadow-[0_4px_16px_rgb(22_32_26/0.25)]">
+          <CaretLeft weight="bold" className="size-3.5" />
+          <CaretRight weight="bold" className="size-3.5" />
+        </span>
+      </div>
 
       <span
         aria-hidden

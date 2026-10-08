@@ -50,6 +50,7 @@ const en = {
   },
   work: {
     heading: "Selected work",
+    visit: "View site",
     alt: (title: string) => `${title} website`,
   },
   statement:
@@ -177,6 +178,7 @@ const es: Dict = {
   },
   work: {
     heading: "Trabajos seleccionados",
+    visit: "Ver sitio",
     alt: (title: string) => `Sitio web de ${title}`,
   },
   statement:
