@@ -30,7 +30,7 @@ export function Statement({ text }: { text: string }) {
   const words = text.split(" ");
 
   return (
-    <section className="px-4 py-32 md:px-8 md:py-48">
+    <section className="px-4 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <p
           ref={ref}

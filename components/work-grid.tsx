@@ -7,10 +7,10 @@ import type { Dict, Locale } from "@/lib/i18n";
 import { imageFor } from "@/lib/images";
 
 /**
- * 10-cell bento, one cell per project, every desktop row sums to 12 columns:
+ * 11-cell bento, one cell per project, every desktop row sums to 12 columns:
  *   row 1-2: [7, tall] [5] / [5]
  *   row 3:   [4] [8]
- *   row 4:   [5] [7]
+ *   row 4:   [4] [4] [4]
  *   row 5:   [4] [4] [4]
  * Below lg it collapses to a single column with its own aspect ratios.
  */
@@ -20,9 +20,10 @@ const cells = [
   { span: "lg:col-span-5", tone: "three", aspect: "aspect-[16/10]" },
   { span: "lg:col-span-4", tone: "one", aspect: "aspect-[4/3]" },
   { span: "lg:col-span-8", tone: "two", aspect: "aspect-[16/10]" },
-  { span: "lg:col-span-5", tone: "three", aspect: "aspect-[4/3]" },
-  { span: "lg:col-span-7", tone: "one", aspect: "aspect-[16/10]" },
+  { span: "lg:col-span-4", tone: "three", aspect: "aspect-[4/3]" },
+  { span: "lg:col-span-4", tone: "one", aspect: "aspect-[4/3]" },
   { span: "lg:col-span-4", tone: "two", aspect: "aspect-[4/3]" },
+  { span: "lg:col-span-4", tone: "one", aspect: "aspect-[4/3]" },
   { span: "lg:col-span-4", tone: "three", aspect: "aspect-[4/3]" },
   { span: "lg:col-span-4", tone: "accent", aspect: "aspect-[4/3]" },
 ] as const;
@@ -76,7 +77,7 @@ function Cell({
 
 export function WorkGrid({ lang, d }: { lang: Locale; d: Dict }) {
   return (
-    <section id="work" className="scroll-mt-24 px-4 py-24 md:px-8 md:py-40">
+    <section id="work" className="scroll-mt-24 px-4 py-16 md:px-8 md:py-24">
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <h2 className="mb-10 text-3xl font-semibold tracking-tighter md:mb-16 md:text-5xl">

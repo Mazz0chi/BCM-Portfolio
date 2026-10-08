@@ -12,7 +12,7 @@ import { imageFor } from "@/lib/images";
 export function Redesign({ d }: { d: Dict }) {
   const r = d.redesign;
   return (
-    <section id="redesign" className="scroll-mt-24 px-4 py-24 md:px-8 md:py-40">
+    <section id="redesign" className="scroll-mt-24 px-4 py-16 md:px-8 md:py-24">
       <div className="mx-auto grid max-w-[1400px] gap-12 rounded-3xl bg-accent-tint p-6 md:grid-cols-[5fr_6fr] md:gap-24 md:p-12 lg:p-16">
         <Reveal className="flex flex-col items-start gap-6">
           <p className="font-mono text-sm uppercase tracking-widest text-accent">{r.eyebrow}</p>

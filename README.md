@@ -10,7 +10,7 @@ Next.js 16, Tailwind v4, Motion, Geist (self-hosted), Phosphor icons, Simple Ico
 Drop screenshots into `public/projects/` with these exact names, then rebuild. Any of .webp, .jpg, .png, .avif works. Missing files just show the empty slot.
 
     go-smartex   gobta   onesource-peo   prana-wealth   tribu-mkt
-    hrlogics   heritage-health-network   marketing-mob   gem   jj-capinvest
+    hrlogics   heritage-health-network   marketing-mob   gem   jj-capinvest   888ci
     hero     (optional; falls back to go-smartex)
     studio   (optional; 4:5 portrait)
 
@@ -22,7 +22,7 @@ Redesign before/after slider: `public/projects/redesign-before.*` (old site) and
 Client logos for the "trusted brands" row: `public/clients/<slug>.svg` (or .png/.webp),
 using the project slugs above. Without a logo the client's name is shown instead.
 
-Names, sectors, links, and grid order live in `lib/content.ts`. The grid is a fixed 10-cell bento: keep 10 projects or change `cells` in `components/work-grid.tsx`.
+Names, sectors, links, and grid order live in `lib/content.ts`. The grid is a fixed 11-cell bento: keep 11 projects or change `cells` in `components/work-grid.tsx`.
 
 ## Languages
 

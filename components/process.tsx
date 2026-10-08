@@ -3,7 +3,7 @@ import type { Dict } from "@/lib/i18n";
 
 export function Process({ d }: { d: Dict }) {
   return (
-    <section id="process" className="scroll-mt-24 px-4 py-24 md:px-8 md:py-40">
+    <section id="process" className="scroll-mt-24 px-4 py-16 md:px-8 md:py-24">
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
           <h2 className="text-3xl font-semibold tracking-tighter md:text-5xl">{d.process.heading}</h2>

@@ -163,7 +163,7 @@ export function Capabilities({ heading, items }: { heading: string; items: Item[
   }, []);
 
   return (
-    <section id="services" className="scroll-mt-24 px-4 pb-8 pt-24 md:px-8 md:pt-40">
+    <section id="services" className="scroll-mt-24 px-4 pb-8 pt-16 md:px-8 md:pt-24">
       <div
         ref={container}
         className="mx-auto max-w-[1400px] [--stack-top:11rem]"
