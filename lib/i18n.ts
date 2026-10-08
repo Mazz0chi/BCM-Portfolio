@@ -30,7 +30,6 @@ const en = {
     closeMenu: "Close menu",
     language: "Language",
     newTab: "(opens in a new tab)",
-    tools: "Tools we work with",
     primaryNav: "Primary",
   },
   cta: "Start a project",
@@ -46,6 +45,9 @@ const en = {
     sub: "Benitez Cruz Mazzochi is a design and development studio for brands, websites, and digital products. New, or redesigned.",
     alt: "Featured project by Benitez Cruz Mazzochi",
   },
+  clients: {
+    heading: "Brands that trust us",
+  },
   work: {
     heading: "Selected work",
     alt: (title: string) => `${title} website`,
@@ -57,6 +59,12 @@ const en = {
     heading: "Most of our work starts with something that already exists.",
     body: "A brand the company has outgrown, a site that no longer reflects the business. We keep what works, fix what doesn't, and relaunch brand and site as one piece.",
     cta: "Redesign your brand",
+    compare: {
+      label: "Compare the site before and after the redesign",
+      before: "Before",
+      after: "After",
+      hint: "Hover or drag to see the after",
+    },
     steps: [
       {
         title: "Audit",
@@ -149,7 +157,6 @@ const es: Dict = {
     closeMenu: "Cerrar menú",
     language: "Idioma",
     newTab: "(se abre en una pestaña nueva)",
-    tools: "Herramientas con las que trabajamos",
     primaryNav: "Principal",
   },
   cta: "Empezar un proyecto",
@@ -165,6 +172,9 @@ const es: Dict = {
     sub: "Benitez Cruz Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales. Nuevos o rediseñados.",
     alt: "Proyecto destacado de Benitez Cruz Mazzochi",
   },
+  clients: {
+    heading: "Marcas que confían en nosotros",
+  },
   work: {
     heading: "Trabajos seleccionados",
     alt: (title: string) => `Sitio web de ${title}`,
@@ -176,6 +186,12 @@ const es: Dict = {
     heading: "La mayoría de nuestros proyectos empiezan con algo que ya existe.",
     body: "Una marca que le quedó chica a la empresa, un sitio que ya no refleja lo que hacés. Conservamos lo que funciona, corregimos lo que no y relanzamos marca y sitio como una sola pieza.",
     cta: "Rediseñemos tu marca",
+    compare: {
+      label: "Comparar el sitio antes y después del rediseño",
+      before: "Antes",
+      after: "Después",
+      hint: "Pasá el cursor o deslizá para ver el después",
+    },
     steps: [
       {
         title: "Auditoría",

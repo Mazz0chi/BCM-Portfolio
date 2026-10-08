@@ -1,11 +1,13 @@
+import { BeforeAfter } from "@/components/before-after";
 import { CtaLink } from "@/components/cta-link";
 import { Reveal } from "@/components/reveal";
 import type { Dict } from "@/lib/i18n";
+import { imageFor } from "@/lib/images";
 
 /**
  * Rebranding and redesign: most of the studio's projects. Pitch on the left,
- * how a redesign runs on the right.
- * TODO: add the before/after hover slider here once the example site is finished.
+ * how a redesign runs on the right, and a before/after slider underneath
+ * (screenshots: public/projects/redesign-before.* and redesign-after.*).
  */
 export function Redesign({ d }: { d: Dict }) {
   const r = d.redesign;
@@ -31,6 +33,14 @@ export function Redesign({ d }: { d: Dict }) {
             </li>
           ))}
         </ol>
+        <Reveal className="md:col-span-2">
+          <BeforeAfter
+            before={imageFor("redesign-before")}
+            after={imageFor("redesign-after")}
+            labels={r.compare}
+            className="aspect-[4/3] w-full md:aspect-[16/9]"
+          />
+        </Reveal>
       </div>
     </section>
   );

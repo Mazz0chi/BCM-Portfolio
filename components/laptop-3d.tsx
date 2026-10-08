@@ -143,10 +143,15 @@ function Macbook({
   return <primitive object={scene} scale={MODEL_SCALE} />;
 }
 
-// Intro timeline, in seconds from the first frame after the model has loaded.
+// Intro timeline, in seconds of animation time (see `elapsed` in Scene).
 const RISE = 1.2; // fade-free rise into place
 const OPEN_DELAY = 0.5;
 const OPEN_DURATION = 3.2; // lid opening + turn to face the viewer
+// The first frames compile shaders and bake the environment, which can stall for a
+// few hundred ms. Hold the pose for these frames, then cap each frame's step, so a
+// stall pauses the intro instead of skipping part of it.
+const WARMUP_FRAMES = 3;
+const MAX_STEP = 1 / 30;
 const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 function Scene({ src, animate }: { src: string; animate: boolean }) {
@@ -156,14 +161,16 @@ function Scene({ src, animate }: { src: string; animate: boolean }) {
   const invalidate = useThree((s) => s.invalidate);
   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
   const size = useThree((s) => s.size);
-  const clock = useRef<number | null>(null);
+  const frames = useRef(0);
+  const elapsed = useRef(0);
 
   // Resizes need a fresh frame to refit the laptop.
   useEffect(() => invalidate(), [size, invalidate]);
 
-  useFrame((state) => {
-    if (clock.current === null) clock.current = state.clock.elapsedTime;
-    const e = animate ? state.clock.elapsedTime - clock.current : Infinity;
+  useFrame((_, delta) => {
+    frames.current += 1;
+    if (frames.current > WARMUP_FRAMES) elapsed.current += Math.min(delta, MAX_STEP);
+    const e = animate ? elapsed.current : Infinity;
 
     const rise = easeInOut(Math.min(1, e / RISE));
     const t = easeInOut(THREE.MathUtils.clamp((e - OPEN_DELAY) / OPEN_DURATION, 0, 1));

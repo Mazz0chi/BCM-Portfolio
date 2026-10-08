@@ -16,6 +16,12 @@ Drop screenshots into `public/projects/` with these exact names, then rebuild. A
 
 Suggested size: 1600x1000 for projects, 2400x1200 for the hero.
 
+Redesign before/after slider: `public/projects/redesign-before.*` (old site) and
+`public/projects/redesign-after.*` (new site), same size, ideally 1920x1080.
+
+Client logos for the "trusted brands" row: `public/clients/<slug>.svg` (or .png/.webp),
+using the project slugs above. Without a logo the client's name is shown instead.
+
 Names, sectors, links, and grid order live in `lib/content.ts`. The grid is a fixed 10-cell bento: keep 10 projects or change `cells` in `components/work-grid.tsx`.
 
 ## Languages

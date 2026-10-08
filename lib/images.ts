@@ -15,3 +15,12 @@ export function imageFor(name: string): string | null {
   }
   return null;
 }
+
+/** Client logo for the trusted-brands row: "/clients/<slug>.<ext>" from public/clients, else null. */
+export function logoFor(slug: string): string | null {
+  for (const ext of ["svg", ...EXTENSIONS]) {
+    const file = path.join(process.cwd(), "public", "clients", `${slug}.${ext}`);
+    if (fs.existsSync(file)) return `/clients/${slug}.${ext}`;
+  }
+  return null;
+}
