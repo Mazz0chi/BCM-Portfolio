@@ -5,7 +5,7 @@ import type { Dict } from "@/lib/i18n";
 import { imageFor } from "@/lib/images";
 
 /**
- * Rebranding and redesign: most of the studio's projects. Pitch on the left,
+ * Rebranding and redesign: most of our projects. Pitch on the left,
  * how a redesign runs on the right, and a before/after slider underneath
  * (screenshots: public/projects/redesign-before.* and redesign-after.*).
  */

@@ -12,7 +12,7 @@ Drop screenshots into `public/projects/` with these exact names, then rebuild. A
     go-smartex   gobta   onesource-peo   prana-wealth   tribu-mkt
     hrlogics   heritage-health-network   marketing-mob   gem   jj-capinvest   888ci
     hero     (optional; falls back to go-smartex)
-    studio   (optional; 4:5 portrait)
+    studio   (optional; 3:2 landscape)
 
 Suggested size: 1600x1000 for projects, 2400x1200 for the hero.
 

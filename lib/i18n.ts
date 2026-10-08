@@ -19,9 +19,9 @@ export function localeHref(lang: Locale) {
 
 const en = {
   meta: {
-    title: "Benitez Cruz Mazzochi | Design and development studio",
+    title: "Benitez Cruz Mazzochi | Franco & Agustina, design and development",
     description:
-      "Benitez Cruz Mazzochi designs and builds brands, websites, and digital products, from scratch or as a rebrand and redesign.",
+      "We're Franco and Agustina. We design and build brands and websites, from scratch or as a rebrand and redesign, for clients all over the world.",
   },
   a11y: {
     skip: "Skip to content",
@@ -32,7 +32,7 @@ const en = {
     newTab: "(opens in a new tab)",
     primaryNav: "Primary",
   },
-  cta: "Start a project",
+  cta: "Let's talk",
   nav: [
     { label: "Work", href: "#work" },
     { label: "Redesign", href: "#redesign" },
@@ -40,26 +40,26 @@ const en = {
     { label: "Process", href: "#process" },
   ],
   hero: {
-    line1: "One team designs it.",
-    line2: "The same team builds it.",
-    sub: "Benitez Cruz Mazzochi is a design and development studio for brands, websites, and digital products. New, or redesigned.",
-    alt: "Featured project by Benitez Cruz Mazzochi",
+    line1: "Two people design it.",
+    line2: "The same two build it.",
+    sub: "We're Franco and Agustina. We create brands and websites, new or redesigned, for companies in finance, health, marketing, and more.",
+    alt: "A project by Franco and Agustina",
   },
   clients: {
-    heading: "Brands that trust us",
+    heading: "Brands we've worked with",
   },
   work: {
-    heading: "Selected work",
+    heading: "Work we're proud of",
     visit: "View site",
     alt: (title: string) => `${title} website`,
   },
   statement:
-    "Good design is half the job. It also has to load fast, work on every screen, and stay easy to change.",
+    "We care about the details nobody sees: that it loads fast, works on every screen, and is easy to change as you grow.",
   redesign: {
     eyebrow: "Rebranding and redesign",
-    heading: "Most of our work starts with something that already exists.",
-    body: "A brand the company has outgrown, a site that no longer reflects the business. We keep what works, fix what doesn't, and relaunch brand and site as one piece.",
-    cta: "Redesign your brand",
+    heading: "Most of our projects start with a brand that already exists.",
+    body: "A logo the company has outgrown, a site that no longer says who you are. We keep what works, fix what doesn't, and relaunch brand and site together.",
+    cta: "Let's redesign yours",
     compare: {
       label: "Compare the site before and after the redesign",
       before: "Before",
@@ -69,73 +69,73 @@ const en = {
     steps: [
       {
         title: "Audit",
-        body: "We review your current brand and site to decide what stays, what changes, and what goes.",
+        body: "We go through your brand and site with you and decide together what stays, what changes, and what goes.",
       },
       {
         title: "Rebrand",
-        body: "A new logo, palette, and type that still feel like you, so the clients you have keep recognizing you.",
+        body: "A new logo, palette, and type that still feel like you, so your clients keep recognizing you.",
       },
       {
         title: "Redesign",
-        body: "A new site built on the new brand, with your content carried over and nothing left behind.",
+        body: "A new site built on the new brand, with your content moved over and nothing lost along the way.",
       },
     ],
   },
   services: {
-    heading: "What we design and build",
+    heading: "What we can do for you",
     items: [
       {
         title: "Brand identity",
-        body: "Logos, type, color, and the rules that keep them consistent across every screen. For new brands, or a rebrand of the one you have.",
+        body: "Logos, type, color, and the rules that keep them consistent everywhere. For a brand that's just starting, or one that needs a refresh.",
         deliverables: ["Logo and wordmark", "Rebranding", "Type and color", "Brand guidelines"],
         example: { label: "See logo proposals for JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Web design",
-        body: "New sites and redesigns, with layouts and interactions designed for the screens they will actually live on.",
+        body: "New sites and redesigns, designed for the screens your clients actually use.",
         deliverables: ["Site redesign", "Page layouts", "Interaction and motion", "Responsive states"],
       },
       {
         title: "Frontend development",
-        body: "Fast, accessible sites built in Next.js and React from our own designs.",
+        body: "We build what we design, in Next.js and React: fast, accessible, and easy to update. No handoff, nothing lost in translation.",
         deliverables: ["Next.js and React", "Accessibility", "Performance"],
       },
       {
         title: "Design systems",
-        body: "Component libraries and tokens that let your team ship without starting over.",
+        body: "Components and rules so your team can keep building without starting from scratch.",
         deliverables: ["Design tokens", "Component libraries", "Documentation"],
       },
     ],
   },
   studio: {
-    heading: "A small studio, on purpose.",
-    body: "You talk directly to the people doing the work, and you keep every source file when the project ends.",
-    alt: "The studio at work",
+    heading: "Hi, we're Franco and Agustina.",
+    body: "Two experienced designers, a couple, and very keen to take on new projects. We work with people all over the world, and language is never a barrier. You talk to us directly from start to finish, and you keep every source file when we're done.",
+    alt: "Franco and Agustina in Paris",
   },
   process: {
-    heading: "How a project runs",
+    heading: "How we work together",
     steps: [
       {
         title: "Listen",
-        body: "We start with your goals, your audience, and what already exists, before anything gets drawn.",
+        body: "We start by getting to know you: your goals, your clients, and what you already have. Before we draw a thing.",
       },
       {
         title: "Design",
-        body: "Layouts, type, and motion are tested in the browser early, so nothing surprises you later.",
+        body: "You see real progress early, right in the browser, so there are no surprises at the end.",
       },
       {
         title: "Build",
-        body: "Development happens in Next.js and React, with performance and accessibility checked as we go.",
+        body: "We build it ourselves in Next.js and React, checking speed and accessibility as we go.",
       },
       {
         title: "Hand over",
-        body: "You receive the code, the design files, and a short guide so your team can keep going.",
+        body: "You get the code, the design files, and a short guide. And if you need us later, you know where to find us.",
       },
     ],
   },
   contact: {
-    heading: "Have a project in mind?",
-    body: "Tell us what you are building and where you need help.",
+    heading: "Tell us about your project",
+    body: "Write to us about what you're building and where you need a hand. You'll hear back from us directly, no middlemen.",
   },
   footer: {
     rights: "All rights reserved.",
@@ -147,9 +147,9 @@ export type Dict = typeof en;
 
 const es: Dict = {
   meta: {
-    title: "Benitez Cruz Mazzochi | Estudio de diseño y desarrollo",
+    title: "Benitez Cruz Mazzochi | Franco y Agustina, diseño y desarrollo",
     description:
-      "Benitez Cruz Mazzochi diseña y desarrolla marcas, sitios web y productos digitales, desde cero o como rebranding y rediseño.",
+      "Somos Franco y Agustina. Diseñamos y desarrollamos marcas y sitios web, desde cero o como rebranding y rediseño, para clientes de todo el mundo.",
   },
   a11y: {
     skip: "Saltar al contenido",
@@ -160,7 +160,7 @@ const es: Dict = {
     newTab: "(se abre en una pestaña nueva)",
     primaryNav: "Principal",
   },
-  cta: "Empezar un proyecto",
+  cta: "Hablemos",
   nav: [
     { label: "Trabajos", href: "#work" },
     { label: "Rediseño", href: "#redesign" },
@@ -168,26 +168,26 @@ const es: Dict = {
     { label: "Proceso", href: "#process" },
   ],
   hero: {
-    line1: "Un equipo lo diseña.",
-    line2: "El mismo equipo lo construye.",
-    sub: "Benitez Cruz Mazzochi es un estudio de diseño y desarrollo de marcas, sitios web y productos digitales. Nuevos o rediseñados.",
-    alt: "Proyecto destacado de Benitez Cruz Mazzochi",
+    line1: "Dos personas lo diseñan.",
+    line2: "Las mismas dos lo construyen.",
+    sub: "Somos Franco y Agustina. Creamos marcas y sitios web, nuevos o rediseñados, para empresas de finanzas, salud, marketing y más.",
+    alt: "Un proyecto de Franco y Agustina",
   },
   clients: {
-    heading: "Marcas que confían en nosotros",
+    heading: "Marcas con las que trabajamos",
   },
   work: {
-    heading: "Trabajos seleccionados",
+    heading: "Trabajos que nos enorgullecen",
     visit: "Ver sitio",
     alt: (title: string) => `Sitio web de ${title}`,
   },
   statement:
-    "El buen diseño es la mitad del trabajo. También tiene que cargar rápido, funcionar en cualquier pantalla y ser fácil de cambiar.",
+    "Nos importan los detalles que nadie ve: que cargue rápido, que funcione en cualquier pantalla y que sea fácil de cambiar a medida que crecés.",
   redesign: {
     eyebrow: "Rebranding y rediseño",
-    heading: "La mayoría de nuestros proyectos empiezan con algo que ya existe.",
-    body: "Una marca que le quedó chica a la empresa, un sitio que ya no refleja lo que hacés. Conservamos lo que funciona, corregimos lo que no y relanzamos marca y sitio como una sola pieza.",
-    cta: "Rediseñemos tu marca",
+    heading: "La mayoría de nuestros proyectos empiezan con una marca que ya existe.",
+    body: "Un logo que le quedó chico a la empresa, un sitio que ya no cuenta quién sos. Conservamos lo que funciona, corregimos lo que no y relanzamos marca y sitio juntos.",
+    cta: "Rediseñemos la tuya",
     compare: {
       label: "Comparar el sitio antes y después del rediseño",
       before: "Antes",
@@ -197,7 +197,7 @@ const es: Dict = {
     steps: [
       {
         title: "Auditoría",
-        body: "Revisamos tu marca y tu sitio actuales para decidir qué se queda, qué cambia y qué se va.",
+        body: "Recorremos tu marca y tu sitio con vos y decidimos juntos qué se queda, qué cambia y qué se va.",
       },
       {
         title: "Rebranding",
@@ -205,65 +205,65 @@ const es: Dict = {
       },
       {
         title: "Rediseño",
-        body: "Un sitio nuevo construido sobre la nueva marca, con tu contenido migrado y sin dejar nada en el camino.",
+        body: "Un sitio nuevo construido sobre la nueva marca, con tu contenido migrado y sin perder nada en el camino.",
       },
     ],
   },
   services: {
-    heading: "Qué diseñamos y construimos",
+    heading: "En qué te podemos ayudar",
     items: [
       {
         title: "Identidad de marca",
-        body: "Logos, tipografía, color y las reglas que los mantienen coherentes en cada pantalla. Para marcas nuevas o para el rebranding de la que ya tenés.",
+        body: "Logos, tipografía, color y las reglas que los mantienen coherentes en todos lados. Para una marca que recién arranca o una que necesita renovarse.",
         deliverables: ["Logo y logotipo", "Rebranding", "Tipografía y color", "Manual de marca"],
         example: { label: "Ver propuestas de logo para JJ Capinvest", href: "/proposals/jj-capinvest-logos.html" },
       },
       {
         title: "Diseño web",
-        body: "Sitios nuevos y rediseños, con layouts e interacciones pensados para las pantallas donde realmente se van a usar.",
+        body: "Sitios nuevos y rediseños, pensados para las pantallas que tus clientes usan de verdad.",
         deliverables: ["Rediseño de sitios", "Diseño de páginas", "Interacción y animación", "Versiones responsive"],
       },
       {
         title: "Desarrollo frontend",
-        body: "Sitios rápidos y accesibles, construidos en Next.js y React a partir de nuestros propios diseños.",
+        body: "Construimos lo que diseñamos, en Next.js y React: rápido, accesible y fácil de actualizar. Sin pasamanos, sin nada que se pierda en el medio.",
         deliverables: ["Next.js y React", "Accesibilidad", "Rendimiento"],
       },
       {
         title: "Sistemas de diseño",
-        body: "Librerías de componentes y tokens para que tu equipo avance sin empezar de cero.",
+        body: "Componentes y reglas para que tu equipo siga construyendo sin arrancar de cero.",
         deliverables: ["Design tokens", "Librerías de componentes", "Documentación"],
       },
     ],
   },
   studio: {
-    heading: "Un estudio chico, a propósito.",
-    body: "Hablás directamente con quienes hacen el trabajo y, al terminar, te quedás con todos los archivos fuente.",
-    alt: "El estudio trabajando",
+    heading: "Hola, somos Franco y Agustina.",
+    body: "Dos diseñadores con experiencia, en pareja y con muchas ganas de encarar proyectos nuevos. Trabajamos con gente de todas partes del mundo: el idioma nunca es una barrera. Hablás directo con nosotros de principio a fin y, al terminar, te quedás con todos los archivos.",
+    alt: "Franco y Agustina en París",
   },
   process: {
-    heading: "Cómo funciona un proyecto",
+    heading: "Cómo trabajamos juntos",
     steps: [
       {
         title: "Escuchar",
-        body: "Empezamos por tus objetivos, tu audiencia y lo que ya existe, antes de dibujar nada.",
+        body: "Empezamos por conocerte: tus objetivos, tus clientes y lo que ya tenés. Antes de dibujar nada.",
       },
       {
         title: "Diseñar",
-        body: "Layouts, tipografía y animación se prueban temprano en el navegador, para que nada te sorprenda después.",
+        body: "Ves avances reales desde temprano, directo en el navegador, así no hay sorpresas al final.",
       },
       {
         title: "Construir",
-        body: "Desarrollamos en Next.js y React, revisando rendimiento y accesibilidad sobre la marcha.",
+        body: "Lo construimos nosotros mismos en Next.js y React, revisando velocidad y accesibilidad sobre la marcha.",
       },
       {
         title: "Entregar",
-        body: "Recibís el código, los archivos de diseño y una guía breve para que tu equipo pueda seguir.",
+        body: "Te llevás el código, los archivos de diseño y una guía breve. Y si después nos necesitás, ya sabés dónde encontrarnos.",
       },
     ],
   },
   contact: {
-    heading: "¿Tenés un proyecto en mente?",
-    body: "Contanos qué estás construyendo y en qué necesitás ayuda.",
+    heading: "Contanos tu proyecto",
+    body: "Escribinos qué estás armando y en qué te podemos dar una mano. Te respondemos nosotros, sin intermediarios.",
   },
   footer: {
     rights: "Todos los derechos reservados.",

@@ -6,15 +6,15 @@ import { imageFor } from "@/lib/images";
 export function Studio({ d }: { d: Dict }) {
   return (
     <section className="px-4 py-20 md:px-8 md:py-28">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-12 md:grid-cols-[5fr_6fr] md:gap-24">
+      <div className="mx-auto grid max-w-[1400px] items-center gap-12 md:grid-cols-[6fr_5fr] md:gap-20">
         <Reveal>
           <Media
             src={imageFor("studio")}
             alt={d.studio.alt}
             slot="public/projects/studio.jpg"
             tone="one"
-            sizes="(min-width: 768px) 45vw, 100vw"
-            className="aspect-[4/5] w-full"
+            sizes="(min-width: 768px) 55vw, 100vw"
+            className="aspect-[3/2] w-full"
           />
         </Reveal>
         <Reveal delay={0.1} className="flex max-w-xl flex-col gap-6">
