@@ -152,6 +152,10 @@ const OPEN_DURATION = 3.2; // lid opening + turn to face the viewer
 // stall pauses the intro instead of skipping part of it.
 const WARMUP_FRAMES = 3;
 const MAX_STEP = 1 / 30;
+// Once open, the laptop turns a little toward the mouse (radians at the screen edge).
+const LOOK_YAW = 0.22;
+const LOOK_PITCH = 0.08;
+const LOOK_EASE = 5; // higher = snappier follow
 const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 function Scene({ src, animate, bleed }: { src: string; animate: boolean; bleed: number }) {
@@ -163,9 +167,35 @@ function Scene({ src, animate, bleed }: { src: string; animate: boolean; bleed: 
   const size = useThree((s) => s.size);
   const frames = useRef(0);
   const elapsed = useRef(0);
+  // Mouse position across the window, -1..1 from the centre: target and eased value.
+  const look = useRef({ x: 0, y: 0 });
+  const lookNow = useRef({ x: 0, y: 0 });
 
   // Resizes need a fresh frame to refit the laptop.
   useEffect(() => invalidate(), [size, invalidate]);
+
+  // Mouse only, and only while the hero is on screen; each move requests frames
+  // until the turn settles (frameloop is on demand).
+  useEffect(() => {
+    if (!animate) return;
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse" || window.scrollY > window.innerHeight) return;
+      look.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      look.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+      invalidate();
+    };
+    const onLeave = () => {
+      look.current.x = 0;
+      look.current.y = 0;
+      invalidate();
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.documentElement.addEventListener("pointerleave", onLeave);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      document.documentElement.removeEventListener("pointerleave", onLeave);
+    };
+  }, [animate, invalidate]);
 
   useFrame((_, delta) => {
     frames.current += 1;
@@ -192,14 +222,21 @@ function Scene({ src, animate, bleed }: { src: string; animate: boolean; bleed: 
       const stageLift = (bleed / 2) * pxToWorld;
       const fit = Math.min(visW / 4.6, visH / 3.3);
 
+      // Ease toward the mouse; the follow fades in as the lid opens, so the intro is untouched.
+      const k = 1 - Math.exp(-Math.min(delta, MAX_STEP) * LOOK_EASE);
+      lookNow.current.x += (look.current.x - lookNow.current.x) * k;
+      lookNow.current.y += (look.current.y - lookNow.current.y) * k;
+
       // Closed and turned ~55° (right-side ports toward you) -> open, facing you.
-      rig.current.rotation.y = THREE.MathUtils.lerp(-0.95, 0.05, t);
-      rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t);
+      rig.current.rotation.y = THREE.MathUtils.lerp(-0.95, 0.05, t) + lookNow.current.x * LOOK_YAW * t;
+      rig.current.rotation.x = THREE.MathUtils.lerp(0.14, 0.02, t) + lookNow.current.y * LOOK_PITCH * t;
       rig.current.position.y = stageLift + THREE.MathUtils.lerp(-0.08, 0, t) * visH - (1 - rise) * 0.6;
       rig.current.scale.setScalar(fit * THREE.MathUtils.lerp(0.82, 1, t));
     }
 
-    if (e < OPEN_DELAY + OPEN_DURATION) invalidate();
+    const settling =
+      Math.abs(look.current.x - lookNow.current.x) > 1e-3 || Math.abs(look.current.y - lookNow.current.y) > 1e-3;
+    if (e < OPEN_DELAY + OPEN_DURATION || settling) invalidate();
   });
 
   return (

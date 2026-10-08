@@ -29,8 +29,8 @@ function useWebGL() {
 /**
  * Hero: headline on top, laptop below. On load the laptop plays a one-off
  * intro (rises in closed, lid opens, turns to face you, screen powers on) and
- * then rests open. Reduced motion: shown open straight away. No WebGL: a flat
- * screenshot.
+ * then rests open, turning slightly toward the mouse. Reduced motion: shown
+ * open and still. No WebGL: a flat screenshot.
  */
 export function HeroLaptop({
   children,
