@@ -7,13 +7,45 @@ import {
   useMotionTemplate,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
 } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 import { CtaLink } from "@/components/cta-link";
 import { LangToggle } from "@/components/lang-toggle";
 import { studio } from "@/lib/content";
+import { cn } from "@/lib/cn";
 import type { Dict, Locale } from "@/lib/i18n";
+
+/**
+ * Which nav section is under the reading line (a thin band ~45% down the
+ * viewport). Null in between linked sections (hero, statement, about, contact).
+ */
+function useActiveSection(hrefs: string[]) {
+  const [active, setActive] = useState<string | null>(null);
+  const key = hrefs.join(",");
+
+  useEffect(() => {
+    const ids = key.split(",").map((h) => h.replace("#", ""));
+    const els = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
+    const visible = new Set<string>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) visible.add(e.target.id);
+          else visible.delete(e.target.id);
+        }
+        const first = ids.find((id) => visible.has(id));
+        setActive(first ? `#${first}` : null);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [key]);
+
+  return active;
+}
 
 /**
  * Floating pill header (Butter-style): detached from the top edge, centered,
@@ -35,6 +67,9 @@ export function FloatingNav({
   const { scrollY } = useScroll();
   const alpha = useTransform(scrollY, [0, 160], [0.55, 0.88]);
   const background = useMotionTemplate`rgb(246 248 243 / ${alpha})`;
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 32, restDelta: 0.001 });
+  const active = useActiveSection(d.nav.map((l) => l.href));
 
   useEffect(() => {
     if (!open) return;
@@ -47,6 +82,12 @@ export function FloatingNav({
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-(--z-nav) flex justify-center px-4">
+      {/* Reading progress across the very top of the page. */}
+      <motion.div
+        aria-hidden
+        style={{ scaleX: reduce ? scrollYProgress : progress }}
+        className="fixed inset-x-0 top-0 h-[3px] origin-left bg-accent"
+      />
       <div className="relative w-full max-w-3xl">
         <motion.nav
           aria-label={d.a11y.primaryNav}
@@ -62,16 +103,31 @@ export function FloatingNav({
           </a>
 
           <ul className="hidden items-center gap-1 lg:flex">
-            {d.nav.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="rounded-full px-4 py-2 text-sm text-mute transition-colors duration-300 hover:bg-surface-3 hover:text-ink focus-visible:outline-2 focus-visible:outline-accent"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {d.nav.map((link) => {
+              const current = active === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={current ? "location" : undefined}
+                    className={cn(
+                      "relative block rounded-full px-4 py-2 text-sm transition-colors duration-300 hover:text-ink focus-visible:outline-2 focus-visible:outline-accent",
+                      current ? "text-ink" : "text-mute hover:bg-surface-3",
+                    )}
+                  >
+                    {/* One pill that slides between links as you scroll. */}
+                    {current && (
+                      <motion.span
+                        layoutId="nav-active"
+                        transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 34 }}
+                        className="absolute inset-0 rounded-full bg-surface-3"
+                      />
+                    )}
+                    <span className="relative">{link.label}</span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
@@ -108,7 +164,11 @@ export function FloatingNav({
                     <a
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-full px-4 py-3 text-2xl tracking-tight transition-colors hover:bg-surface-3"
+                      aria-current={active === link.href ? "location" : undefined}
+                      className={cn(
+                        "block rounded-full px-4 py-3 text-2xl tracking-tight transition-colors hover:bg-surface-3",
+                        active === link.href && "bg-surface-3",
+                      )}
                     >
                       {link.label}
                     </a>
