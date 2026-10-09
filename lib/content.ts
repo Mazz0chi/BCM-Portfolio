@@ -24,7 +24,7 @@ export type Project = {
 };
 
 /**
- * Order = order in the grid. The grid is a 11-cell bento (components/work-grid.tsx):
+ * Order = order in the grid: newest year first. The grid is a 11-cell bento (components/work-grid.tsx):
  * keep exactly 11 projects, or change `cells` there to match the new count.
  */
 export const projects: Project[] = [
@@ -33,10 +33,10 @@ export const projects: Project[] = [
   { slug: "go-smartex", title: "Go Smartex", sector: { en: "Growth agency", es: "Agencia de crecimiento" }, year: 2026, stack: "Claude", url: "https://gosmartex.com/" },
   { slug: "gobta", title: "GoBTA", sector: { en: "Cybersecurity", es: "Ciberseguridad" }, year: 2026, stack: "Claude", url: "https://www.gobta.com/" },
   { slug: "marketing-mob", title: "Marketing Mob", sector: { en: "Marketing agency", es: "Agencia de marketing" }, year: 2026, stack: "Claude", url: "https://marketing-mob.com/" },
-  { slug: "heritage-health-network", title: "Heritage Health Network", sector: { en: "Healthcare", es: "Salud" }, year: 2025, stack: "WordPress", url: "https://heritagehealthnetwork.com/" },
   { slug: "prana-wealth", title: "Prana Wealth Management", sector: { en: "Wealth management", es: "Gestión patrimonial" }, year: 2026, stack: "WordPress + Claude", url: "https://www.pranawealth.com" },
+  { slug: "heritage-health-network", title: "Heritage Health Network", sector: { en: "Healthcare", es: "Salud" }, year: 2025, stack: "WordPress", url: "https://heritagehealthnetwork.com/" },
   { slug: "onesource-peo", title: "OneSource PEO", sector: { en: "HR services", es: "Servicios de RR. HH." }, year: 2025, stack: "WordPress", url: "https://onesourcepeo.com" },
-  { slug: "tribu-mkt", title: "Tribu MKT", sector: { en: "Marketing community", es: "Comunidad de marketing" }, year: 2024, stack: "WordPress", url: "https://tribu-mkt.com/" },
   { slug: "hrlogics", title: "HRlogics", sector: { en: "HR compliance", es: "Cumplimiento laboral" }, year: 2025, stack: "HubSpot", url: "https://hrlogics.com/" },
   { slug: "gem", title: "GEM", sector: { en: "Medical", es: "Medicina" }, year: 2025, stack: "WordPress", url: "https://electroquimioterapia.com.ar/" },
+  { slug: "tribu-mkt", title: "Tribu MKT", sector: { en: "Marketing community", es: "Comunidad de marketing" }, year: 2024, stack: "WordPress", url: "https://tribu-mkt.com/" },
 ];
