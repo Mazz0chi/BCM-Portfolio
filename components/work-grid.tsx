@@ -66,16 +66,21 @@ function Cell({
             <ArrowUpRight weight="bold" className="size-3.5" />
           </span>
         </Tilt>
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-1">
-          <h3 className="flex items-center gap-1.5 text-lg font-medium tracking-tight">
-            {project.title}
-            <ArrowUpRight
-              aria-hidden
-              className="size-4 text-mute transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-            />
-            <span className="sr-only">{d.a11y.newTab}</span>
-          </h3>
-          <p className="shrink-0 text-sm text-mute">{project.sector[lang]}</p>
+        <div className="flex flex-col gap-1 px-1">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="flex items-center gap-1.5 text-lg font-medium tracking-tight">
+              {project.title}
+              <ArrowUpRight
+                aria-hidden
+                className="size-4 text-mute transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+              />
+              <span className="sr-only">{d.a11y.newTab}</span>
+            </h3>
+            <p className="shrink-0 font-mono text-sm text-mute">{project.year}</p>
+          </div>
+          <p className="text-sm text-mute">
+            {project.sector[lang]} · {project.stack}
+          </p>
         </div>
       </a>
     </Reveal>
