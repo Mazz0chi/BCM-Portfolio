@@ -43,6 +43,10 @@ const PORTS = new Set([
   "HPAOpCInJKBtaOC",
 ]);
 
+// Camera housing in the notch: the file has a pure-white disc behind the lens,
+// which shows as a white dot above the screen. A real camera reads near-black.
+const CAMERA = new Set(["jRMWtdSAaujlvUA"]);
+
 // Model is in metres after its root transform (~0.31 wide); scale to scene units.
 const MODEL_SCALE = 10;
 
@@ -131,6 +135,10 @@ function Macbook({
         m.color.set(ALUMINIUM_COLOR);
         m.metalness = 1;
         m.roughness = 0.38;
+      } else if (CAMERA.has(m.name)) {
+        m.color.set("#0b0c0e");
+        m.metalness = 0.2;
+        m.roughness = 0.35;
       } else if (PORTS.has(m.name)) {
         m.color.set("#18191b");
         m.metalness = 0.4;
