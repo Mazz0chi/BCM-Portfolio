@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="Proposolve">
+  <g>
+    <circle cx="8" cy="8" r="4" fill="#bfdbfe"/>
+    <circle cx="20" cy="8" r="4" fill="#bfdbfe"/>
+    <circle cx="32" cy="8" r="4" fill="#bfdbfe"/>
+    <circle cx="8" cy="20" r="4" fill="#bfdbfe"/>
+    <circle cx="20" cy="20" r="5.5" fill="#2563eb"/>
+    <circle cx="32" cy="20" r="4" fill="#bfdbfe"/>
+    <circle cx="8" cy="32" r="4" fill="#bfdbfe"/>
+    <circle cx="20" cy="32" r="4" fill="#bfdbfe"/>
+    <circle cx="32" cy="32" r="4" fill="#bfdbfe"/>
+    <line x1="20" y1="8" x2="20" y2="14.5" stroke="#93c5fd" stroke-width="1.5"/>
+    <line x1="20" y1="25.5" x2="20" y2="32" stroke="#93c5fd" stroke-width="1.5"/>
+    <line x1="8" y1="20" x2="14.5" y2="20" stroke="#93c5fd" stroke-width="1.5"/>
+    <line x1="25.5" y1="20" x2="32" y2="20" stroke="#93c5fd" stroke-width="1.5"/>
+  </g>
+  <text x="50" y="29" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="-0.5"><tspan fill="#0f172a">Propo</tspan><tspan fill="#2563eb">solve</tspan></text>
+</svg>

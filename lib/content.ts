@@ -24,12 +24,13 @@ export type Project = {
 };
 
 /**
- * Order = order in the grid: newest year first. The grid is a 11-cell bento (components/work-grid.tsx):
- * keep exactly 11 projects, or change `cells` there to match the new count.
+ * Order = order in the grid: newest year first. The grid is a 12-cell bento (components/work-grid.tsx):
+ * keep exactly 12 projects, or change `cells` there to match the new count.
  */
 export const projects: Project[] = [
   { slug: "jj-capinvest", title: "JJ Capinvest", sector: { en: "Investment firm", es: "Firma de inversión" }, year: 2026, stack: "Claude", url: "https://jjcapinvest.com/" },
   { slug: "888ci", title: "888 Capinvest", sector: { en: "Venture capital", es: "Capital de riesgo" }, year: 2026, stack: "Claude", url: "/proposals/888ci/index.html" },
+  { slug: "proposolve", title: "Proposolve", sector: { en: "Proposal software", es: "Software de propuestas" }, year: 2026, stack: "Claude", url: "https://www.proposolve.com/" },
   { slug: "go-smartex", title: "Go Smartex", sector: { en: "Growth agency", es: "Agencia de crecimiento" }, year: 2026, stack: "Claude", url: "https://gosmartex.com/" },
   { slug: "gobta", title: "GoBTA", sector: { en: "Cybersecurity", es: "Ciberseguridad" }, year: 2026, stack: "Claude", url: "https://www.gobta.com/" },
   { slug: "marketing-mob", title: "Marketing Mob", sector: { en: "Marketing agency", es: "Agencia de marketing" }, year: 2026, stack: "Claude", url: "https://marketing-mob.com/" },
