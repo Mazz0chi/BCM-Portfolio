@@ -67,7 +67,12 @@ function Panel({
           style={tall && !reduce ? { opacity: contentOpacity } : undefined}
           className="flex flex-col gap-5"
         >
-          <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
+          {/* Phones: a small icon beside the title. Below the text it got half-covered
+              by the next card in the stack. From md up the large icon sits on the right. */}
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-6xl">{item.title}</h3>
+            <ServiceIcon index={index} className="h-auto w-20 shrink-0 text-mute sm:w-24 md:hidden" />
+          </div>
           <p className="max-w-[45ch] text-base leading-relaxed text-mute md:text-lg">{item.body}</p>
         </motion.div>
         <motion.ul
@@ -96,9 +101,9 @@ function Panel({
       </div>
       <motion.div
         style={tall && !reduce ? { opacity: contentOpacity } : undefined}
-        className="flex shrink-0 justify-center md:justify-end"
+        className="hidden shrink-0 justify-end md:flex"
       >
-        <ServiceIcon index={index} className="h-auto w-full max-w-[14rem] text-mute md:w-[16rem] md:max-w-none lg:w-[20rem]" />
+        <ServiceIcon index={index} className="h-auto text-mute md:w-[16rem] lg:w-[20rem]" />
       </motion.div>
     </motion.article>
   );
