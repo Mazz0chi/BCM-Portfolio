@@ -1,9 +1,30 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
 import { getDict, isLocale, localeHref, locales } from "@/lib/i18n";
 import "../globals.css";
+
+// Fontshare (Indian Type Foundry), free for commercial use; self-hosted from app/fonts.
+// Headings: Cabinet Grotesk. Everything else: Satoshi.
+const display = localFont({
+  src: [
+    { path: "../fonts/cabinet-grotesk-500.woff2", weight: "500" },
+    { path: "../fonts/cabinet-grotesk-700.woff2", weight: "700" },
+    { path: "../fonts/cabinet-grotesk-800.woff2", weight: "800" },
+  ],
+  variable: "--font-cabinet",
+  display: "swap",
+});
+
+const text = localFont({
+  src: [
+    { path: "../fonts/satoshi-400.woff2", weight: "400" },
+    { path: "../fonts/satoshi-500.woff2", weight: "500" },
+    { path: "../fonts/satoshi-700.woff2", weight: "700" },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
+});
 
 export const dynamicParams = false;
 
@@ -57,7 +78,7 @@ export default async function RootLayout({
   const d = getDict(lang);
 
   return (
-    <html lang={lang === "es" ? "es-AR" : lang} className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang={lang === "es" ? "es-AR" : lang} className={`${display.variable} ${text.variable}`}>
       <body className="min-h-dvh bg-canvas font-sans text-ink antialiased">
         <a
           href="#top"

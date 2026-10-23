@@ -97,7 +97,7 @@ export function FloatingNav({
           <a
             href="#top"
             aria-label={`${studio.name}, ${d.a11y.backToTop}`}
-            className="rounded-full font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            className="rounded-full font-display text-lg font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             {studio.short}
           </a>

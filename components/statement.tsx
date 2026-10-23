@@ -34,7 +34,7 @@ export function Statement({ text }: { text: string }) {
       <div className="mx-auto max-w-[1400px]">
         <p
           ref={ref}
-          className="max-w-5xl text-3xl font-semibold leading-[1.15] tracking-tighter md:pl-[12vw] md:text-5xl"
+          className="max-w-5xl font-display text-3xl font-bold leading-[1.15] tracking-tight md:pl-[12vw] md:text-5xl"
         >
           {words.map((word, i) => (
             <Word

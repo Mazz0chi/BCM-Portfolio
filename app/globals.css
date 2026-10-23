@@ -25,6 +25,10 @@
 @custom-variant tall (@media (min-height: 40rem));
 
 @theme inline {
+  /* Cabinet Grotesk is already tightly spaced; Tailwind's defaults (-0.05em / -0.025em)
+     were tuned for Geist and make its letters collide. */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.012em;
   --color-canvas: var(--canvas);
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
@@ -34,13 +38,23 @@
   --color-mute: var(--mute);
   --color-accent: var(--accent);
   --color-accent-tint: var(--accent-tint);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cabinet), var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  /* Small labels (years, eyebrows) used Geist Mono; they're Satoshi now too. */
+  --font-mono: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   background: var(--canvas);
+}
+
+/* Titles use the display face; utility classes (e.g. font-mono eyebrows) still win. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
 }
 
 body {
