@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUp } from "@phosphor-icons/react";
 import { motion, motionValue, useReducedMotion, useTransform, type MotionValue } from "motion/react";
 import type { Dict } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
@@ -87,14 +87,12 @@ function Panel({
           <motion.a
             style={tall && !reduce ? { opacity: contentOpacity } : undefined}
             href={item.example.href}
-            target="_blank"
-            rel="noopener noreferrer"
             className="group -mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:text-base"
           >
             {item.example.label}
-            <ArrowUpRight
+            <ArrowUp
               aria-hidden
-              className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5"
             />
           </motion.a>
         )}

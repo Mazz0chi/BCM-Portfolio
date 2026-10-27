@@ -19,6 +19,10 @@ Suggested size: 1600x1000 for projects, 2400x1200 for the hero.
 Redesign before/after slider: `public/projects/redesign-before.*` (old site) and
 `public/projects/redesign-after.*` (new site), same size, ideally 1920x1080.
 
+Branding case (JJ Capinvest): pages from the brand guide live in `public/projects/brand/`
+(`jj-<name>.webp`); their sizes are listed in `components/brand-case.tsx` and the copy
+in `lib/i18n.ts` under `brandCase`.
+
 Client logos for the "trusted brands" row: `public/clients/<slug>.svg` (or .png/.webp),
 using the project slugs above. Without a logo the client's name is shown instead.
 

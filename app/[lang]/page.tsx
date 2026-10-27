@@ -6,6 +6,7 @@ import { WorkGrid } from "@/components/work-grid";
 import { Statement } from "@/components/statement";
 import { Capabilities } from "@/components/capabilities";
 import { Redesign } from "@/components/redesign";
+import { BrandCase } from "@/components/brand-case";
 import { Studio } from "@/components/studio";
 import { Process } from "@/components/process";
 import { Contact } from "@/components/contact";
@@ -27,6 +28,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <TrustedBrands heading={d.clients.heading} />
         <WorkGrid lang={lang} d={d} />
         <Redesign d={d} />
+        <BrandCase d={d} />
         <Statement text={d.statement} />
         <Capabilities heading={d.services.heading} items={d.services.items} />
         <Studio d={d} />
